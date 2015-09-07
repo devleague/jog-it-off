@@ -16,9 +16,7 @@ How to play:
 7) Players are then ranked by coin-count. Player with the most coins wins.
 
 Stack:
-- Mongo DB
-- Express server
+- Minimongo
+- Meteor
 - Angular
--- Ionic
--- Cordova
 - Node JS
