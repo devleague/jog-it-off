@@ -6,6 +6,10 @@ if (Meteor.isClient) {
 
   angular.module('jog-it-off').controller('LocationsListCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
     $scope.locations = $meteor.collection(Locations);
+
+    $scope.remove = function (location){
+      $scope.locations.splice($scope.locations.indexOf(location), 1);
+    };
   }]);
 }
 

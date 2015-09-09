@@ -18,11 +18,21 @@
   </li>
 </ul>
 
+
+
 <div ng-controller="LocationsListCtrl">
+  <form>
+    <label>Name</label>
+    <input ng-model="newLocation.name">
+    <label>Description</label>
+    <input ng-model="newLocation.description">
+    <button ng-click="locations.push(newLocation); newLocation='';">Add</button>
+  </form>
   <ul class="dynamic">
     <li ng-repeat="location in locations">
       {{location.name}}
       <p>{{location.description}}</p>
+      <button ng-click="remove(location)">X</button>
     </li>
   </ul>
 </div>
