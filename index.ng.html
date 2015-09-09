@@ -2,3 +2,27 @@
 <p>Nothing here {{"yet " + "!"}}</p>
 
 <div class="logo"></div>
+
+<ul class="static">
+  <li>
+    <span>Dubstep-Free Zone</span>
+    <p>
+      Can we please just for an evening not listen to dubstep.
+    </p>
+  </li>
+  <li>
+    <span>All dubstep all the time</span>
+    <p>
+      Get it on!
+    </p>
+  </li>
+</ul>
+
+<div ng-controller="LocationsListCtrl">
+  <ul class="dynamic">
+    <li ng-repeat="location in locations">
+      {{location.name}}
+      <p>{{location.description}}</p>
+    </li>
+  </ul>
+</div>
