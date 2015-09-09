@@ -8,7 +8,11 @@ if (Meteor.isClient) {
     $scope.locations = $meteor.collection(Locations);
 
     $scope.remove = function (location){
-      $scope.locations.splice($scope.locations.indexOf(location), 1);
+      $scope.locations.remove(location);
+    };
+
+    $scope.removeAll = function (locations) {
+      $scope.remove(locations);
     };
   }]);
 }
