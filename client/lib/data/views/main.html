@@ -1,8 +1,13 @@
 <template name="main">
 
-<form action="/create" role="form">
-  <input type="text" id="name" placeholder="Name">
-  <button id="createGame">Create A Game</button>
-  <button id="joinGame">Join A Game</button>
-</form>
+  <div>
+    <h1>TITLE</h1>
+  </div>
+
+  <form role="form" id="mainForm">
+    <input type="text" id="name" placeholder="Player Name">
+    <button id="createGame" formaction="/create">CREATE A GAME</button>
+    <button id="joinGame" formaction="/join">JOIN A GAME</button>
+  </form>
+
 </template>

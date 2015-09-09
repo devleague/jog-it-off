@@ -13,14 +13,29 @@ Template.layout.destroyed = function (){
 Template.layout.helpers({
 });
 
+Template.lobby.helpers({
+  // isHost: function() {
+  //   // return client===host;
+  //   return true;
+  // }
+  isHost: true
+});
+
 Template.layout.events({
 });
 
 Template.main.events({
    'submit #createGame': function (evt, tmpl) {
-    evt.preventDefault();
+      evt.preventDefault();
       var name = tmpl.find('#name').value;
 
       Meteor.go('/create');
+   },
+
+   'submit #joinGame': function (evt, tmpl) {
+      evt.preventDefault();
+      var name = tmpl.find('#name').value;
+
+      Meteor.go('/join');
    }
 });

@@ -1,0 +1,40 @@
+<template name="lobby">
+
+  <div class="headerDiv">
+    <h1 class="headerText">ROOM NAME/LOBBY</h1>
+  </div>
+
+  <div class="lobbyContent">
+    <h3>This page should list all players in the game</h3>
+    <ul class="playerList">
+    <!-- list all players in current game -->
+      <li>
+        <p>Player 1</p>
+      </li>
+      <li>
+        <p>Player 2</p>
+      </li>
+      <li>
+        <p>Player 3</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footerDiv">
+    {{#if isHost}}
+      {{> startGame}}
+    {{else}}
+      {{> waitMsg}}
+    {{/if}}
+    <!-- <h3 class="footerText">Waiting on Host...</h3> -->
+  </div>
+
+</template>
+
+<template name="startGame">
+  <button id="startButton">START</button>
+</template>
+
+<template name="waitMsg">
+  <h2>Waiting on Host...</h2>
+</template>
