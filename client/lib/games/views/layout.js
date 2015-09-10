@@ -16,7 +16,6 @@ Template.layout.helpers({
 Template.lobby.helpers({
   // isHost: function() {
   //   // return client===host;
-  //   return true;
   // }
   isHost: true
 });

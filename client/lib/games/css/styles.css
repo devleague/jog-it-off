@@ -17,6 +17,10 @@ body {
 }
 
 .footerDiv {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
   background-color: gray;
   text-align: center;
 }
@@ -79,7 +83,7 @@ h1 {
 }
 
 .gameDiv h4, h3 {
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 .roomTitle {
@@ -87,17 +91,13 @@ h1 {
 }
 
 .timestamp {
+  margin-top: 5px;
   background-color: gray;
 }
 
 /*--------LOBBY---------*/
 .lobbyContent {
   text-align: center;
-}
-
-.playerList {
-  list-style-type: none;
-  font-size: 20px;
 }
 
 #startButton {
