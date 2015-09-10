@@ -17,3 +17,7 @@ Router.route('/join', function () {
 Router.route('/lobby', function () {
   this.render('lobby');
 });
+
+Router.route('/map', function(){
+  this.render('map');
+});
