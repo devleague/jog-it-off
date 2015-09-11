@@ -2,7 +2,7 @@ Locations = new Mongo.Collection("locations");
 
 if (Meteor.isClient) {
   //declare module
-  angular.module('jog-it-off',['angular-meteor']);
+  angular.module('jog-it-off',['angular-meteor', 'ui.router']);
 
   angular.module('jog-it-off').controller('LocationsListCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
     $scope.locations = $meteor.collection(Locations);

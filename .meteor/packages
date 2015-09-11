@@ -9,3 +9,4 @@ autopublish
 insecure
 angular
 iron:router
+angularui:angular-ui-router

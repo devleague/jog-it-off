@@ -12,6 +12,17 @@
 </html> -->
 
 
+
+<head>
+  <base href="/">
+</head>
+
 <body ng-app='jog-it-off'>
-  <div ng-include="'index.ng.html'"></div>
+  <div ng-controller="LocationsListCtrl">
+    <h1>
+      <a href="/locations">Home</a>
+    </h1>
+    <div ui-view></div>
+  </div>
+  <div ng-include="'locations-list.ng.html'"></div>
 </body>
