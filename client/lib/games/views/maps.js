@@ -10,6 +10,19 @@ if (Meteor.isClient) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'homebase' }); // we will use a function to hardcode input
       });
 
+      Template.currentLocation.events({
+      'click #currentLocation': function (evt, tmpl){
+        evt.preventDefault();
+        console.log("fire away!");
+      navigator.geolocation.getCurrentPosition(function(position) {
+      initialLocation = new  google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(initialLocation);
+
+      console.log(initialLocation);
+      });
+    }
+  });
+
       var markers = {};
 
       Markers.find().observe({
