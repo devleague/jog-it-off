@@ -1,4 +1,5 @@
 
+
 Markers = new Mongo.Collection('markers');
 
 
@@ -6,7 +7,7 @@ if (Meteor.isClient) {
   Template.map.onCreated(function() {
     GoogleMaps.ready('map', function(map) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
-        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'homebase' }); // we will use a function to hardcode input
       });
 
       var markers = {};
@@ -24,6 +25,8 @@ if (Meteor.isClient) {
           });
           console.log(markers);
 
+
+
           //this listener below lets us drag markers on the map and update their corresponding document
           google.maps.event.addListener(marker, 'dragend', function(event) {
             Markers.update(marker.id, { $set: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
@@ -39,10 +42,11 @@ if (Meteor.isClient) {
           markers[oldDocument._id].setMap(null);
           google.maps.event.clearInstanceListeners(markers[oldDocument._id]);
           delete markers[oldDocument._id];
-
         }
+
       });
     });
+
   });
 
   Meteor.startup(function() {
@@ -66,5 +70,22 @@ if (Meteor.isClient) {
   });
 
 }
+
+function toggle(radioBtn)
+ {
+   if(radioBtn.checked)
+   {
+     setTimeout("disableRadio('"+radioBtn.id+"')",10);
+   } else {
+     radioBtn.checked = true;
+   }
+ }
+
+function disableRadio(radioId) {
+    el = window.document.getElementById(radioId);
+    el.checked = false;
+}
+
+
 
 

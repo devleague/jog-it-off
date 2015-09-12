@@ -3,3 +3,11 @@
   max-width: 50%;
   height: 500px;
 }
+
+.location {
+  position:relative;
+  top:10px;
+  left:40px;
+  /*display: block;*/
+}
+

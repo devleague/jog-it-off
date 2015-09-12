@@ -22,7 +22,8 @@ if (Meteor.isClient) {
             //to update the document within the 'dragend' event below
             id: document._id
           });
-          console.log(markers);
+          // console.log(markers);
+          console.log(navigator.geolocation.getCurrentPosition(success, error, options));
 
           //this listener below lets us drag markers on the map and update their corresponding document
           google.maps.event.addListener(marker, 'dragend', function(event) {

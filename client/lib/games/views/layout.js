@@ -36,5 +36,5 @@ Template.main.events({
       var name = tmpl.find('#name').value;
 
       Meteor.go('/join');
-   }
+}
 });
