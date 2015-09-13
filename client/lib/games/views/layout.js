@@ -87,7 +87,7 @@ Template.create.events({
       timestamp: new Date(),
       plotTimer: null,
       gameTimer: null,
-      player: [client],
+      players: [client],
       markers:[]
     });
 
