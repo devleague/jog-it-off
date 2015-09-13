@@ -21,25 +21,79 @@ Template.lobby.helpers({
   isHost: true
 });
 
+Template.login.helpers({
+  loggedIn: function() {
+    return Meteor.userId();
+  }
+});
+
 // ------EVENTS-------------
 Template.layout.events({
 });
 
 Template.main.events({
-   'submit #createGame': function (evt, tmpl) {
+  'submit #createGame': function (evt, tmpl) {
       evt.preventDefault();
       var name = tmpl.find('#name').value;
 
       Meteor.go('/create');
-   },
+  },
 
-   'submit #joinGame': function (evt, tmpl) {
+  'submit #joinGame': function (evt, tmpl) {
       evt.preventDefault();
 
 
       Meteor.go('/join');
-   }
+  },
+
 });
+
+Template.login.events({
+  'submit form': function(e, tmpl) {
+      var input;
+      e.preventDefault();
+      input = tmpl.find("input[name=username]");
+      input.blur();
+      return Meteor.insecureUserLogin(input.value);
+    }
+});
+
+Deps.autorun(function(c) {
+  try {
+    UserStatus.startMonitor({
+      threshold: 30000,
+      idleOnBlur: true
+    });
+    return c.stop();
+  } catch (exception) {
+    console.log("user error");
+  }
+});
+
+// Template.login.events ({
+//   "submit form": function(e, tmpl) {
+//     var input;
+//     e.preventDefault();
+//     input = tmpl.find("input[name=username]");
+//     input.blur();
+//     return Meteor.insecureUserLogin(input.value, function(err, res) {
+//       if (err) {
+//         return console.log(err);
+//       }
+//     });
+//   }
+
+//   // Deps.autorun(function(c) {
+//   //   try {
+//   //     UserStatus.startMonitor({
+//   //       threshold: 30000,
+//   //       idleOnBlur: true
+//   //     });
+//   //     return c.stop();
+//   //   } catch (undefined) {}
+//   // }
+
+// });
 
 Template.create.events({
   'submit #createForm': function(evt, tmpl) {
@@ -64,3 +118,4 @@ Template.create.events({
     });
   }
 });
+

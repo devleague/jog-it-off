@@ -11,6 +11,24 @@ Meteor.startup(function(){
       plotTimer: null,
       gameTimer: null,
       participants: ['ray', 'jenn', 'cannon', 'matt'],
+      // player: [
+      //   {
+      //     id: 1,
+      //     username: "matt"
+      //   },
+      //   {
+      //     id: 2,
+      //     username: "jenn"
+      //   },
+      //   {
+      //     id: 3,
+      //     username: "cannon"
+      //   },
+      //   {
+      //     id: 4,
+      //     username: "ray"
+      //   }
+      // ],
       markers:[
         {
           id: point1,
