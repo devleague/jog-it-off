@@ -66,35 +66,13 @@ Deps.autorun(function(c) {
   }
 });
 
-// Template.login.events ({
-//   "submit form": function(e, tmpl) {
-//     var input;
-//     e.preventDefault();
-//     input = tmpl.find("input[name=username]");
-//     input.blur();
-//     return Meteor.insecureUserLogin(input.value, function(err, res) {
-//       if (err) {
-//         return console.log(err);
-//       }
-//     });
-//   }
 
-//   // Deps.autorun(function(c) {
-//   //   try {
-//   //     UserStatus.startMonitor({
-//   //       threshold: 30000,
-//   //       idleOnBlur: true
-//   //     });
-//   //     return c.stop();
-//   //   } catch (undefined) {}
-//   // }
-
-// });
 
 Template.create.events({
   'submit #createForm': function(evt, tmpl) {
     evt.preventDefault();
-    var host = "userID";
+    var client = Meteor.user();
+    var host = client.username;
     var room = event.target.roomName.value;
     var pointNum = event.target.pointNum.value;
     var plotTime = event.target.plotTime.value;
@@ -109,9 +87,11 @@ Template.create.events({
       timestamp: new Date(),
       plotTimer: null,
       gameTimer: null,
-      participants: [],
+      player: [client],
       markers:[]
     });
+
+    Router.go('/lobby/'+ room, {room: room});
   }
 });
 
