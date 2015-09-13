@@ -4,20 +4,20 @@
     <h1>TITLE</h1>
   </div>
 
-  {{> login}}
 
-  <form role="form" id="mainForm">
-    <input type="text" id="name" placeholder="Player Name">
-    <button id="createGame" formaction="/create">CREATE A GAME</button>
-    <button id="joinGame" formaction="/join">JOIN A GAME</button>
-  </form>
+  <div id="mainDiv">
+    {{> login}}
+
+  </div>
 
 </template>
 
 <template name="login">
     {{#if loggedIn}}
-    <h3>You are logged in as:</h3>
+
     {{> loginButtons}}
+    <button id="createGame">CREATE A GAME</button>
+    <button id="joinGame">JOIN A GAME</button>
     <!-- {{currentUser.profile.login}} -->
     {{else}}
     <form class="form-inline">

@@ -30,16 +30,16 @@ h1 {
 }
 
 /*--------MAIN----------*/
-#mainForm {
+#mainDiv {
   text-align: center;
   background-color: yellow;
 }
 
-#mainForm input {
+#mainDiv input {
   font-size: 20px;
   text-align: center;
 }
-#mainForm button {
+#mainDiv button {
   font-size: 20px;
   border-radius: 5px;
   border: none;

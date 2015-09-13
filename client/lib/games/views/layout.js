@@ -32,19 +32,6 @@ Template.layout.events({
 });
 
 Template.main.events({
-  'submit #createGame': function (evt, tmpl) {
-      evt.preventDefault();
-      var name = tmpl.find('#name').value;
-
-      Meteor.go('/create');
-  },
-
-  'submit #joinGame': function (evt, tmpl) {
-      evt.preventDefault();
-
-
-      Meteor.go('/join');
-  },
 
 });
 
@@ -55,7 +42,16 @@ Template.login.events({
       input = tmpl.find("input[name=username]");
       input.blur();
       return Meteor.insecureUserLogin(input.value);
-    }
+    },
+  'click #createGame': function (evt, tmpl) {
+      evt.preventDefault();
+      Router.go('/create');
+  },
+
+  'click #joinGame': function (evt, tmpl) {
+      evt.preventDefault();
+      Router.go('/join');
+  }
 });
 
 Deps.autorun(function(c) {
