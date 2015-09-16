@@ -26,7 +26,7 @@ Template.layout.events({
 Template.main.events({
    'submit #createGame': function (evt, tmpl) {
       evt.preventDefault();
-      var name = tmpl.find('#name').value;
+      // var name = tmpl.find('#name').value;
 
       Meteor.go('/create');
    },

@@ -34,8 +34,8 @@ Router.route('/points_set', function () {
   this.render('points_set');
 });
 
-Router.route('/game_start', function () {
-  this.render('game_start');
+Router.route('/game_starts', function () {
+  this.render('game_starts');
 });
 
 Router.route('/coin_collecting', function () {

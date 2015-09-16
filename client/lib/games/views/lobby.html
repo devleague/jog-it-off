@@ -22,7 +22,9 @@
 </template>
 
 <template name="startGame">
-  <button id="startButton">START</button>
+  <form action="submit" role="form">
+    <button id="startButton" formaction="/game_starts">START</button>
+  </form>
 </template>
 
 <template name="waitMsg">

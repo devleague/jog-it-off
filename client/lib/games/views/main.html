@@ -4,10 +4,10 @@
     <h1>TITLE</h1>
   </div>
 
-  <form role="form" id="mainForm">
-    <input type="text" id="name" placeholder="Player Name">
+    <form role="form" class="form-inline">
+        <input class="form-control" type="text" name="username" required="" pattern="^[a-zA-Z][a-zA-Z0-9_]{4,12}$" placeholder="Player Name" title="6-13 numbers or characters.">
+
     <button id="createGame" formaction="/create">CREATE A GAME</button>
     <button id="joinGame" formaction="/join">JOIN A GAME</button>
   </form>
-
 </template>
