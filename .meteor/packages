@@ -9,3 +9,4 @@ iron:router
 mizzao:user-status
 jquery
 modweb:flipclock
+angularui:angular-ui-router
