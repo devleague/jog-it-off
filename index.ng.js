@@ -2,18 +2,45 @@ Locations = new Mongo.Collection("locations");
 
 if (Meteor.isClient) {
   //declare module
-  angular.module('jog-it-off',['angular-meteor']);
+  angular.module('jog-it-off',['angular-meteor'])
+    // .controller('LocationsListCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
+    //   $scope.locations = $meteor.collection(Locations);
 
-  angular.module('jog-it-off').controller('LocationsListCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
-    $scope.locations = $meteor.collection(Locations);
+    //   $scope.remove = function (location){
+    //     $scope.locations.remove(location);
+    //   };
 
-    $scope.remove = function (location){
-      $scope.locations.remove(location);
-    };
+    //   $scope.removeAll = function (locations) {
+    //     $scope.remove(locations);
+    //   };
+    .controller('timerController', ['$scope', '$meteor', function ($scope, $meteor) {
 
-    $scope.removeAll = function (locations) {
-      $scope.remove(locations);
-    };
+
+      $scope.timer =
+        // window.onload = function () {
+            console.log('get onload');
+            var fiveMinutes = 60 * 5,
+                display = document.querySelector('#time');
+            startTimer(fiveMinutes, display);
+        // },
+        function startTimer(duration, display) {
+          console.log('in startTimer');
+          var timer = duration, minutes, seconds;
+          setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            textContent = minutes + ":" + seconds;
+            console.log(textContent);
+
+            if (--timer < 0) {
+              timer = duration;
+            }
+          }, 1000);
+        };
+
   }]);
 }
 
