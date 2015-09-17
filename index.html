@@ -1,0 +1,30 @@
+<head>
+  <title>My Angular App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/client/styles.css">
+</head>
+
+<body ng-app="jog-it-off">
+  <div class="logo"></div>
+  <a href="/locations">Home</a>
+
+  <div ng-controller='timerController' ng-init='timer()'>{{textContent}}</div>
+
+  <!-- <div ng-controller="LocationsListCtrl">
+    <form>
+      <label>Name</label>
+      <input ng-model="newLocation.name">
+      <label>Description</label>
+      <input ng-model="newLocation.description">
+      <button ng-click="locations.save(newLocation); newLocation='';">Add</button>
+      <button ng-click="removeAll()">Remove All</button>
+    </form>
+    <ul class="dynamic">
+      <li ng-repeat="location in locations">
+        {{location.name}}
+        <p>{{location.description}}</p>
+        <button ng-click="remove(location)">X</button>
+      </li>
+    </ul>
+  </div> -->
+</body>
