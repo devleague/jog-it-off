@@ -1,7 +1,5 @@
 
 
-Markers = new Mongo.Collection('markers');
-
 
 if (Meteor.isClient) {
   Template.map.onCreated(function() {
@@ -10,18 +8,6 @@ if (Meteor.isClient) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'homebase' }); // we will use a function to hardcode input
       });
 
-      Template.currentLocation.events({
-      'click #currentLocation': function (evt, tmpl){
-        evt.preventDefault();
-        console.log("fire away!");
-      navigator.geolocation.getCurrentPosition(function(position) {
-      initialLocation = new  google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      map.setCenter(initialLocation);
-
-      console.log(initialLocation);
-      });
-    }
-  });
 
       var markers = {};
 
@@ -36,9 +22,6 @@ if (Meteor.isClient) {
             //to update the document within the 'dragend' event below
             id: document._id
           });
-          console.log(markers);
-
-
 
           //this listener below lets us drag markers on the map and update their corresponding document
           google.maps.event.addListener(marker, 'dragend', function(event) {
@@ -73,7 +56,7 @@ if (Meteor.isClient) {
       if (GoogleMaps.loaded()) {
         return {
           center: new google.maps.LatLng(latLng.lat, latLng.lng),
-          zoom: 8,
+          zoom: 18,
           mapTypeId: google.maps.MapTypeId.TERRAIN
           //to switch terrain view https://developers.google.com/maps/documentation/javascript/maptypes?hl=en
         };
@@ -84,20 +67,6 @@ if (Meteor.isClient) {
 
 }
 
-function toggle(radioBtn)
- {
-   if(radioBtn.checked)
-   {
-     setTimeout("disableRadio('"+radioBtn.id+"')",10);
-   } else {
-     radioBtn.checked = true;
-   }
- }
-
-function disableRadio(radioId) {
-    el = window.document.getElementById(radioId);
-    el.checked = false;
-}
 
 
 
