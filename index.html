@@ -1,6 +1,5 @@
 <head>
   <title>My Angular App</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/client/styles.css">
 </head>
 
@@ -8,39 +7,5 @@
   <div class="logo"></div>
   <a href="/locations">Home</a>
 
-<<<<<<< HEAD
-  <div ng-controller='timerController' ng-init='timer()'>{{textContent}}</div>
-
-  <!-- <div ng-controller="LocationsListCtrl">
-    <form>
-      <label>Name</label>
-      <input ng-model="newLocation.name">
-      <label>Description</label>
-      <input ng-model="newLocation.description">
-      <button ng-click="locations.save(newLocation); newLocation='';">Add</button>
-      <button ng-click="removeAll()">Remove All</button>
-    </form>
-    <ul class="dynamic">
-      <li ng-repeat="location in locations">
-        {{location.name}}
-        <p>{{location.description}}</p>
-        <button ng-click="remove(location)">X</button>
-      </li>
-    </ul>
-  </div> -->
-=======
-
-<head>
-  <base href="/">
-</head>
-
-<body ng-app='jog-it-off'>
-  <div ng-controller="LocationsListCtrl">
-    <h1>
-      <a href="/locations">Home</a>
-    </h1>
-    <div ui-view></div>
-  </div>
-  <div ng-include="'locations-list.ng.html'"></div>
->>>>>>> aff479123a8acdabf70df82d3f5887479c01131c
+  <div ng-include="'index.ng.html'"></div>
 </body>

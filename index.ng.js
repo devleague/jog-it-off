@@ -2,44 +2,35 @@ Locations = new Mongo.Collection("locations");
 
 if (Meteor.isClient) {
   //declare module
-  angular.module('jog-it-off',['angular-meteor', 'ui.router'])
+  angular.module('jog-it-off',['angular-meteor', 'ui.router']);
 
-    //   $scope.remove = function (location){
-    //     $scope.locations.remove(location);
-    //   };
+  angular.module('jog-it-off')
+  .controller('timerController', TimerController);
 
-    //   $scope.removeAll = function (locations) {
-    //     $scope.remove(locations);
-    //   };
-    .controller('timerController', ['$scope', '$meteor', function ($scope, $meteor) {
+  function TimerController($scope, $meteor, $interval) {
+    $scope.timer = "5:00";
 
+    var fiveMinutes = 60 * 5;
+    startTimer(fiveMinutes);
 
-      $scope.timer =
-        // window.onload = function () {
-            console.log('get onload');
-            var fiveMinutes = 60 * 5,
-                display = document.querySelector('#time');
-            startTimer(fiveMinutes, display);
-        // },
-        function startTimer(duration, display) {
-          console.log('in startTimer');
-          var timer = duration, minutes, seconds;
-          setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
+    function startTimer(duration) {
+      var timer = duration;
+      $interval(function () {
+        var minutes = parseInt(timer / 60, 10);
+        var seconds = parseInt(timer % 60, 10);
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            textContent = minutes + ":" + seconds;
-            console.log(textContent);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        textContent = minutes + ":" + seconds;
 
-            if (--timer < 0) {
-              timer = duration;
-            }
-          }, 1000);
-        };
+        $scope.timer = textContent;
 
-  }]);
+        if (--timer < 0) {
+          timer = duration;
+        }
+      }, 1000);
+    }
+  }
 }
 
 if (Meteor.isServer) {

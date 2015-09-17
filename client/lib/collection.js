@@ -1,1 +1,1 @@
-GameCollection = new Meteor.Collection('games');
+// GameCollection = new Meteor.Collection('games');
