@@ -8,6 +8,7 @@
   <div class="logo"></div>
   <a href="/locations">Home</a>
 
+<<<<<<< HEAD
   <div ng-controller='timerController' ng-init='timer()'>{{textContent}}</div>
 
   <!-- <div ng-controller="LocationsListCtrl">
@@ -27,4 +28,19 @@
       </li>
     </ul>
   </div> -->
+=======
+
+<head>
+  <base href="/">
+</head>
+
+<body ng-app='jog-it-off'>
+  <div ng-controller="LocationsListCtrl">
+    <h1>
+      <a href="/locations">Home</a>
+    </h1>
+    <div ui-view></div>
+  </div>
+  <div ng-include="'locations-list.ng.html'"></div>
+>>>>>>> aff479123a8acdabf70df82d3f5887479c01131c
 </body>
