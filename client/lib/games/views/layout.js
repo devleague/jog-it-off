@@ -77,6 +77,8 @@ Template.create.events({
     var pointNum = event.target.pointNum.value;
     var plotTime = event.target.plotTime.value;
     var gameTime = event.target.gameTime.value;
+    var plotTimer = plotTime * 60;
+    var gameTimer = gameTime * 60;
 
     GameCollection.insert({
       host: host,
@@ -85,8 +87,8 @@ Template.create.events({
       plotTime: plotTime,
       gameTime: gameTime,
       timestamp: new Date(),
-      plotTimer: null,
-      gameTimer: null,
+      plotTimer: plotTimer,
+      gameTimer: gameTimer,
       players: [client],
       markers:[]
     });
