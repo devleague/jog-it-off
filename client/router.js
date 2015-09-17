@@ -14,6 +14,7 @@ Router.route('/join', function () {
   this.render('join');
 });
 
+
 Router.route('/lobby', function () {
   this.render('lobby');
 });
@@ -48,4 +49,13 @@ Router.route('/times_up', function () {
 
 Router.route('/scores', function () {
   this.render('scores');
+});
+
+Router.route('/lobby/:room', function () {
+  console.log(this.params.room);
+  this.render('lobby', {data:{room: this.params.room}});
+});
+
+Router.route('/maptest', function () {
+  this.render('maptest');
 });

@@ -4,10 +4,30 @@
     <h1>TITLE</h1>
   </div>
 
-    <form role="form" class="form-inline">
-        <input class="form-control" type="text" name="username" required="" pattern="^[a-zA-Z][a-zA-Z0-9_]{4,12}$" placeholder="Player Name" title="6-13 numbers or characters.">
 
-    <button id="createGame" formaction="/create">CREATE A GAME</button>
-    <button id="joinGame" formaction="/join">JOIN A GAME</button>
-  </form>
+  <div id="mainDiv">
+    {{> login}}
+
+  </div>
+
+</template>
+
+<template name="login">
+    {{#if loggedIn}}
+
+    {{> loginButtons}}
+    <button id="createGame">CREATE A GAME</button>
+    <button id="joinGame">JOIN A GAME</button>
+    <!-- {{currentUser.profile.login}} -->
+    {{else}}
+    <form class="form-inline">
+        <p>Enter username to log in:</p>
+        {{! We use the pattern below because it matches \w in in autocomplete for user names}}
+        <input class="form-control" type="text" name="username" required
+               pattern="^[a-zA-Z][a-zA-Z0-9_]{2,14}$"
+               placeholder="Username..."
+               title="3-15 numbers or characters.">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    {{/if}}
 </template>

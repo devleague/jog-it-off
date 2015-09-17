@@ -30,7 +30,10 @@ h1 {
 }
 
 /*--------MAIN----------*/
-.form-inline {
+
+
+
+#mainDiv {
   text-align: center;
   background-color: yellow;
 }
@@ -39,7 +42,12 @@ h1 {
   font-size: 20px;
   text-align: center;
 }
-.form-inline button {
+
+#mainDiv input {
+  font-size: 20px;
+  text-align: center;
+}
+#mainDiv button {
   font-size: 20px;
   border-radius: 5px;
   border: none;
