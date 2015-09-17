@@ -12,7 +12,6 @@ iron:router
 mizzao:user-status
 jquery
 modweb:flipclock
-mizzao:user-status
 insecure
 mizzao:accounts-testing
 mizzao:timesync
