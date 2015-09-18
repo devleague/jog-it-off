@@ -18,6 +18,10 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/join',
         templateUrl: 'client/games/views/join.html',
         controller: 'myController'
+      })
+      .state('times-up', {
+        url: '/times-up',
+        templateUrl: 'client/games/views/times-up.ng.html'
       });
       // .state('lobby', {
       //   url: '/lobby/:room',
@@ -28,7 +32,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       //   controller: 'myController'
       // });
 
-
+    $urlRouterProvider.otherwise("/");
   }]);
 
 
