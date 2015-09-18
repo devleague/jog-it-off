@@ -1,3 +1,7 @@
+if (Meteor.isClient) {
+
+// debugger;
+
 // Template.layout.created = function (){
 //   console.log('created');
 // };
@@ -42,17 +46,18 @@ Template.login.events({
 
       input = tmpl.find("input[name=username]");
       input.blur();
+      console.log('username form');
       return Meteor.insecureUserLogin(input.value);
     },
-  'click #createGame': function (evt, tmpl) {
-      evt.preventDefault();
-      Router.go('/create');
-  },
+  // 'click #createGame': function (evt, tmpl) {
+  //     evt.preventDefault();
+  //     Router.go('/create');
+  // },
 
-  'click #joinGame': function (evt, tmpl) {
-      evt.preventDefault();
-      Router.go('/join');
-  }
+  // 'click #joinGame': function (evt, tmpl) {
+  //     evt.preventDefault();
+  //     Router.go('/join');
+  // }
 });
 
 Deps.autorun(function(c) {
@@ -96,3 +101,5 @@ Deps.autorun(function(c) {
 //   }
 // });
 
+
+}

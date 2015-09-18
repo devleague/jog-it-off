@@ -14,8 +14,10 @@
     {{#if loggedIn}}
 
     {{> loginButtons}}
-    <button id="createGame">CREATE A GAME</button>
-    <button id="joinGame">JOIN A GAME</button>
+    <button id="createGame" ui-sref="create">CREATE A GAME</button>
+    <button id="joinGame" ui-sref="join">JOIN A GAME</button>
+   <!--  <a href="/create">CREATE A GAME</a>
+    <a href="/join">JOIN A GAME</a> -->
 
     {{else}}
     <form class="form-inline">

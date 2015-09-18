@@ -11,12 +11,12 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       })
       .state('create', {
         url: '/create',
-        templateUrl: 'client/games/views/create.html',
+        templateUrl: 'client/games/views/create.ng.html',
         controller: 'myController'
       })
       .state('join', {
         url: '/join',
-        templateUrl: 'client/games/views/join.html',
+        templateUrl: 'client/games/views/join.ng.html',
         controller: 'myController'
       });
       // .state('lobby', {

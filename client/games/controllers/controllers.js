@@ -4,4 +4,12 @@
       $scope.loginSubmit = function() {
         console.log("HELLO DO U SEE ME?");
       };
+
+      // Template.login.helpers({
+      //   loggedIn: function() {
+      //     return Meteor.userId();
+      //   }
+      // });
   }]);
+
+
