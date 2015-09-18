@@ -6,13 +6,12 @@
 
 meteor-platform
 
-#comment iron:router, routing only for meteor
-iron:router
 
 mizzao:user-status
 insecure
 mizzao:accounts-testing
 mizzao:timesync
-twbs:bootstrap
 angular
 angularui:angular-ui-router
+urigo:angular-blaze-template
+angular:angular-material
