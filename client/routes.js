@@ -22,6 +22,10 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('times-up', {
         url: '/times-up',
         templateUrl: 'client/games/views/times-up.ng.html'
+      })
+      .state('get-ready', {
+        url: '/get-ready',
+        templateUrl: 'client/games/views/get-ready.ng.html'
       });
       // .state('lobby', {
       //   url: '/lobby/:room',
