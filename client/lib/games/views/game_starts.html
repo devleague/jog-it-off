@@ -2,18 +2,7 @@
 
   <h1>Game starts in</h1>
 
-  <span id="days">00</span>
-  <span id="hours">00</span>
-  <span id="minutes">00</span>
   <span id="seconds">00</span>
 
-  <script type="text/javascript" src="/views/game_starts.js"></script>
-  <script type="text/javascript">
-    countdown('10/11/2013 06:30:00 PM', ['days', 'hours', 'minutes', 'seconds'], function(){
-      console.log('Finished');
-    });
-  </script>
-
+  {{ currentTimer }}
 </template>
-
-
