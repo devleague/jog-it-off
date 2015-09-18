@@ -30,6 +30,10 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('time-remaining', {
         url: '/time-remaining',
         templateUrl: 'client/games/views/time-remaining.ng.html'
+      })
+      .state('map-points-no-players', {
+        url: '/map-points-no-players',
+        templateUrl: 'client/games/views/map-points-no-players.ng.html'
       });
       // .state('lobby', {
       //   url: '/lobby/:room',
