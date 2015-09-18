@@ -18,15 +18,16 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/join',
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'myController'
+      })
+      .state('lobby', {
+        url: '/lobby/:param',
+        templateUrl: function($stateParams) {
+          console.log($stateParams);
+          return ;
+        },
+        controller: 'myController',
+        // params: ['param']
       });
-      // .state('lobby', {
-      //   url: '/lobby/:room',
-      //   templateUrl: function($routeParams) {
-      //     console.log($routeParams);
-      //     return ;
-      //   },
-      //   controller: 'myController'
-      // });
 
 
   }]);
