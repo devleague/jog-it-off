@@ -31,10 +31,19 @@
         // $state.go('main');
       };
 
-      this.isHost = function (host, $meteor) {
+      this.isHost = function (host) {
         clientID = Meteor.user()._id;
         // return host === clientID;
         return true;
+      };
+
+      this.getGames = function getGames () {
+        return [{
+           title: 'Ketchup and rubber buns',
+           creator: 'Bill Murray',
+           time: '5:00',
+           points: 3
+         }];
       };
 
     }]);

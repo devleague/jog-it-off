@@ -25,11 +25,11 @@ if (Meteor.isClient) {
 //   isHost: true
 // });
 
-// Template.login.helpers({
-//   loggedIn: function() {
-//     return Meteor.userId();
-//   }
-// });
+Template.login.helpers({
+  loggedIn: function() {
+    return Meteor.userId();
+  }
+});
 
 // // ------EVENTS-------------
 // Template.layout.events({

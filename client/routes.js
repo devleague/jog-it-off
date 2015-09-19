@@ -29,11 +29,6 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('lobby', {
         url: '/lobby/:room',
         templateUrl: 'client/games/views/lobby.ng.html',
-        controller: 'myController'
-      })
-      .state('lobby', {
-        url: '/lobby/:room',
-        templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'myController',
         // params: ['param']
       });
