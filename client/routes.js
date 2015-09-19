@@ -1,3 +1,10 @@
+angular.module("jog-it-off").run(["$rootScope", "$state", "$location", function($rootScope, $state, $location) {
+  $rootScope.$on("$stateChangeSuccess", function(event, next) {
+    // $state.go('main');
+  });
+}]);
+
+
 angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
@@ -11,12 +18,12 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       })
       .state('create', {
         url: '/create',
-        templateUrl: 'client/games/views/create.html',
+        templateUrl: 'client/games/views/create.ng.html',
         controller: 'myController'
       })
       .state('join', {
         url: '/join',
-        templateUrl: 'client/games/views/join.html',
+        templateUrl: 'client/games/views/join.ng.html',
         controller: 'myController'
       })
       .state('times-up', {
@@ -34,15 +41,13 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('map-points-no-players', {
         url: '/map-points-no-players',
         templateUrl: 'client/games/views/map-points-no-players.ng.html'
+      })
+      .state('lobby', {
+        url: '/lobby/:room',
+        templateUrl: 'client/games/views/lobby.ng.html',
+        controller: 'myController',
+        // params: ['param']
       });
-      // .state('lobby', {
-      //   url: '/lobby/:room',
-      //   templateUrl: function($routeParams) {
-      //     console.log($routeParams);
-      //     return ;
-      //   },
-      //   controller: 'myController'
-      // });
 
     $urlRouterProvider.otherwise("/");
   }]);

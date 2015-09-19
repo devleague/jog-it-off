@@ -1,7 +1,9 @@
   angular
     .module('jog-it-off')
-    .controller('myController', ['$scope', '$meteor', function ($scope, $meteor) {
-      $scope.loginSubmit = function() {
-        console.log("HELLO DO U SEE ME?");
-      };
+    .controller('myController', ['$scope', '$state', '$meteor', '$rootScope', 'JogService', function ($scope, $state, $meteor, rootScope, JogService) {
+
+      $scope.addGameObject = JogService.addGameObject;
+      $scope.isHost = JogService.isHost();
   }]);
+
+

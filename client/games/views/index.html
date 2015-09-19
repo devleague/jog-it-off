@@ -8,3 +8,26 @@
 <body>
  <div ui-view></div>
 </body>
+
+
+<template name="login">
+    {{#if loggedIn}}
+
+    {{> loginButtons}}
+    <button id="createGame" ui-sref="create">CREATE A GAME</button>
+    <button id="joinGame" ui-sref="join">JOIN A GAME</button>
+   <!--  <a href="/create">CREATE A GAME</a>
+    <a href="/join">JOIN A GAME</a> -->
+
+    {{else}}
+    <form class="form-inline">
+        <p>Enter username to log in:</p>
+        {{! We use the pattern below because it matches \w in in autocomplete for user names}}
+        <input class="form-control" type="text" name="username" required
+               pattern="^[a-zA-Z][a-zA-Z0-9_]{2,14}$"
+               placeholder="Username..."
+               title="3-15 numbers or characters.">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    {{/if}}
+</template>
