@@ -31,8 +31,8 @@
         // $state.go('main');
       };
 
-      this.isHost = function (host, $meteor) {
-        clientID = Meteor.user()._id;
+      this.isHost = function (host) {
+        // clientID = Meteor.user()._id;
         // return host === clientID;
         return true;
       };
