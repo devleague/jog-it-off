@@ -38,12 +38,15 @@
       };
 
       this.getGames = function getGames () {
-        return [{
-           title: 'Ketchup and rubber buns',
-           creator: 'Bill Murray',
-           time: '5:00',
-           points: 3
-         }];
+
+        // var bunnies = GameCollection.find();
+        // console.log(bunnies);
+        // return [{
+        //    title: 'Ketchup and rubber buns',
+        //    creator: 'Bill Murray',
+        //    time: '5:00',
+        //    points: 3
+        //  }];
       };
 
     }]);
