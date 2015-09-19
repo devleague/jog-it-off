@@ -1,20 +1,13 @@
-<template name="join">
+<!-- <template name="join"> -->
 
-<div class="headerDiv">
-  <h1 class="headerText">JOIN A GAME</h1>
+<h1 class="headerText">JOIN A GAME</h1>
+
+<div ng-repeat="game in games" class="headerDiv">
+  <h4>{{ game.title }}</h4>
+  <p>{{ game.creator }}</p>
+  <p>{{ game.time }}</p>
+  <p>{{ game.points }}</p>
 </div>
 
-<div class="joinContent">
 
-  <!-- list of all game rooms -->
-  <div class="gameDiv">
-    <h3 class="roomTitle"> DevLeague Jog-off </h3>
-    <h4> Host: Peter Pan </h4>
-    <h4> Points per Player: 3 </h4>
-    <h4> Plot Time: 5 minutes </h4>
-    <h4> Game Time: 20 minutes </h4>
-    <p class="timestamp"> Created At: Tue Sep 08 2015 20:59:15 GMT-1000 (HST)</p>
-  </div>
-</div>
-
-</template>
+<!-- </template> -->
