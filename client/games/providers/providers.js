@@ -1,16 +1,17 @@
 (function() {
   angular
     .module('jog-it-off')
-    .service('JogService', function ($state) {
+    .service('JogService', ['$state', '$meteor', function ($state, $meteor) {
+      // debugger;
 
-      this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $meteor, $state) {
+      this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
         console.log('adding game obj');
         var client = Meteor.user();
         var host = client.username;
         var plotTimer = plotTime * 60;
         var gameTimer = gameTime * 60;
 
-        GameCollection.insert({
+        var gameObject = {
           host: host,
           room: roomName,
           pointNum: pointNum,
@@ -21,11 +22,20 @@
           gameTimer: gameTimer,
           players: [client],
           markers:[]
-        });
+        };
 
-        // $state.go('lobby', {'param': roomName });
-        $state.go('main');
+        GameCollection.insert(gameObject);
+        console.log($state);
+
+        $state.go('lobby', {'gameObject': gameObject});
+        // $state.go('main');
       };
 
-    });
+      this.isHost = function (host, $meteor) {
+        clientID = Meteor.user()._id;
+        // return host === clientID;
+        return true;
+      };
+
+    }]);
 })();
