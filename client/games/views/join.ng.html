@@ -1,13 +1,12 @@
-<!-- <template name="join"> -->
-
-<h1 class="headerText">JOIN A GAME</h1>
-
-<div ng-repeat="game in games" class="headerDiv">
-  <h4>{{ game.title }}</h4>
-  <p>{{ game.creator }}</p>
-  <p>{{ game.time }}</p>
-  <p>{{ game.points }}</p>
+<div class="headerDiv">
+  <h1 class="headerText">JOIN A GAME</h1>
 </div>
 
-
-<!-- </template> -->
+<div class="joinContent">
+  <div ng-repeat="game in games" class="headerDiv">
+    <h4>{{ game.title }}</h4>
+    <p>{{ game.creator }}</p>
+    <p>{{ game.time }}</p>
+    <p>{{ game.points }}</p>
+  </div>
+</div>

@@ -1,8 +1,10 @@
   angular
     .module('jog-it-off')
-    .controller('myController', ['$scope', 'JogService', function ($scope, JogService) {
+    .controller('myController', ['$scope', '$state', '$meteor', '$rootScope', 'JogService', function ($scope, $state, $meteor, rootScope, JogService) {
 
-
-        $scope.games = JogService.getGames();
-
+      $scope.addGameObject = JogService.addGameObject;
+      $scope.isHost = JogService.isHost();
+      $scope.games = JogService.getGames();
   }]);
+
+

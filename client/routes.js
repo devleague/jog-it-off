@@ -1,3 +1,10 @@
+angular.module("jog-it-off").run(["$rootScope", "$state", "$location", function($rootScope, $state, $location) {
+  $rootScope.$on("$stateChangeSuccess", function(event, next) {
+    // $state.go('main');
+  });
+}]);
+
+
 angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
@@ -11,7 +18,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       })
       .state('create', {
         url: '/create',
-        templateUrl: 'client/games/views/create.html',
+        templateUrl: 'client/games/views/create.ng.html',
         controller: 'myController'
       })
       .state('join', {
@@ -23,6 +30,12 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/lobby/:room',
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'myController'
+      })
+      .state('lobby', {
+        url: '/lobby/:room',
+        templateUrl: 'client/games/views/lobby.ng.html',
+        controller: 'myController',
+        // params: ['param']
       });
 
 
