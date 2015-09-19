@@ -31,28 +31,28 @@ Meteor.startup(function(){
       // ],
       markers:[
         {
-          id: point1,
+          id: "point1",
           lat: 2342,
           lng: 235,
           type: 'homebase',
           player: 'matt'
         },
         {
-          id: point2,
+          id: "point2",
           lat: 242,
           lng: 245,
           type: 'player',
           player: 'ray'
         },
         {
-          id: point3,
+          id: "point3",
           lat: 234,
           lng: 215,
           type: 'geofence',
           player: 'ray'
         },
         {
-          id: point4,
+          id: "point4",
           lat: 282,
           lng: 135,
           type: 'geofence',
