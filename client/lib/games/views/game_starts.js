@@ -1,8 +1,4 @@
-Template.game_starts.rendered = function(){
-  countdown('10/11/2013 06:30:00 PM', ['days', 'hours', 'minutes', 'seconds'], function(){
-      console.log('Finished');
-    });
-};
+var currentCount = 5;
 
   var intervalTimer = setInterval(function(){
     if(currentCount === 0){
