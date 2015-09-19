@@ -4,4 +4,6 @@
 
       $scope.addGameObject = JogService.addGameObject;
       $scope.isHost = JogService.isHost();
+      $scope.games = JogService.getGames();
+      $scope.gameData = $meteor.collection(GameCollection);
   }]);
