@@ -32,7 +32,7 @@
       };
 
       this.isHost = function (host) {
-        clientID = Meteor.user()._id;
+        clientID = Meteor.userId();
         // return host === clientID;
         return true;
       };
