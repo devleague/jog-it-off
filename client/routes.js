@@ -1,3 +1,10 @@
+angular.module("jog-it-off").run(["$rootScope", "$state", "$location", function($rootScope, $state, $location) {
+  $rootScope.$on("$stateChangeSuccess", function(event, next) {
+    // $state.go('main');
+  });
+}]);
+
+
 angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function ($urlRouterProvider, $stateProvider, $locationProvider) {
 

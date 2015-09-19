@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('jog-it-off')
-    .service('JogService', function () {
+    .service('JogService', function ($state) {
 
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $meteor, $state) {
         console.log('adding game obj');
@@ -24,7 +24,7 @@
         });
 
         // $state.go('lobby', {'param': roomName });
-        $stateProvider.state.go('lobby');
+        $state.go('main');
       };
 
     });
