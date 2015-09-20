@@ -30,8 +30,18 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/lobby/:room',
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'myController',
-        // params: ['param']
+      })
+      .state('countdown', {
+        url: '/countdown',
+        templateUrl: 'client/games/views/game_starts.ng.html',
+        controller: 'myController',
+      })
+      .state('set_point', {
+        url: '/set_point',
+        templateUrl: 'client/games/views/set_point.ng.html',
+        controller: 'myController',
       });
+
 
 
   }]);

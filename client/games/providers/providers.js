@@ -44,15 +44,27 @@
       this.countDown = function () {
         var currentCount = 5;
 
-        var intervalTimer = setInterval(function(){
-          if(currentCount === 0){
-            clearInterval(intervalTimer);
-            return Router.go('/set_point');
-          }
+        // var intervalTimer = setInterval(function(){
+        //   if(currentCount === 0){
+        //
+        //     return $state.go('/set_point');
+        //   }
 
-          currentCount = self.currentSeconds.get() - 1;
-          self.currentSeconds.set(currentCount);
+        //   currentCount = self.currentSeconds.get() - 1;
+        //   self.currentSeconds.set(currentCount);
+        // }, 1000);
+
+        setInterval(function intervalTimer() {
+
+          currentCount--;
+          console.log(currentCount);
+          if(currentCount <= 0) {
+            clearInterval(intervalTimer);
+            $state.go('set_point');
+          }
         }, 1000);
+
+
       };
 
     }]);
