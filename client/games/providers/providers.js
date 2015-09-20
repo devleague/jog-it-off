@@ -33,10 +33,23 @@
       this.isHost = function (gameID, $scope) {
         clientID = Meteor.userId();
         var obj = GameCollection.findOne({_id: gameID});
+        var objPlayers = obj.players;
         var host = obj.host;
-        console.log(host);
-        // return host === clientID;
-        return true;
+        var hostID = null;
+
+        //set host ID
+        for(var i=0; i<objPlayers.length; i++) {
+          if(objPlayers[i].username === host) {
+            hostID = objPlayers[i]._id;
+          }
+        }
+
+        //validate client is host
+        if (clientID === hostID) {
+          return true;
+        } else {
+          return false;
+        }
       };
 
       this.roomName = function (gameID, $scope){
