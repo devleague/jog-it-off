@@ -40,7 +40,8 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       })
       .state('map-points-no-players', {
         url: '/map-points-no-players',
-        templateUrl: 'client/games/views/map-points-no-players.ng.html'
+        templateUrl: 'client/games/views/map-points-no-players.ng.html',
+        controller: 'gameController'
       })
       .state('lobby', {
         url: '/lobby/:room',

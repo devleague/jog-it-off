@@ -1,7 +1,11 @@
 angular.module('jog-it-off')
-  .config(
-    function(uiGmapGoogleMapApiProvider) {
-        uiGmapGoogleMapApiProvider.configure({
-        });
-    }
-);
+  .controller('gameController', function ($scope, uiGmapGoogleMapApi) {
+      $scope.map = {
+        center: {
+          latitude: 45,
+          longitude: -73
+        },
+        zoom: 12,
+        events:{}
+      };
+  });

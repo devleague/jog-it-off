@@ -4,6 +4,15 @@ angular.module('jog-it-off', [
   'uiGmapgoogle-maps'
 ]);
 
+angular.module('jog-it-off')
+  .config(
+    function(uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+
+        });
+    }
+);
+
 function onReady() {
   angular.bootstrap(document, ['jog-it-off']);
 }
