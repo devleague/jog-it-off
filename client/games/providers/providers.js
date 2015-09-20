@@ -30,11 +30,13 @@
 
       };
 
-      this.isHost = function (host) {
+      this.isHost = function (gameID, $scope) {
         clientID = Meteor.userId();
-        // console.log(clientID);
+        var obj = GameCollection.findOne({_id: gameID});
+        var host = obj.host;
+        console.log(host);
         // return host === clientID;
-        return false;
+        return true;
       };
 
       this.roomName = function (gameID, $scope){
@@ -44,7 +46,6 @@
 
       this.roomPlayers = function (gameID, $scope){
         var obj = GameCollection.findOne({_id: gameID});
-        console.log(obj.players);
         return obj.players;
       };
 
