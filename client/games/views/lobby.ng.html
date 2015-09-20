@@ -1,0 +1,16 @@
+<div class="headerDiv">
+  <h1 class="headerText">{{roomName}}</h1>
+</div>
+
+<div class="lobbyContent">
+
+  <div class="playersDiv" ng-repeat="player in roomPlayers">
+    <h2> {{player.username}} </h2>
+  </div>
+</div>
+
+
+<div class="footerDiv">
+  <button id="startButton" ng-if="isHost" ui-sref="countdown">START</button>
+  <h2 ng-if="!isHost">Waiting on Host...</h2>
+</div>
