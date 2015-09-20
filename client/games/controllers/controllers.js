@@ -6,6 +6,7 @@
       $scope.isHost = JogService.isHost();
       $scope.games = JogService.getGames();
       $scope.gameData = $meteor.collection(GameCollection);
+      $scope.countDown = JogService.countDown();
   }]);
 
 
