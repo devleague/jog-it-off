@@ -3,11 +3,12 @@
 </div>
 
 <div class="lobbyContent">
-  <h2> Player 1 </h2>
-  <h2> Player 2 </h2>
-  <h2> Player 3 </h2>
 
+  <div class="playersDiv" ng-repeat="player in roomPlayers">
+    <h2> {{player.username}} </h2>
+  </div>
 </div>
+
 
 <div class="footerDiv">
   <button id="startButton" ng-if="isHost">START</button>

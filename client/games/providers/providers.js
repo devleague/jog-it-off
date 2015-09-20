@@ -38,12 +38,17 @@
       };
 
       this.roomName = function (gameID, $scope){
-        console.log(gameID);
         var obj = GameCollection.findOne({_id: gameID});
-        console.log('BOO');
-        console.log(obj);
         return obj.room;
       };
+
+      this.roomPlayers = function (gameID, $scope){
+        var obj = GameCollection.findOne({_id: gameID});
+        console.log(obj.players);
+        return obj.players;
+      };
+
+
 
       this.getGames = function getGames () {
 

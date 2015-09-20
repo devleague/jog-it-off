@@ -9,6 +9,7 @@
       $scope.games = JogService.getGames();
       $scope.gameData = $meteor.collection(GameCollection);
       $scope.roomName = JogService.roomName(gameID);
+      $scope.roomPlayers = JogService.roomPlayers(gameID);
 
       // console.log(gameID);
 
