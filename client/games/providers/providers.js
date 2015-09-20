@@ -42,7 +42,7 @@
         var obj = GameCollection.findOne({_id: gameID});
         console.log('BOO');
         console.log(obj);
-        return obj;
+        return obj.room;
       };
 
       this.getGames = function getGames () {
