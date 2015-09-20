@@ -5,7 +5,6 @@
       // debugger;
 
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
-        console.log('adding game obj');
         var client = Meteor.user();
         var host = client.username;
         var plotTimer = plotTime * 60;
@@ -24,17 +23,38 @@
           markers:[]
         };
 
-        GameCollection.insert(gameObject);
-        console.log($state);
+        GameCollection.insert(gameObject, function(error, gameID) {
+          // console.log(error, gameID);
+          $state.go('lobby', {'gameID': gameID});
+        });
 
-        $state.go('lobby', {'gameObject': gameObject});
-        // $state.go('main');
       };
 
       this.isHost = function (host) {
-        // clientID = Meteor.user()._id;
+        clientID = Meteor.userId();
+        // console.log(clientID);
         // return host === clientID;
-        return true;
+        return false;
+      };
+
+      this.roomName = function (gameID, $scope){
+        console.log(gameID);
+        var obj = GameCollection.findOne({_id: gameID});
+        console.log('BOO');
+        console.log(obj);
+        return obj;
+      };
+
+      this.getGames = function getGames () {
+
+        // var bunnies = GameCollection.find();
+        // console.log(bunnies);
+        // return [{
+        //    title: 'Ketchup and rubber buns',
+        //    creator: 'Bill Murray',
+        //    time: '5:00',
+        //    points: 3
+        //  }];
       };
 
     }]);
