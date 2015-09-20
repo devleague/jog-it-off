@@ -34,6 +34,7 @@
         clientID = Meteor.userId();
         var obj = GameCollection.findOne({_id: gameID});
         var objPlayers = obj.players;
+        console.log("objPlayers:" + objPlayers);
         var host = obj.host;
         var hostID = null;
 
