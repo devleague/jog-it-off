@@ -30,9 +30,17 @@ h1 {
 }
 
 /*--------MAIN----------*/
+
+
+
 #mainDiv {
   text-align: center;
   background-color: yellow;
+}
+
+.form-control input {
+  font-size: 20px;
+  text-align: center;
 }
 
 #mainDiv input {
