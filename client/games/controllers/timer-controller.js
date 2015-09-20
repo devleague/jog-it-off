@@ -2,7 +2,6 @@ angular.module('jog-it-off')
   .controller('timerController', TimerController);
 
   function TimerController($scope, $meteor, $interval) {
-    debugger;
     $scope.timer = "5:00";
 
     var fiveMinutes = 60 * 5;

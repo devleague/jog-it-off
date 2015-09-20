@@ -1,6 +1,7 @@
 angular.module('jog-it-off', [
   'angular-meteor',
-  'ui.router'
+  'ui.router',
+  'uiGmapgoogle-maps'
 ]);
 
 function onReady() {
