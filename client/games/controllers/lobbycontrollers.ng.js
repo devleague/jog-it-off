@@ -1,6 +1,6 @@
   angular
     .module('jog-it-off')
-    .controller('myController', ['$scope', '$state', '$meteor', '$rootScope', 'JogService', '$stateParams',  function ($scope, $state, $meteor, rootScope, JogService, $stateParams) {
+    .controller('lobbyController', function ($scope, $state, $meteor, $rootScope, JogService, $stateParams) {
 
       var gameID = $stateParams.gameID;
 
@@ -13,4 +13,4 @@
       $scope.roomName = JogService.roomName(gameID);
       $scope.roomPlayers = JogService.roomPlayers(gameID);
       $scope.countDown = JogService.countDown(currentCount);
-  }]);
+  });

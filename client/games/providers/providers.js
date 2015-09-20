@@ -40,6 +40,7 @@
       };
 
       this.roomName = function (gameID, $scope){
+
         var obj = GameCollection.findOne({_id: gameID});
         return obj.room;
       };
