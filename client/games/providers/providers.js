@@ -32,8 +32,6 @@
 
       this.isHost = function (host) {
         clientID = Meteor.userId();
-        // console.log(clientID);
-        // return host === clientID;
         return false;
       };
 
@@ -48,18 +46,32 @@
         return obj.players;
       };
 
+      this.getGames = function () {
 
+      };
 
-      this.getGames = function getGames () {
+      this.countDown = function () {
+        var currentCount = 5;
 
-        // var bunnies = GameCollection.find();
-        // console.log(bunnies);
-        // return [{
-        //    title: 'Ketchup and rubber buns',
-        //    creator: 'Bill Murray',
-        //    time: '5:00',
-        //    points: 3
-        //  }];
+        // var intervalTimer = setInterval(function(){
+        //   if(currentCount === 0){
+        //
+        //     return $state.go('/set_point');
+        //   }
+
+        //   currentCount = self.currentSeconds.get() - 1;
+        //   self.currentSeconds.set(currentCount);
+        // }, 1000);
+
+        setInterval(function intervalTimer() {
+
+          currentCount--;
+          console.log(currentCount);
+          if(currentCount <= 0) {
+            clearInterval(intervalTimer);
+            $state.go('set_point');
+          }
+        }, 1000);
       };
 
     }]);
