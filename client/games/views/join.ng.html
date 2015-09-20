@@ -3,11 +3,13 @@
 </div>
 
 <div class="joinContent">
-  <div ng-repeat="game in gameData" class="headerDiv">
-    <h4>{{ game.room }}</h4>
-    <h4>{{ game.host }}</h4>
-    <p>{{ game.pointNum }}</p>
-    <p>{{ game.plotTime }}</p>
-    <p>{{ game.gameTime }}</p>
-  </div>
+   <div ng-repeat="game in gameData" class="headerDiv">
+      <div ui-sref="lobby" ui-sref-opts="{gameID : game._id}">
+        <h4>{{ game.room }}</h4>
+        <h4>{{ game.host }}</h4>
+        <p>{{ game.pointNum }}</p>
+        <p>{{ game.plotTime }}</p>
+        <p>{{ game.gameTime }}</p>
+      </div>
+    </div>
 </div>

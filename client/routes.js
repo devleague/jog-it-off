@@ -14,7 +14,6 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('main', {
         url: '/',
         templateUrl: 'client/games/views/main.ng.html',
-
       })
       .state('create', {
         url: '/create',
@@ -32,18 +31,30 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'lobbyController',
       })
       .state('countdown', {
-        url: '/countdown',
-        templateUrl: 'client/games/views/game_starts.ng.html',
-        controller: 'lobbyController',
+        url: '/plot_countdown',
+        templateUrl: 'client/games/views/plot_countdown.ng.html',
+        controller: 'plotcountdown',
       })
       .state('set_point', {
         url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
+
+      })
+      .state('confirm_point', {
+        url: '/confirm_point',
+        templateUrl: 'client/games/views/confirm_point.ng.html',
         controller: 'lobbyController',
+      })
+      .state('plotted_point', {
+        url: '/plotted_point',
+        templateUrl: 'client/games/views/plotted_point.ng.html',
+        controller: 'lobbyController',
+      })
+      .state('gamecountdown', {
+        url: '/game_countdown',
+        templateUrl: 'client/games/views/game_countdown.ng.html',
+        controller: 'gamecountdown',
       });
-
-
-
   }]);
 
 

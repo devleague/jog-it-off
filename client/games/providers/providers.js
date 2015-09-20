@@ -70,26 +70,16 @@
       this.countDown = function () {
         var currentCount = 5;
 
-        // var intervalTimer = setInterval(function(){
-        //   if(currentCount === 0){
-        //
-        //     return $state.go('/set_point');
-        //   }
-
-        //   currentCount = self.currentSeconds.get() - 1;
-        //   self.currentSeconds.set(currentCount);
-        // }, 1000);
-
-        setInterval(function intervalTimer() {
-
+        var intervalTimer = function () {
           currentCount--;
           console.log(currentCount);
           if(currentCount <= 0) {
-            clearInterval(intervalTimer);
+            clearInterval(duration);
             $state.go('set_point');
           }
-        }, 1000);
+        };
+        var duration = setInterval(intervalTimer, 1000);
       };
-
     }]);
 })();
+
