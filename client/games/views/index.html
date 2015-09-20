@@ -1,24 +1,24 @@
-<template name="main">
+<head>
+  <title>Jog It Off</title>
+  <base href="/">
+  <link rel="stylesheet" href="/styles.css" type='text/css'>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+</head>
 
-  <div>
-    <h1>TITLE</h1>
-  </div>
+<body>
+ <div ui-view></div>
+</body>
 
-
-  <div id="mainDiv">
-    {{> login}}
-
-  </div>
-
-</template>
 
 <template name="login">
     {{#if loggedIn}}
 
     {{> loginButtons}}
-    <button id="createGame">CREATE A GAME</button>
-    <button id="joinGame">JOIN A GAME</button>
-    <!-- {{currentUser.profile.login}} -->
+    <button id="createGame" ui-sref="create">CREATE A GAME</button>
+    <button id="joinGame" ui-sref="join">JOIN A GAME</button>
+   <!--  <a href="/create">CREATE A GAME</a>
+    <a href="/join">JOIN A GAME</a> -->
+
     {{else}}
     <form class="form-inline">
         <p>Enter username to log in:</p>

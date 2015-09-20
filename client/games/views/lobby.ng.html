@@ -1,0 +1,15 @@
+<div class="headerDiv">
+  <h1 class="headerText">{{gameObject.room}}</h1>
+</div>
+
+<div class="lobbyContent">
+  <h2> Player 1 </h2>
+  <h2> Player 2 </h2>
+  <h2> Player 3 </h2>
+
+</div>
+
+<div class="footerDiv">
+  <button id="startButton" ng-if="isHost">START</button>
+  <h2 ng-if="!isHost">Waiting on Host...</h2>
+</div>
