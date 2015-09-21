@@ -1,13 +1,20 @@
 
+// function initialize(location){
+//   console.log(location);
+//   // var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+// }
+// $(document).ready(function(){
+//   navigator.geolocation.getCurrentPosition(initialize); //jquery code to get current position
+
+// });
 
 
 if (Meteor.isClient) {
-  Template.map.onCreated(function() {
+    Template.map.onCreated(function() {
     GoogleMaps.ready('map', function(map) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
         Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'homebase' }); // we will use a function to hardcode input
       });
-
 
       var markers = {};
 
@@ -22,6 +29,7 @@ if (Meteor.isClient) {
             //to update the document within the 'dragend' event below
             id: document._id
           });
+
 
           //this listener below lets us drag markers on the map and update their corresponding document
           google.maps.event.addListener(marker, 'dragend', function(event) {
@@ -41,7 +49,20 @@ if (Meteor.isClient) {
         }
 
       });
+
     });
+
+      Template.map.events({
+        'click #locationButton': function(){
+         console.log('click');
+
+
+
+      }
+        });
+
+
+
 
   });
 
@@ -57,12 +78,18 @@ if (Meteor.isClient) {
         return {
           center: new google.maps.LatLng(latLng.lat, latLng.lng),
           zoom: 18,
-          mapTypeId: google.maps.MapTypeId.TERRAIN
+          mapTypeId: google.maps.MapTypeId.TERRAIN,
+          disableDefaultUI: true, //removes the annoying zoom option
+          scrollwheel: false //doesn't let user zoom in and out with touching screen locks the zoom
+          // draggable: false <-- this makes it locked in the position
           //to switch terrain view https://developers.google.com/maps/documentation/javascript/maptypes?hl=en
         };
 
+
       }
+
     }
+
   });
 
 }
