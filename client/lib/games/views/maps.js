@@ -55,8 +55,8 @@ if (Meteor.isClient) {
       Template.map.events({
         'click #locationButton': function(){
          console.log('click');
-
-
+         var latLng = Geolocation.latLng();
+         Markers.insert({ lat: latLng.lat, lng: latLng.lng, type:'homebase' });
 
       }
         });
