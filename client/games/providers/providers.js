@@ -20,6 +20,7 @@
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
+          ready: [],
           markers:[]
         };
 
@@ -30,11 +31,17 @@
 
       };
 
+      this.joinGame = function ($scope, $meteor) {
+        client = Meteor.user();
+        console.log("client:" + client);
+        console.log("this:" + this.game._id);
+        GameCollection.update({_id: this.game._id}, {$push: {players: client}});
+      };
+
       this.isHost = function (gameID, $scope) {
         clientID = Meteor.userId();
         var obj = GameCollection.findOne({_id: gameID});
         var objPlayers = obj.players;
-        console.log("objPlayers:" + objPlayers);
         var host = obj.host;
         var hostID = null;
 
