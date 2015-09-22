@@ -21,6 +21,7 @@
           gameTimer: gameTimer,
           players: [client],
           ready: [],
+          allReady: false,
           markers:[]
         };
 
@@ -32,22 +33,14 @@
       };
 
       this.joinGame = function ($scope, $meteor) {
-        client = Meteor.user();
-        GameCollection.update({_id: this.game._id}, {$push: {players: client}});
+        var client = Meteor.user();
+        var gameObj = GameCollection.findOne({_id: gameID});
+
+        if(gameObj.players.indexOf(client) < 0) {
+          GameCollection.update({_id: this.game._id}, {$push: {players: client}});
+        }
+
       };
-
-      // this.isReady = function (gameID, $scope) {
-      //   console.log('isReady');
-      //   var clientID = Meteor.userId();
-      //   console.log(clientID);
-      //   var gameObj = GameCollection.findOne({_id: gameID});
-      //   console.log(gameObj);
-
-      //   if( !(gameObj.ready[clientID]) ) {
-      //     GameCollection.update({_id: gameObj._id}, {$push: {ready: clientID}});
-      //   }
-
-      // };
 
       // this.isHost = function (gameID, $scope) {
       //   clientID = Meteor.userId();
