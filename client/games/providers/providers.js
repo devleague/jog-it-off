@@ -33,32 +33,43 @@
 
       this.joinGame = function ($scope, $meteor) {
         client = Meteor.user();
-        console.log("client:" + client);
-        console.log("this:" + this.game._id);
         GameCollection.update({_id: this.game._id}, {$push: {players: client}});
       };
 
-      this.isHost = function (gameID, $scope) {
-        clientID = Meteor.userId();
-        var obj = GameCollection.findOne({_id: gameID});
-        var objPlayers = obj.players;
-        var host = obj.host;
-        var hostID = null;
+      // this.isReady = function (gameID, $scope) {
+      //   console.log('isReady');
+      //   var clientID = Meteor.userId();
+      //   console.log(clientID);
+      //   var gameObj = GameCollection.findOne({_id: gameID});
+      //   console.log(gameObj);
 
-        //set host ID
-        for(var i=0; i<objPlayers.length; i++) {
-          if(objPlayers[i].username === host) {
-            hostID = objPlayers[i]._id;
-          }
-        }
+      //   if( !(gameObj.ready[clientID]) ) {
+      //     GameCollection.update({_id: gameObj._id}, {$push: {ready: clientID}});
+      //   }
 
-        //validate client is host
-        if (clientID === hostID) {
-          return true;
-        } else {
-          return false;
-        }
-      };
+      // };
+
+      // this.isHost = function (gameID, $scope) {
+      //   clientID = Meteor.userId();
+      //   var obj = GameCollection.findOne({_id: gameID});
+      //   var objPlayers = obj.players;
+      //   var host = obj.host;
+      //   var hostID = null;
+
+      //   //set host ID
+      //   for(var i=0; i<objPlayers.length; i++) {
+      //     if(objPlayers[i].username === host) {
+      //       hostID = objPlayers[i]._id;
+      //     }
+      //   }
+
+      //   //validate client is host
+      //   if (clientID === hostID) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // };
 
       this.roomName = function (gameID, $scope){
 
