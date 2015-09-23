@@ -6,6 +6,7 @@
 
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
         var client = Meteor.user();
+        var clientID = Meteor.userId();
         var host = client.username;
         var plotTimer = plotTime * 60;
         var gameTimer = gameTime * 60;
@@ -20,11 +21,11 @@
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
-          ready: [],
           allReady: false,
           markers:[]
         };
 
+        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObject}});
         GameCollection.insert(gameObject, function(error, gameID) {
           // console.log(error, gameID);
           $state.go('lobby', {'gameID': gameID});
