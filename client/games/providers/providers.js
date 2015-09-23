@@ -80,18 +80,20 @@
       };
 
       this.countDown = function () {
+        var newTime = [];
         var currentCount = 5;
 
         var intervalTimer = function () {
-          currentCount--;
-          console.log(currentCount);
           if(currentCount <= 0) {
             clearInterval(duration);
             $state.go('set_point');
+          } else {
+          currentCount--;
+          console.log(currentCount);
           }
         };
         var duration = setInterval(intervalTimer, 1000);
-        // I want to put countDown(); to show timer, but putting here doesn't work.
+        return newTime.push(currentCount);
       };
     }]);
 })();
