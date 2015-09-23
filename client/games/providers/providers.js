@@ -76,22 +76,8 @@
       };
 
       this.getGames = function () {
-
       };
 
-      this.countDown = function () {
-        var currentCount = 5;
-
-        var intervalTimer = function () {
-          currentCount--;
-          console.log(currentCount);
-          if(currentCount <= 0) {
-            clearInterval(duration);
-            $state.go('set_point');
-          }
-        };
-        var duration = setInterval(intervalTimer, 1000);
-      };
     }]);
 })();
 
