@@ -51,7 +51,8 @@
         if(missing) {
           GameCollection.update({_id: this.game._id}, {$push: {players: client}});
         }
-        // Meteor.users.update({_id: clientID}, {$set: {game: gameObj}});
+
+        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObj}});
 
       };
 
