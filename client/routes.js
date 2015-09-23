@@ -38,7 +38,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('set_point', {
         url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
-
+        controller: 'setPoint'
       })
       .state('confirm_point', {
         url: '/confirm_point',
