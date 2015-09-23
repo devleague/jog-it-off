@@ -91,6 +91,7 @@
           }
         };
         var duration = setInterval(intervalTimer, 1000);
+        // I want to put countDown(); to show timer, but putting here doesn't work.
       };
     }]);
 })();

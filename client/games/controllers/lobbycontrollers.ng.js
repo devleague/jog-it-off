@@ -25,7 +25,7 @@
         var gameObj = GameCollection.findOne({_id: gameID});
 
         //add client to ready array if they don't already exist
-        if( gameObj.ready.indexOf(clientID) < 0) {
+        if(gameObj.ready.indexOf(clientID) < 0) {
           console.log('user is ready');
           GameCollection.update({_id: gameObj._id}, {$push: {ready: clientID}});
         } else {
@@ -36,6 +36,5 @@
         if(players.length === ready.length) {
           allReady = true;
         }
-
       };
   });
