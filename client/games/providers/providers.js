@@ -78,6 +78,7 @@
       this.getGames = function () {
       };
 
+
     }]);
 })();
 
