@@ -5,8 +5,9 @@
     <h1>TITLE</h1>
   </div>
 
-
   <div id="mainDiv">
    <blaze-template name="login"></blaze-template>
+   <button id="createGame" ng-show="$root.currentUser" ui-sref="create" >CREATE A GAME</button>
+    <button id="joinGame" ng-show="$root.currentUser" ui-sref="join" >JOIN A GAME</button>
   </div>
 

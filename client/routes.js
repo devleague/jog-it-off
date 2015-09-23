@@ -14,6 +14,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('main', {
         url: '/',
         templateUrl: 'client/games/views/main.ng.html',
+        controller: 'mainController'
       })
       .state('create', {
         url: '/create',
