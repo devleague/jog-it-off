@@ -17,7 +17,7 @@
           pointNum: pointNum,
           plotTime: plotTime,
           gameTime: gameTime,
-          timestamp: new Date(),
+          timestamp: new Date().toString(),
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
