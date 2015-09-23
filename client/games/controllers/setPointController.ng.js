@@ -4,14 +4,14 @@
 
       $scope.timer = Meteor.user().profile.game.plotTimer;
       var num = $scope.timer;
-      console.log(num);
+
 
       $interval(function() {
           console.log($scope.timer);
           num--;
           $scope.timer = num;
           if($scope.timer <= 0) {
-            $state.go('set_point');
+            $state.go('gamecountdown');
           }
         }, 1000, num);
 
