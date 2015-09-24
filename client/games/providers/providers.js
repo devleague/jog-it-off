@@ -26,9 +26,8 @@
           markers:[]
         };
 
-         //Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObject}});
+
         GameCollection.insert(gameObject, function(error, gameID) {
-          // console.log(error, gameID);
           $state.go('lobby', {'gameID': gameID});
         });
 
@@ -42,10 +41,12 @@
         var players = gameObj.players;
 
         //find out if client is existing in players array
-        var missing = false;
+        var missing = true;
         for(var i=0; i < players.length; i++) {
-            if(players[i] == client) {
-              missing = true;
+            console.log(console.log( "LOOP: " + players[i] + client));
+            if(JSON.stringify(players[i]) === JSON.stringify(client)) {
+              console.log( players[i], client);
+               missing = false;
               break;
            }
         }
@@ -53,8 +54,6 @@
         if(missing) {
           GameCollection.update({_id: this.game._id}, {$push: {players: client}});
         }
-
-        // Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObj}});
 
       };
 
