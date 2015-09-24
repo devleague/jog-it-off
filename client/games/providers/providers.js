@@ -23,7 +23,8 @@
           gameTimer: gameTimer,
           players: [client],
           allReady: false,
-          markers:[]
+          markers:[],
+          coins:[]
         };
 
 
@@ -43,15 +44,15 @@
         //find out if client is existing in players array
         var missing = true;
         for(var i=0; i < players.length; i++) {
-            console.log(console.log( "LOOP: " + players[i] + client));
-            if(JSON.stringify(players[i]) === JSON.stringify(client)) {
-              console.log( players[i], client);
+            if(players[i]._id === clientID) {
                missing = false;
-              break;
+               console.log("missing set to false");
+               break;
            }
         }
         //if missing, add client to players array
         if(missing) {
+          console.log('player is missing. added to game');
           GameCollection.update({_id: this.game._id}, {$push: {players: client}});
         }
 

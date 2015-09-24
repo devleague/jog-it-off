@@ -13,6 +13,8 @@
       $scope.gameData = $meteor.collection(GameCollection);
       $scope.gameObj = GameCollection.findOne({_id: gameID});
 
+       $scope.gameObject = $meteor.object(GameCollection, gameID);
+
       $scope.roomName = JogService.roomName(gameID);
       $scope.roomPlayers = JogService.roomPlayers(gameID);
       $scope.startGame = JogService.startGame;
