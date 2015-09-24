@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('jog-it-off')
-    .service('JogService', ['$state', '$meteor', function ($state, $meteor) {
+    .service('JogService', ['$state', '$meteor',function ($state, $meteor) {
       // debugger;
 
 
@@ -29,7 +29,8 @@
 
 
         GameCollection.insert(gameObject, function(error, gameID) {
-          $state.go('lobby', {'gameID': gameID});
+          // console.log(error, gameID);
+          $state.go('game.lobby', {'gameID': gameID});
         });
 
       };
@@ -55,7 +56,6 @@
           console.log('player is missing. added to game');
           GameCollection.update({_id: this.game._id}, {$push: {players: client}});
         }
-
       };
 
       this.isHost = function (gameID, $scope) {
