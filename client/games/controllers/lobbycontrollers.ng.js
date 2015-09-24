@@ -2,23 +2,31 @@
     .module('jog-it-off')
     .controller('lobbyController', function ($scope, $state, $meteor, $rootScope, JogService, $stateParams) {
 
+      var clientID = Meteor.userId();
       var gameID = $stateParams.gameID;
-      var allReady = false;
+      Meteor.users.update({_id: clientID}, {$set: {"profile.gameID": gameID}});
 
-      function readyGo() {
-        if (allReady === true) {
-          $state.go('countdown');
-        }
-      }
 
-      // var currentCount = 5;
       $scope.isHost = JogService.isHost(gameID);
-      // $scope.countDown = JogService.countDown(currentCount);
       $scope.addGameObject = JogService.addGameObject;
       $scope.games = JogService.getGames();
       $scope.gameData = $meteor.collection(GameCollection);
+      $scope.gameObj = GameCollection.findOne({_id: gameID});
+
       $scope.roomName = JogService.roomName(gameID);
       $scope.roomPlayers = JogService.roomPlayers(gameID);
+      $scope.startGame = JogService.startGame;
+      $scope.allReady = GameCollection
+                          .findOne({_id: gameID})
+                          .allReady;
+
+      // console.log("allReady:" + $scope.allReady);
+
+      // $scope.$watch('allReady', function() {
+      //   console.log("watch allReady:" + $scope.allReady);
+      //   $state.go('countdown');
+      // });
+
 
       // $scope.isReady = function () {
       //   var clientID = Meteor.userId();
