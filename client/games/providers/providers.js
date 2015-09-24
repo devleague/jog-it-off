@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('jog-it-off')
-    .service('JogService', ['$state', '$meteor', function ($state, $meteor) {
+    .service('JogService', ['$state', '$meteor',function ($state, $meteor) {
       // debugger;
 
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
@@ -28,7 +28,7 @@
         Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObject}});
         GameCollection.insert(gameObject, function(error, gameID) {
           // console.log(error, gameID);
-          $state.go('lobby', {'gameID': gameID});
+          $state.go('game.lobby', {'gameID': gameID});
         });
 
       };

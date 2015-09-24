@@ -26,11 +26,15 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'joinController'
       })
-      .state('lobby', {
-        url: '/lobby/:gameID',
-        templateUrl: 'client/games/views/lobby.ng.html',
-        controller: 'lobbyController',
+      .state('game', {
+        url: '/game/:gameID',
+        templateUrl: 'client/games/views/game.ng.html',
+        controller: 'gameController',
       })
+        .state('game.lobby', {
+          templateUrl: 'client/games/views/lobby.ng.html',
+          controller: 'lobbyController',
+        })
       .state('countdown', {
         url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
