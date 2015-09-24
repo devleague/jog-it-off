@@ -36,13 +36,11 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
           templateUrl: 'client/games/views/lobby.ng.html',
           controller: 'lobbyController',
         })
-      .state('countdown', {
-        url: '/plot_countdown',
+      .state('game.plot_countdown', {
         templateUrl: 'client/games/views/plot_countdown.ng.html',
         controller: 'plotcountdown',
       })
-      .state('set_point', {
-        url: '/set_point',
+      .state('game.set_point', {
         templateUrl: 'client/games/views/set_point.ng.html',
         controller: 'setPoint'
       })
