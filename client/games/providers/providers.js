@@ -6,6 +6,7 @@
 
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
         var client = Meteor.user();
+        var clientID = Meteor.userId();
         var host = client.username;
         var plotTimer = plotTime * 60;
         var gameTimer = gameTime * 60;
@@ -16,13 +17,15 @@
           pointNum: pointNum,
           plotTime: plotTime,
           gameTime: gameTime,
-          timestamp: new Date(),
+          timestamp: new Date().toString(),
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
+          allReady: false,
           markers:[]
         };
 
+        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObject}});
         GameCollection.insert(gameObject, function(error, gameID) {
           // console.log(error, gameID);
           $state.go('lobby', {'gameID': gameID});
@@ -30,16 +33,54 @@
 
       };
 
+      this.joinGame = function ($scope, $meteor) {
+        var client = Meteor.user();
+        var clientID = Meteor.userId();
+        var gameID = this.game._id;
+        var gameObj = GameCollection.findOne({_id: gameID});
+        var players = gameObj.players;
+
+        //find out if client is existing in players array
+        var missing = false;
+        for(var i=0; i < players.length; i++) {
+          if(players[i]._id !== clientID) {
+            missing = true;
+          }
+        }
+
+        //if missing, add client to players array
+        if(missing) {
+          GameCollection.update({_id: this.game._id}, {$push: {players: client}});
+        }
+
+        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObj}});
+
+      };
+
       this.isHost = function (gameID, $scope) {
         clientID = Meteor.userId();
         var obj = GameCollection.findOne({_id: gameID});
+        var objPlayers = obj.players;
         var host = obj.host;
-        console.log(host);
-        // return host === clientID;
-        return true;
+        var hostID = null;
+
+        //set host ID
+        for(var i=0; i<objPlayers.length; i++) {
+          if(objPlayers[i].username === host) {
+            hostID = objPlayers[i]._id;
+          }
+        }
+
+        //validate client is host
+        if (clientID === hostID) {
+          return true;
+        } else {
+          return false;
+        }
       };
 
       this.roomName = function (gameID, $scope){
+
         var obj = GameCollection.findOne({_id: gameID});
         return obj.room;
       };
@@ -50,32 +91,9 @@
       };
 
       this.getGames = function () {
-
       };
 
-      this.countDown = function () {
-        var currentCount = 5;
-
-        // var intervalTimer = setInterval(function(){
-        //   if(currentCount === 0){
-        //
-        //     return $state.go('/set_point');
-        //   }
-
-        //   currentCount = self.currentSeconds.get() - 1;
-        //   self.currentSeconds.set(currentCount);
-        // }, 1000);
-
-        setInterval(function intervalTimer() {
-
-          currentCount--;
-          console.log(currentCount);
-          if(currentCount <= 0) {
-            clearInterval(intervalTimer);
-            $state.go('set_point');
-          }
-        }, 1000);
-      };
 
     }]);
 })();
+

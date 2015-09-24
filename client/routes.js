@@ -14,36 +14,48 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('main', {
         url: '/',
         templateUrl: 'client/games/views/main.ng.html',
-        controller: 'myController'
+        controller: 'mainController'
       })
       .state('create', {
         url: '/create',
         templateUrl: 'client/games/views/create.ng.html',
-        controller: 'myController'
+        controller: 'createGameController'
       })
       .state('join', {
         url: '/join',
         templateUrl: 'client/games/views/join.ng.html',
-        controller: 'myController'
+        controller: 'joinController'
       })
       .state('lobby', {
         url: '/lobby/:gameID',
         templateUrl: 'client/games/views/lobby.ng.html',
-        controller: 'myController',
+        controller: 'lobbyController',
       })
       .state('countdown', {
-        url: '/countdown',
-        templateUrl: 'client/games/views/game_starts.ng.html',
-        controller: 'myController',
+        url: '/plot_countdown',
+        templateUrl: 'client/games/views/plot_countdown.ng.html',
+        controller: 'plotcountdown',
       })
       .state('set_point', {
         url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
-        controller: 'myController',
+        controller: 'setPoint'
+      })
+      .state('confirm_point', {
+        url: '/confirm_point',
+        templateUrl: 'client/games/views/confirm_point.ng.html',
+        controller: 'lobbyController',
+      })
+      .state('plotted_point', {
+        url: '/plotted_point',
+        templateUrl: 'client/games/views/plotted_point.ng.html',
+        controller: 'lobbyController',
+      })
+      .state('gamecountdown', {
+        url: '/game_countdown',
+        templateUrl: 'client/games/views/game_countdown.ng.html',
+        controller: 'gamecountdown',
       });
-
-
-
   }]);
 
 
