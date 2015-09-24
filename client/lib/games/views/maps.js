@@ -13,7 +13,7 @@ if (Meteor.isClient) {
     Template.map.onCreated(function() {
     GoogleMaps.ready('map', function(map) {
       google.maps.event.addListener(map.instance, 'click', function(event) {
-        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'homebase' }); // we will use a function to hardcode input
+        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng(), type:'player' }); // we will use a function to hardcode input
       });
 
       var markers = {};
@@ -29,6 +29,13 @@ if (Meteor.isClient) {
             //to update the document within the 'dragend' event below
             id: document._id
           });
+
+      var circle = new google.maps.Circle({ //this is the geofence code
+        map:map.instance, //attaches to the map
+        radius: 10, //in metres
+        fillColor: '#FF99CC' //color
+      });
+        circle.bindTo('center', marker, 'position'); //this binds the circle object
 
 
           //this listener below lets us drag markers on the map and update their corresponding document
@@ -60,6 +67,13 @@ if (Meteor.isClient) {
 
       }
         });
+
+      Template.map.events({
+        'click #trackDistance': function(){
+        console.log(google.maps.geometry.spherical.computeDistanceBetween(  ));
+        }
+
+      });
 
 
 
