@@ -19,7 +19,7 @@
           $scope.sec = parseInt( $scope.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
 
           if($scope.plotTimer <= 0) {
-            $state.go('gamecountdown');
+            $state.go('game.game_countdown');
           }
         }, 1000, num);
 
