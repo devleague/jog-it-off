@@ -1,7 +1,7 @@
  angular
     .module('jog-it-off')
     .controller('plotcountdown', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
-
+      //controller after lobby
       $scope.countNum = 5;
       var num = 5;
 

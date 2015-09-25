@@ -11,31 +11,31 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
      $locationProvider.html5Mode(true);
 
      $stateProvider
-      .state('main', {
+      .state('main', { //parent
         url: '/',
         templateUrl: 'client/games/views/main.ng.html',
         controller: 'mainController'
       })
-      .state('create', {
+      .state('create', { //parent
         url: '/create',
         templateUrl: 'client/games/views/create.ng.html',
         controller: 'createGameController'
       })
-      .state('join', {
+      .state('join', {  //parent
         url: '/join',
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'joinController'
       })
-      .state('game', {
+      .state('game', { //parent
         url: '/game/:gameID',
         templateUrl: 'client/games/views/game.ng.html',
         controller: 'gameController',
       })
-        .state('game.lobby', {
-          templateUrl: 'client/games/views/lobby.ng.html',
-          controller: 'lobbyController',
-        })
-      .state('countdown', {
+      .state('game.lobby', { //child of game
+        templateUrl: 'client/games/views/lobby.ng.html',
+        controller: 'lobbyController',
+      })
+      .state('countdown', { //parent
         url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
         controller: 'plotcountdown',
@@ -59,6 +59,11 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/game_countdown',
         templateUrl: 'client/games/views/game_countdown.ng.html',
         controller: 'gamecountdown',
+      })
+      .state('final' , { //parent
+        url: '/final',
+        templateUrl: 'client/games/views/final_score.ng.html',
+        controller: 'finalscore'
       });
   }]);
 

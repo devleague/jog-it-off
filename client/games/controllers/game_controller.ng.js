@@ -5,4 +5,5 @@
       $scope.game = {
         name: "billy"
       };
+      /// I'm super powerful >:D
   });
