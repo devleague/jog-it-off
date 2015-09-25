@@ -95,6 +95,10 @@
       this.getGames = function () {
       };
 
+      this.setPoint = function () {
+
+      };
+
 
     }]);
 })();
