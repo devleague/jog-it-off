@@ -11,17 +11,17 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
      $locationProvider.html5Mode(true);
 
      $stateProvider
-      .state('main', { //parent
+      .state('main', {
         url: '/',
         templateUrl: 'client/games/views/main.ng.html',
         controller: 'mainController'
       })
-      .state('create', { //parent
+      .state('create', {
         url: '/create',
         templateUrl: 'client/games/views/create.ng.html',
         controller: 'createGameController'
       })
-      .state('join', {  //parent
+      .state('join', {
         url: '/join',
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'joinController'
@@ -32,35 +32,43 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'gameController',
       })
       .state('game.lobby', {
+        url: '/game/:gameID',
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'lobbyController',
       })
       .state('game.plot_countdown', {
+        url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
-        controller: 'plotcountdown',
+        controller: 'plotCountDown',
       })
       .state('game.set_point', {
+        url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
         controller: 'setPoint'
       })
-      .state('confirm_point', {
+      .state('game.confirm_point', {
         url: '/confirm_point',
         templateUrl: 'client/games/views/confirm_point.ng.html',
-        controller: 'lobbyController',
+        controller: 'confirmPoint',
       })
-      .state('plotted_point', {
+      .state('game.plotted_point', {
         url: '/plotted_point',
         templateUrl: 'client/games/views/plotted_point.ng.html',
-        controller: 'lobbyController',
+        controller: 'plottedPoint',
       })
       .state('game.game_countdown', {
         url: '/game_countdown',
         templateUrl: 'client/games/views/game_countdown.ng.html',
-        controller: 'gamecountdown',
+        controller: 'gameCountDown',
       })
-      .state('final' , { //parent
-        url: '/final',
+      .state('game.session', {
+        url: '/game_session',
+        templateUrl: 'client/games/views/game_session.ng.html',
+        controller: 'gameSession',
+      })
+      .state('game.final' , {
+        url: '/final_score',
         templateUrl: 'client/games/views/final_score.ng.html',
-        controller: 'finalscore'
+        controller: 'finalScore'
       });
   }]);
