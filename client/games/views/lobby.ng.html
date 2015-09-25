@@ -1,5 +1,5 @@
 <div class="headerDiv">
-  <h1 class="headerText">{{roomName}}</h1>
+  <h1 class="headerText">{{gameObj.room}}</h1>
 </div>
 
 <div class="lobbyContent">
@@ -11,6 +11,7 @@
 {{ game }}
 <div class="footerDiv">
   <!-- <button id="readyButton" ng-click="isReady()">READY</button> -->
-  <button id="startButton" ng-if="isHost" ui-sref="countdown">START</button>
+  <!-- <button id="startButton" ng-if="isHost" ui-sref="game.plot_countdown">START</button> -->
+  <button id="startButton" ng-if="isHost" ng-click="startGame()" >START</button>
   <h2 ng-if="!isHost">Waiting on Host...</h2>
 </div>

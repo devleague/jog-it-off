@@ -26,22 +26,20 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'joinController'
       })
-      .state('game', { //parent
+      .state('game', {
         url: '/game/:gameID',
         templateUrl: 'client/games/views/game.ng.html',
         controller: 'gameController',
       })
-      .state('game.lobby', { //child of game
+      .state('game.lobby', {
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'lobbyController',
       })
-      .state('countdown', { //parent
-        url: '/plot_countdown',
+      .state('game.plot_countdown', {
         templateUrl: 'client/games/views/plot_countdown.ng.html',
         controller: 'plotcountdown',
       })
-      .state('set_point', {
-        url: '/set_point',
+      .state('game.set_point', {
         templateUrl: 'client/games/views/set_point.ng.html',
         controller: 'setPoint'
       })
@@ -55,7 +53,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/plotted_point.ng.html',
         controller: 'lobbyController',
       })
-      .state('gamecountdown', {
+      .state('game.game_countdown', {
         url: '/game_countdown',
         templateUrl: 'client/games/views/game_countdown.ng.html',
         controller: 'gamecountdown',
@@ -66,31 +64,3 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'finalscore'
       });
   }]);
-
-
-
-// Router.configure({
-//   layoutTemplate: "layout"
-// });
-
-// Router.route('/', function () {
-//   this.render('main');
-// });
-
-// Router.route('/create', function () {
-//   this.render('create');
-// });
-
-// Router.route('/join', function () {
-//   this.render('join');
-// });
-
-// Router.route('/lobby/:room', function () {
-//   console.log(this.params.room);
-//   this.render('lobby', {data:{room: this.params.room}});
-// });
-
-// Router.route('/maptest', function () {
-//   this.render('maptest');
-// });
-

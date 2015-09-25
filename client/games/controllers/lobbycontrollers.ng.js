@@ -2,39 +2,39 @@
     .module('jog-it-off')
     .controller('lobbyController', function ($scope, $state, $meteor, $rootScope, JogService, $stateParams) {
 
+
+      var clientID = Meteor.userId();
       var gameID = $stateParams.gameID;
-      var allReady = false;
+      Meteor.users.update({_id: clientID}, {$set: {"profile.gameID": gameID}});
 
-      function readyGo() {
-        if (allReady === true) {
-          $state.go('countdown');
-        }
-      }
 
-      // var currentCount = 5;
       $scope.isHost = JogService.isHost(gameID);
-      // $scope.countDown = JogService.countDown(currentCount);
       $scope.addGameObject = JogService.addGameObject;
       $scope.games = JogService.getGames();
       $scope.gameData = $meteor.collection(GameCollection);
-      $scope.roomName = JogService.roomName(gameID);
+      // $scope.gameObj = GameCollection.findOne({_id: gameID});
+
+      // $scope.roomName = JogService.roomName(gameID);
       $scope.roomPlayers = JogService.roomPlayers(gameID);
+      // $scope.startGame = JogService.startGame;
+      $scope.startGame = function () {
+        console.log('allReady set to true');
+        GameCollection.update({_id: gameID}, {$set: {allReady: true}});
+        console.log("$scope.allReady: " + $scope.allReady);
+        // state.go('game.plot_countdown');
+      };
 
-      // $scope.isReady = function () {
-      //   var clientID = Meteor.userId();
-      //   var gameObj = GameCollection.findOne({_id: gameID});
+      // if($scope.allReady === true) {
+      //   console.log('allReady leads you to plot countdown');
+      //   $state.go('game.plot_countdown');
+      // }
 
-      //   //add client to ready array if they don't already exist
-      //   if(gameObj.ready.indexOf(clientID) < 0) {
-      //     console.log('user is ready');
-      //     GameCollection.update({_id: gameObj._id}, {$push: {ready: clientID}});
-      //   } else {
-      //     console.log('user is already ready');
-      //   }
+      // console.log("allReady:" + $scope.allReady);
 
-      //   //if all clients ready, route them
-      //   if(players.length === ready.length) {
-      //     allReady = true;
-      //   }
-      // };
+      $scope.$watch('gameObj', function() {
+        console.log("watch allReady:" + $scope.gameObj.allReady);
+        if($scope.gameObj.allReady){
+          $state.go('game.plot_countdown');
+        }
+      });
   });

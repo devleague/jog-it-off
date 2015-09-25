@@ -4,6 +4,7 @@
     .service('JogService', ['$state', '$meteor',function ($state, $meteor) {
       // debugger;
 
+
       this.addGameObject = function(roomName, pointNum, plotTime, gameTime, $scope) {
         var client = Meteor.user();
         var clientID = Meteor.userId();
@@ -22,10 +23,11 @@
           gameTimer: gameTimer,
           players: [client],
           allReady: false,
-          markers:[]
+          markers:[],
+          coins:[]
         };
 
-        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObject}});
+
         GameCollection.insert(gameObject, function(error, gameID) {
           // console.log(error, gameID);
           $state.go('game.lobby', {'gameID': gameID});
@@ -41,27 +43,26 @@
         var players = gameObj.players;
 
         //find out if client is existing in players array
-        var missing = false;
+        var missing = true;
         for(var i=0; i < players.length; i++) {
-          if(players[i]._id !== clientID) {
-            missing = true;
-          }
+            if(players[i]._id === clientID) {
+               missing = false;
+               console.log("missing set to false");
+               break;
+           }
         }
-
         //if missing, add client to players array
         if(missing) {
+          console.log('player is missing. added to game');
           GameCollection.update({_id: this.game._id}, {$push: {players: client}});
         }
-
-        Meteor.users.update({_id: clientID}, {$set: {"profile.game": gameObj}});
-
       };
 
-      this.isHost = function (gameID, $scope) {
+      this.isHost = function (gameID) {
         clientID = Meteor.userId();
-        var obj = GameCollection.findOne({_id: gameID});
-        var objPlayers = obj.players;
-        var host = obj.host;
+        var gameObj = GameCollection.findOne({_id: gameID});
+        var objPlayers = gameObj.players;
+        var host = gameObj.host;
         var hostID = null;
 
         //set host ID
@@ -79,13 +80,14 @@
         }
       };
 
-      this.roomName = function (gameID, $scope){
+      // this.startGame = function ($scope) {
+      //   console.log('allReady set to true');
+      //   console.log("$scope.allReady: " + $scope.allReady);
+      //   $scope.allReady = true;
+      //   // state.go('game.plot_countdown');
+      // };
 
-        var obj = GameCollection.findOne({_id: gameID});
-        return obj.room;
-      };
-
-      this.roomPlayers = function (gameID, $scope){
+      this.roomPlayers = function (gameID){
         var obj = GameCollection.findOne({_id: gameID});
         return obj.players;
       };
