@@ -11,7 +11,6 @@
 
       //sets timer countdown
       $interval(function() {
-          console.log($scope.plotTimer);
           num--;
           $scope.plotTimer = num;
 

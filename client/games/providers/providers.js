@@ -58,7 +58,7 @@
         }
       };
 
-      this.isHost = function (gameID, $scope) {
+      this.isHost = function (gameID) {
         clientID = Meteor.userId();
         var gameObj = GameCollection.findOne({_id: gameID});
         var objPlayers = gameObj.players;
@@ -80,17 +80,14 @@
         }
       };
 
-      this.startGame = function () {
-        //change allReady to true
-      };
+      // this.startGame = function ($scope) {
+      //   console.log('allReady set to true');
+      //   console.log("$scope.allReady: " + $scope.allReady);
+      //   $scope.allReady = true;
+      //   // state.go('game.plot_countdown');
+      // };
 
-      this.roomName = function (gameID, $scope){
-
-        var obj = GameCollection.findOne({_id: gameID});
-        return obj.room;
-      };
-
-      this.roomPlayers = function (gameID, $scope){
+      this.roomPlayers = function (gameID){
         var obj = GameCollection.findOne({_id: gameID});
         return obj.players;
       };
