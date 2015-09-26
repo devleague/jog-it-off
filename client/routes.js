@@ -34,7 +34,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'gameController',
       })
       .state('game.lobby', {
-        url: '/game/:gameID',
+        url: '/lobby',
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'lobbyController',
       })
