@@ -10,6 +10,8 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
 
      $locationProvider.html5Mode(true);
 
+     $urlRouterProvider.otherwise('/');
+
      $stateProvider
       .state('main', {
         url: '/',
