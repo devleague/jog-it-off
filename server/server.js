@@ -1,7 +1,9 @@
 Meteor.startup(function(){
-  if(GameCollection.find().fetch().length === 0){
-    GameCollection.insert({
 
+});
+  // if(GameCollection.find().fetch().length === 0){
+  //   GameCollection.insert({
+/*
       host: 'matt',
       room: 'Undersea Pineapple',
       pointNum: 3,
@@ -42,6 +44,5 @@ Meteor.startup(function(){
         }
       ]
 
-    });
-  }
-});
+    });*/
+  // }

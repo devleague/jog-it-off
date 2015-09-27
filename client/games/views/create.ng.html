@@ -1,6 +1,10 @@
-  <div class="headerDiv">
-    <h1 class="headerText">CREATE A GAME</h1>
-  </div>
+<div class="grid-block">
+  <zf-panel class="panel-fixed" id="fixed-panel">
+  <h3>CREATE A GAME!</h3>
+  </zf-panel>
+</div>
+
+<div class="space"></div>
 
 <form id="createForm" ng-submit="addGameObject(roomName, pointNum, plotTime, gameTime)">
   <input type="text" ng-model="roomName" name="roomName" placeholder="Room Name">

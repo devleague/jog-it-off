@@ -1,0 +1,45 @@
+$headerColor: blue;
+$headerText: white;
+$gameRooms: red;
+$jog: black;
+$titles: white;
+$padding: 10px;
+
+html {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, p {
+  text-align: center;
+}
+
+.button {
+  display: block;
+  margin: $padding;
+}
+
+.space {
+  height: 70px;
+  width: 100%;
+}
+
+.grid-block {
+  background-color: $headerColor;
+  position: fixed;
+  width: 100%;
+}
+
+// .headerDiv {
+//   background-color: red;
+//   text-align: center;
+// }
+
+// .headerText {
+//   margin: 0 auto;
+//   text-align: center;
+// }
+

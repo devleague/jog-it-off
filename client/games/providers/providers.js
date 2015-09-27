@@ -95,8 +95,9 @@
       this.getGames = function () {
       };
 
-      this.setPoint = function () {
+      this.changeOverlay = function ($scope) {
 
+        console.log($scope.isSetPoint);
       };
 
 

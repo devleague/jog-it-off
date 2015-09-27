@@ -1,13 +1,24 @@
 <!-- use ng-show or hide to display buttons -->
-<h1 ng-hide="$root.currentUser">Hello World!</h1>
+<!-- <h1 ng-hide="$root.currentUser">Hello World!</h1> -->
 
   <div>
-    <h1>TITLE</h1>
+    <h1>Jog it off</h1>
   </div>
 
   <div id="mainDiv">
    <blaze-template name="login"></blaze-template>
-   <button id="createGame" ng-show="$root.currentUser" ui-sref="create" >CREATE A GAME</button>
-    <button id="joinGame" ng-show="$root.currentUser" ui-sref="join" >JOIN A GAME</button>
+    <a class="button" ng-show="$root.currentUser" ui-sref="create" href="#" >CREATE A GAME</a>
+    <a class="button" ng-show="$root.currentUser" ui-sref="join" href="#" >JOIN A GAME</a>
   </div>
+
+
+
+
+
+
+
+
+  <!-- <button class="createGame"  >CREATE A GAME</button>
+    <button id="joinGame"  >JOIN A GAME</button> -->
+
 

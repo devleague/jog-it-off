@@ -2,7 +2,9 @@
     .module('jog-it-off')
     .controller('setPoint', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
 
+      $scope.isSetPoint = true;
       // $scope.timer = Meteor.user().profile.game.plotTimer;
+       $scope.changeOverlay = JogService.changeOverlay;
       $scope.plotTimer = $scope.gameObj.plotTimer;
       var num = $scope.plotTimer;
       $scope.hour = 0;

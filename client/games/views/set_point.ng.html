@@ -1,15 +1,24 @@
-<!-- <h1>SET POINT PAGE</h1> -->-
-
-<!-- <h1> total seconds: {{timer}}</h1> -->
-<!--
-<h1> TIMER</h1> -->
-<div>
-  <h1> {{hour}} : {{min}} : {{sec}} </h1>
+<div class="grid-block">
+  <zf-panel class="panel-fixed" id="fixed-panel">
+    <h1> {{hour}} : {{min}} : {{sec}} </h1>
+  </zf-panel>
 </div>
 
 <div> <!-- map area --> </div>
 
-<div>
-  <h1> {{ pointNum }} points remaining </h1>
-  <button id="set_point" name='button'>SET POINT</button>
+<div class="footerDiv">
+  <div class="setPointOverlay" ng-show="isSetPoint">
+    <h1> {{ pointNum }} points remaining </h1>
+    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint">SET POINT</button>
+  </div>
+<div class="confirmPointOverlay" ng-show="!isSetPoint">
+  <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
+  <h4>Yo, do you <em>really</em> want to do this?</h4>
+  <a zf-close="" class="alert button">Yeah</a>
+  <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">Nah</a>
 </div>
+  </div>
+</div>
+
+
+
