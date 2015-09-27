@@ -1,6 +1,15 @@
-<h1>Map view - Display points, but not players - route WORKS!</h1>
+<h1>Map view - Display points, but not players - route WORKS!!</h1>
 
-<div class="angular-google-map-container">
-  <ui-gmap-google-map center="map.center" zoom="map.zoom">
-  </ui-gmap-google-map>
-</div>
+  <div class="angular-google-map-container">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" ng-if="showMap">
+      <ui-gmap-markers models="markers"
+                       coords="'location'"
+                       idkey="'_id'"
+                       doRebuildAll="true">
+      </ui-gmap-markers>
+    </ui-gmap-google-map>
+    <div class="map-center"></div>
+    <button ng-click="setMarker()">Location</button>
+    <h1>{{map.center.longitude}}</h1>
+    <h1>{{map.center.latitude}}</h1>
+  </div>
