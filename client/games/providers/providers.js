@@ -22,9 +22,7 @@
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
-          allReady: false,
-          markers:[],
-          coins:[]
+          allReady: false
         };
 
 
@@ -95,6 +93,11 @@
       this.getGames = function () {
       };
 
+      this.setPoint = function ($scope) {
+        console.log("set point");
+        var markerMarkup = "marker";
+        GameCollection.update({_id: gameID}, {$push: {markers: markerMarkup}});
+      };
 
     }]);
 })();
