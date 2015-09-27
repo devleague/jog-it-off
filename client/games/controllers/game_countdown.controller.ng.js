@@ -10,7 +10,7 @@
           num--;
           $scope.countNum = num;
           if($scope.countNum <= 0) {
-            //$state.go('set_point');
+            // $state.go('game session');
           }
         }, 1000, 5);
 
