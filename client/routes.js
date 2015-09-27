@@ -10,6 +10,8 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
 
      $locationProvider.html5Mode(true);
 
+     $urlRouterProvider.otherwise('/');
+
      $stateProvider
       .state('main', {
         url: '/',
@@ -26,65 +28,49 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/join.ng.html',
         controller: 'joinController'
       })
-
       .state('game', {
         url: '/game/:gameID',
         templateUrl: 'client/games/views/game.ng.html',
         controller: 'gameController',
       })
-        .state('game.lobby', {
-          templateUrl: 'client/games/views/lobby.ng.html',
-          controller: 'lobbyController',
-        })
+      .state('game.lobby', {
+        url: '/lobby',
+        templateUrl: 'client/games/views/lobby.ng.html',
+        controller: 'lobbyController',
+      })
       .state('game.plot_countdown', {
+        url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
-        controller: 'plotcountdown',
+        controller: 'plotCountDown',
       })
       .state('game.set_point', {
+        url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
         controller: 'setPoint'
       })
-      .state('confirm_point', {
+      .state('game.confirm_point', {
         url: '/confirm_point',
         templateUrl: 'client/games/views/confirm_point.ng.html',
-        controller: 'lobbyController',
+        controller: 'confirmPoint',
       })
-      .state('plotted_point', {
+      .state('game.plotted_point', {
         url: '/plotted_point',
         templateUrl: 'client/games/views/plotted_point.ng.html',
-        controller: 'lobbyController',
+        controller: 'plottedPoint',
       })
       .state('game.game_countdown', {
         url: '/game_countdown',
         templateUrl: 'client/games/views/game_countdown.ng.html',
-        controller: 'gamecountdown',
+        controller: 'gameCountDown',
+      })
+      .state('game.session', {
+        url: '/game_session',
+        templateUrl: 'client/games/views/game_session.ng.html',
+        controller: 'gameSession',
+      })
+      .state('game.final' , {
+        url: '/final_score',
+        templateUrl: 'client/games/views/final_score.ng.html',
+        controller: 'finalScore'
       });
   }]);
-
-
-
-// Router.configure({
-//   layoutTemplate: "layout"
-// });
-
-// Router.route('/', function () {
-//   this.render('main');
-// });
-
-// Router.route('/create', function () {
-//   this.render('create');
-// });
-
-// Router.route('/join', function () {
-//   this.render('join');
-// });
-
-// Router.route('/lobby/:room', function () {
-//   console.log(this.params.room);
-//   this.render('lobby', {data:{room: this.params.room}});
-// });
-
-// Router.route('/maptest', function () {
-//   this.render('maptest');
-// });
-

@@ -22,9 +22,7 @@
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
-          allReady: false,
-          markers:[],
-          coins:[]
+          allReady: false
         };
 
 
@@ -99,7 +97,8 @@
         var markerData = "markerData";
         var clientID = Meteor.userId();
         GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
-        Meteor.user.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+        Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+
       };
 
     }]);

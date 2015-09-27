@@ -4,7 +4,12 @@
 
       var clientID = Meteor.userId();
       var gameID = $stateParams.gameID;
-      Meteor.users.update({_id: clientID}, {$set: {"profile.gameID": gameID}});
+      Meteor.users.update(
+        {_id: clientID},
+        {
+          $set: {"profile.gameID": gameID, "profile.coins": 0}
+        }
+      );
 
 
       $scope.isHost = JogService.isHost(gameID);

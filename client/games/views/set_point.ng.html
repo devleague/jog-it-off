@@ -3,6 +3,13 @@
 <h1> total seconds: {{gameObj.plotTimer}}</h1>
 <!--
 <h1> TIMER</h1> -->
+
 <h1> {{hour}}h : {{min}}m : {{sec}}s </h1>
 
+<div> <!-- map area --> </div>
 
+<div>
+  <h1> {{ pointNum }} points remaining </h1>
+  <button id="set_point" name='button' ng-click='setPoint()'>SET POINT</button>
+  {{ gameObj.markers }}
+</div>
