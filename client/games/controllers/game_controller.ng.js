@@ -1,9 +1,9 @@
  angular
     .module('jog-it-off')
-    .controller('gameController', function ($scope, $state, $meteor, $rootScope, JogService, $stateParams) {
+    .controller('gameController', function (gameID, $scope, $state, $meteor, $rootScope, JogService, $stateParams) {
 
-      $scope.gameID = $stateParams.gameID;
-      GLOBAL_GAME_ID = $stateParams.gameID;
+      gameID = $stateParams.gameID;
+      $scope.gameID = gameID;
       $scope.gameCollection = $meteor.collection(GameCollection);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       console.log("$scope.gameObj:" + $scope.gameObj);
