@@ -9,17 +9,22 @@
 <div class="footerDiv">
 
   <div class="setPointOverlay" ng-show="isSetPoint">
-    <h1> {{ pointNum }} points remaining </h1>
-    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint">SET POINT</button>
+    <h1> {{ $root.currentUser.profile.pointNum }} points remaining </h1>
+    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum">SET POINT</button>
+    <h1 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h1>
   </div>
 
   <div class="confirmPointOverlay" ng-show="!isSetPoint">
     <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
-      <h4>Yo, do you <em>really</em> want to do this?</h4>
-      <a zf-close="" class="alert button">Yeah</a>
-      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">Nah</a>
+      <h4>Are you sure?</h4>
+      <a zf-close="" class="alert button" ng-click="setPoint(); isSetPoint = !isSetPoint">Yes</a>
+      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">No</a>
     </div>
   </div>
+
+  <!-- <div class="setPointDone" ng-if="$root.currentUser.profile.pointNum = 0">
+    <h1> All Points have been set. </h1>
+  </div> -->
 
 </div>
 
