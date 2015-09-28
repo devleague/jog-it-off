@@ -38,6 +38,11 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'lobbyController',
       })
+      .state('map-points-no-players', {
+        url: '/map-points-no-players',
+        templateUrl: 'client/games/views/map-points-no-players.ng.html',
+        controller: 'gameController'
+      })
       .state('game.plot_countdown', {
         url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
@@ -74,3 +79,4 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'finalScore'
       });
   }]);
+

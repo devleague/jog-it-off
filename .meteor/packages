@@ -9,9 +9,13 @@ meteor-platform
 mizzao:user-status
 mizzao:accounts-testing
 mizzao:timesync
+
 angular
 angularui:angular-ui-router
-urigo:angular-blaze-template
 angular:angular-material
+angularui:angular-google-maps
+
+urigo:angular-blaze-template
 fourseven:scss
 matthew:foundation5-sass
+

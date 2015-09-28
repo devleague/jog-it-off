@@ -39,6 +39,26 @@ Template.login.helpers({
 
 // });
 
+// Template.login.events({
+//   'submit form': function(e, tmpl) {
+//       var input;
+//       e.preventDefault();
+
+//       input = tmpl.find("input[name=username]");
+//       input.blur();
+//       return Meteor.insecureUserLogin(input.value);
+//     },
+//   'click #createGame': function (evt, tmpl) {
+//       evt.preventDefault();
+//       Router.go('/create');
+//   },
+
+//   'click #joinGame': function (evt, tmpl) {
+//       evt.preventDefault();
+//       Router.go('/join');
+//   }
+// });
+
 Template.login.events({
   'submit form': function(e, tmpl) {
       var input;
