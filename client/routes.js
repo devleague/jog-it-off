@@ -34,7 +34,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'gameController',
       })
       .state('game.lobby', {
-        url: '/lobby',
+        // url: '/lobby',
         templateUrl: 'client/games/views/lobby.ng.html',
         controller: 'lobbyController',
       })
@@ -76,6 +76,6 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
       .state('map-points-no-players', {
         url: '/map-points-no-players',
         templateUrl: 'client/games/views/map-points-no-players.ng.html',
-        controller: 'gameController'
+        controller: 'mapController'
       });
   }]);

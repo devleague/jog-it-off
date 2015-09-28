@@ -78,13 +78,6 @@
         }
       };
 
-      // this.startGame = function ($scope) {
-      //   console.log('allReady set to true');
-      //   console.log("$scope.allReady: " + $scope.allReady);
-      //   $scope.allReady = true;
-      //   // state.go('game.plot_countdown');
-      // };
-
       this.roomPlayers = function (gameID){
         var obj = GameCollection.findOne({_id: gameID});
         return obj.players;
