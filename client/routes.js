@@ -72,5 +72,10 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         url: '/final_score',
         templateUrl: 'client/games/views/final_score.ng.html',
         controller: 'finalScore'
+      })
+      .state('map-points-no-players', {
+        url: '/map-points-no-players',
+        templateUrl: 'client/games/views/map-points-no-players.ng.html',
+        controller: 'gameController'
       });
   }]);
