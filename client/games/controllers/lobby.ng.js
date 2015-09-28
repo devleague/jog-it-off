@@ -19,14 +19,10 @@
       );
 
       $scope.startGame = function () {
-        console.log('allReady set to true');
         GameCollection.update({_id: gameID}, {$set: {allReady: true}});
-        console.log("$scope.allReady: " + $scope.allReady);
       };
 
       $scope.$watch('gameObj.allReady', function() {
-        console.log("$scope.gameObj:", $scope.gameObj);
-        console.log("watch allReady:" + $scope.gameObj.allReady);
         if($scope.gameObj.allReady){
           $state.go('game.plot_countdown');
         }

@@ -86,12 +86,12 @@
       this.getGames = function () {
       };
 
-      this.setPoint = function ($scope) {
-        var markerData = "markerData";
-        var clientID = Meteor.userId();
-        GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
-        Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
-      };
+      // this.setPoint = function ($scope) {
+      //   var markerData = "markerData";
+      //   var clientID = Meteor.userId();
+      //   GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
+      //   Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+      // };
 
     }]);
 })();
