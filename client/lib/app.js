@@ -1,7 +1,7 @@
 angular.module('jog-it-off', [
   'angular-meteor',
   'ui.router',
-  'uiGmapgoogle-maps'
+   'uiGmapgoogle-maps'
 ]);
 
 // angular.module('jog-it-off')
