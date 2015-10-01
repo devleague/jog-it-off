@@ -38,6 +38,7 @@ angular
     //MAP------------------
     $scope.showMap = true;
     $scope.markers = [];
+    $scope.circles = [];
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 
@@ -55,9 +56,31 @@ angular
     // });
 
     function setMarker () {
-
+      var timestamp = +(new Date());
+      var center = {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude};
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
+      $scope.markers.push({_id: timestamp, location: center});
+      $scope.circles.push({
+      id: timestamp,
+      center: center,
+      radius: 10,
+      stroke: {
+        color: '#08B21F',
+        weight: 2,
+        opacity: 1
+      },
+      fill: {
+        color: '#08B21F',
+        opacity: 0.5
+      },
+      geodesic: false, // optional: defaults to false
+      draggable: false, // optional: defaults to false
+      clickable: false, // optional: defaults to true
+      editable: false, // optional: defaults to false
+      visible: true, // optional: defaults to true
+      events:{}
+    });
+
       GameCollection.update({_id: gameID},
         {$push:{markers:
           {
@@ -72,6 +95,8 @@ angular
           }
         }}
       );
+
+
 
       Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
     }
@@ -134,5 +159,13 @@ angular
         }
       }
     };
+
+
+
+
+
+
+
+    // $scope.map.circle.bindTo('center', $scope.markers, 'position');
 
   });
