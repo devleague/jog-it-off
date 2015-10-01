@@ -41,17 +41,34 @@ angular
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 
+    //   //creating geofence
+    // circle = $scope.map.drawCircle({
+    //   lat: lattitude,
+    //   lng: longitude,
+    //   strokeColor: '#fff',
+    //   strokeOpacity: 1,
+    //   strokeWeight: 3,
+    //   fillColor: 'rgba(75,255,0,0.2)',
+    //   fillOpacity: 0.4,
+    //   radius: 3000,
+    //   editable: true,
+    // });
+
     function setMarker () {
 
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-
+      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
       GameCollection.update({_id: gameID},
         {$push:{markers:
           {
           _id: +(new Date()),
           type: "point",
           userID: clientID,
-          location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}
+          location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude},
+          // fences: [circle],
+          // outside: function (marker, fence) {
+          //   alert('This marker has been moved outside of its fence');
+          // }
           }
         }}
       );
@@ -87,6 +104,7 @@ angular
     } else {
       handleLocationError(false, $scope.map, map.getCenter());
     }
+
     $scope.map = {
       center: {
         latitude: $scope.latCord || 21.315603,
