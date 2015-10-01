@@ -39,42 +39,42 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'lobbyController',
       })
       .state('map-points-no-players', {
-        url: '/map-points-no-players',
+        // url: '/map-points-no-players',
         templateUrl: 'client/games/views/map-points-no-players.ng.html',
         controller: 'gameController'
       })
       .state('game.plot_countdown', {
-        url: '/plot_countdown',
+        // url: '/plot_countdown',
         templateUrl: 'client/games/views/plot_countdown.ng.html',
         controller: 'plotCountDown',
       })
       .state('game.set_point', {
-        url: '/set_point',
+        // url: '/set_point',
         templateUrl: 'client/games/views/set_point.ng.html',
         controller: 'setPoint'
       })
       .state('game.confirm_point', {
-        url: '/confirm_point',
+        // url: '/confirm_point',
         templateUrl: 'client/games/views/confirm_point.ng.html',
         controller: 'confirmPoint',
       })
       .state('game.plotted_point', {
-        url: '/plotted_point',
+        // url: '/plotted_point',
         templateUrl: 'client/games/views/plotted_point.ng.html',
         controller: 'plottedPoint',
       })
       .state('game.game_countdown', {
-        url: '/game_countdown',
+        // url: '/game_countdown',
         templateUrl: 'client/games/views/game_countdown.ng.html',
         controller: 'gameCountDown',
       })
       .state('game.session', {
-        url: '/game_session',
+        // url: '/game_session',
         templateUrl: 'client/games/views/game_session.ng.html',
         controller: 'gameSession',
       })
       .state('game.final' , {
-        url: '/final_score',
+        // url: '/final_score',
         templateUrl: 'client/games/views/final_score.ng.html',
         controller: 'finalScore'
       })
