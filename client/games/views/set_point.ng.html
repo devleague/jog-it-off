@@ -1,23 +1,24 @@
 <!-- TIMER -->
-<div class="grid-block">
+<!-- <div class="grid-block"> -->
+<div class="timer_panel">
   <zf-panel class="panel-fixed" id="fixed-panel">
     <h1> {{hour}} : {{min}} : {{sec}} </h1>
   </zf-panel>
 </div>
 
 <!-- MAP -->
- <div class="angular-google-map-container">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" ng-if="showMap">
-      <ui-gmap-markers models="markers"
-                       coords="'location'"
-                       idkey="'_id'"
-                       doRebuildAll="true">
-      </ui-gmap-markers>
-    </ui-gmap-google-map>
-    <div class="map-center"></div>
-    <!-- <h1>{{map.center.longitude}}</h1> -->
-    <!-- <h1>{{map.center.latitude}}</h1> -->
-  </div>
+<div class="angular-google-map-container">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" ng-if="showMap">
+    <ui-gmap-markers models="markers"
+                     coords="'location'"
+                     idkey="'_id'"
+                     doRebuildAll="true">
+    </ui-gmap-markers>
+  </ui-gmap-google-map>
+  <div class="map-center"></div>
+  <!-- <h1>{{map.center.longitude}}</h1> -->
+  <!-- <h1>{{map.center.latitude}}</h1> -->
+</div>
 
 <!-- FOOTER -->
 <div class="footerDiv">
@@ -35,9 +36,4 @@
       <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">No</a>
     </div>
   </div>
-
-
 </div>
-
-
-
