@@ -4,7 +4,19 @@
   </zf-panel>
 </div>
 
-<div> <!-- map area --> </div>
+<!-- MAP -->
+<div class="angular-google-map-container">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom">
+    <!-- <ui-gmap-markers models="markers"
+                     coords="'location'"
+                     idkey="'_id'"
+                     doRebuildAll="true">
+    </ui-gmap-markers> -->
+  </ui-gmap-google-map>
+  <div class="map-center"></div>
+  <!-- <h1>{{map.center.longitude}}</h1> -->
+  <!-- <h1>{{map.center.latitude}}</h1> -->
+</div>
 
 <div class="footerDiv">
   <h1>GAME SESSION</h1>
