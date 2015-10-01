@@ -57,7 +57,7 @@ angular
     function setMarker () {
 
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-
+      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
       GameCollection.update({_id: gameID},
         {$push:{markers:
           {
