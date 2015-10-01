@@ -112,7 +112,7 @@ angular
     if(navigator.geolocation){
       var options = {
         enableHighAccuracy: true,
-        timeout: 3000,
+        // timeout: 3000,
         maximumAge: 0
       };
       var pos = {
