@@ -1,0 +1,14 @@
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: black;
+}
+
+.static {
+  background-color: yellow;
+}
+
+.dynamic {
+  background-color: red;
+}

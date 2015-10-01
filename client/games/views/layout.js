@@ -29,5 +29,4 @@ if (Meteor.isClient) {
       console.log(exception);
     }
   });
-
 }

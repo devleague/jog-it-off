@@ -26,6 +26,7 @@
   <div class="setPointOverlay" ng-show="isSetPoint">
     <h1> {{ $root.currentUser.profile.pointNum }} points remaining </h1>
     <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum">SET POINT</button>
+
     <h1 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h1>
   </div>
 

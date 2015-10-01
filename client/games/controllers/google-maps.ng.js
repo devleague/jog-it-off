@@ -1,5 +1,6 @@
  angular.module('jog-it-off')
   .controller('mapController', function ($scope, uiGmapGoogleMapApi, $interval, $window) {
+
     $scope.showMap = true;
     $scope.markers = [];
     $scope.setMarker = setMarker;

@@ -12,14 +12,20 @@
                      idkey="'_id'"
                      doRebuildAll="true">
     </ui-gmap-markers>
+  <ui-gmap-google-map center="map.center" zoom="map.zoom">
+    <!-- <ui-gmap-markers models="markers"
+                     coords="'location'"
+                     idkey="'_id'"
+                     doRebuildAll="true">
+    </ui-gmap-markers> -->
   </ui-gmap-google-map>
   <div class="map-center"></div>
   <!-- <h1>{{map.center.longitude}}</h1> -->
   <!-- <h1>{{map.center.latitude}}</h1> -->
 </div>
 
-
 <div class="footerDiv">
   <h1>GAME SESSION</h1>
+  <button id="get_point" name='button' ng-click="pickUpMarker()" ng-hide="$root.currentUser.profile.pointNum">GET POINT</button>
   <h2> <!-- need to create a value for collected points --> points collected </h2>
 </div>
