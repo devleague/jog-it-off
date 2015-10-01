@@ -60,6 +60,7 @@ angular
     }
 
 
+
     function setPlayerPosition (position) {
       $scope.showMap = false;
       $scope.map.center.longitude = position.coords.longitude;
