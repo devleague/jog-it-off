@@ -39,6 +39,7 @@ angular
     $scope.showMap = true;
     $scope.markers = [];
     $scope.circles = [];
+    circle = $scope.circle;
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 

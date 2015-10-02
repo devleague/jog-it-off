@@ -1,6 +1,6 @@
 angular
     .module('jog-it-off')
-    .controller('gameSession', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
+    .controller('gameSession', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $window, $stateParams) {
 
       var clientID = Meteor.userId();
       gameID = $stateParams.gameID;
@@ -10,6 +10,7 @@ angular
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
+      //TIMER-----------------
       $scope.gameTimer = $scope.gameObj.gameTimer;
       var num = $scope.gameTimer;
       $scope.hour = 0;
@@ -31,39 +32,114 @@ angular
 
       }, 1000, $scope.plotTimer + 1);
 
+
+
+      //MAP---------------------
+      $scope.markers = $scope.gameObj.markers;
+      $scope.showMap = true;
+      $scope.circles = circle;
+      var navigator = $window.navigator;
+
+      //   //creating geofence
+      // circle = $scope.map.drawCircle({
+      //   lat: lattitude,
+      //   lng: longitude,
+      //   strokeColor: '#fff',
+      //   strokeOpacity: 1,
+      //   strokeWeight: 3,
+      //   fillColor: 'rgba(75,255,0,0.2)',
+      //   fillOpacity: 0.4,
+      //   radius: 3000,
+      //   editable: true,
+      // });
+
+      function setPlayerPosition (position) {
+        $scope.showMap = false;
+        $scope.map.center.longitude = position.coords.longitude;
+        $scope.map.center.latitude = position.coords.latitude;
+        $scope.showMap = true;
+      }
+
+      if(navigator.geolocation){
+        var options = {
+          enableHighAccuracy: true,
+          // timeout: 3000,
+          maximumAge: 0
+        };
+        var pos = {
+          lat: null,
+          lng: null
+        };
+
+        var stop = $interval(function () {
+
+          navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
+        }, 5000);
+
+      } else {
+        handleLocationError(false, $scope.map, map.getCenter());
+      }
+
       $scope.map = {
         center: {
           latitude: $scope.latCord || 21.315603,
           longitude: $scope.lngCord || -157.858093
         },
-        // refresh: $scope.showMap,
-        zoom: 20
-        // events:{
-        //   click: function (mapModel, eventName, originalEventArgs) { //added new attribute
-        //     if (!$scope.map){
-        //       return;
-        //     }
+        refresh: $scope.showMap,
+        zoom: 20,
+        events:{
+          click: function (mapModel, eventName, originalEventArgs) { //added new attribute
+            if (!$scope.map){
+              return;
+            }
 
-        //     if (!$scope.map.location){
-        //       $scope.map.location = {};
-        //     }
+            if (!$scope.map.location){
+              $scope.map.location = {};
+            }
 
-        //     $scope.map.location.latitude = latLng.lat();
-        //     $scope.map.location.longitude = latLng.lng();
-        //     //scope apply required because this event handler is outside of the angular domain
-        //     $scope.$apply();
-        //   }
-        // },
-        // marker: {
-        //   options: { draggable: false },
-        //   events: {
+            $scope.map.location.latitude = latLng.lat();
+            $scope.map.location.longitude = latLng.lng();
+            //scope apply required because this event handler is outside of the angular domain
+            $scope.$apply();
+          }
+        },
+        marker: {
+          options: { draggable: false },
+          events: {
 
-        //   }
-        // }
+          }
+        }
       };
+
+      function rad(x) {return x*Math.PI/180;}
+      function find_closest_marker(event){
+        //assuming that event represents current position
+        var lat = event.latitude;
+        var lng = event.longitude;
+        var R = 6371; //radius of earth meteric
+        var distances = [];
+        var closest = -1;
+        for ( var i = 0; i < $scope.markers.length; i++) {
+          var mlat = $scope.markers[i].location.lat;
+          var mlng = $scope.markers[i].location.lng;
+          var dLat  = rad(mlat - lat);
+          var dLong = rad(mlng - lng);
+          var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          var d = R * c;
+          distances[i] = d;
+          if ( closest == -1 || d < distances[closest] ) {
+            closest = i;
+          }
+        }
+        //now we validate if closet is within 3m from
+        alert($scope.markers[closest]._id);
+      }
 
       function pickUpMarker () {
         // are you near a marker?
+        find_closest_marker($scope.map.center);
 
         // is it a point type?
           //
