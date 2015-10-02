@@ -10,4 +10,14 @@ angular
         $state.go('main');
       }
 
-       });
+      // $scope.winner = winner;
+
+      // function winner () {
+      //   for(var i = 0; i < gameObj.players.length; i++) {
+      //     //sort out per
+      //   }
+      // }
+
+
+
+});

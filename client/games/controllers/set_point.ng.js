@@ -19,7 +19,7 @@ angular
     $scope.min = 0;
     $scope.sec = 0;
 
-    $interval(function() {
+    var intervalPromise = $interval(function() {
       $scope.hour = parseInt( $scope.gameObj.plotTimer / 3600 );
       $scope.min = parseInt( ($scope.gameObj.plotTimer - ($scope.hour * 3600)) / 60 );
       $scope.sec = parseInt( $scope.gameObj.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
@@ -29,11 +29,10 @@ angular
       }
 
       if($scope.gameObj.plotTimer <= 0) {
-        $state.go('game.game_countdown');
+        $state.go('game.game_countdown', $interval.cancel(intervalPromise));
       }
 
     }, 1000, $scope.plotTimer + 1);
-
 
     //MAP------------------
     $scope.showMap = true;

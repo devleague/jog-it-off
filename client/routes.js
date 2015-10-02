@@ -74,7 +74,7 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         controller: 'gameSession',
       })
       .state('game.final' , {
-        // url: '/final_score',
+        url: '/final_score',
         templateUrl: 'client/games/views/final_score.ng.html',
         controller: 'finalScore'
       })

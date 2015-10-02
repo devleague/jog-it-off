@@ -16,7 +16,7 @@ angular
       $scope.min = 0;
       $scope.sec = 0;
 
-      $interval(function() {
+      var intervalPromise = $interval(function() {
         $scope.hour = parseInt( $scope.gameObj.gameTimer / 3600 );
         $scope.min = parseInt( ($scope.gameObj.gameTimer - ($scope.hour * 3600)) / 60 );
         $scope.sec = parseInt( $scope.gameObj.gameTimer - ($scope.hour * 3600) - ($scope.min * 60) );
@@ -26,7 +26,7 @@ angular
         }
 
         if($scope.gameObj.gameTimer <= 0) {
-          $state.go('game.final');
+          $state.go('game.final', $interval.cancel(intervalPromise));
         }
 
       }, 1000, $scope.plotTimer + 1);
