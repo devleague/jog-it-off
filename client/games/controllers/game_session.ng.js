@@ -1,6 +1,6 @@
 angular
     .module('jog-it-off')
-    .controller('gameSession', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $window, $stateParams) {
+    .controller('gameSession', function ($scope, uiGmapGoogleMapApi, $interval, $state, $meteor, $rootScope, JogService, $window, $stateParams) {
 
       var clientID = Meteor.userId();
       gameID = $stateParams.gameID;
@@ -135,11 +135,28 @@ angular
         }
         //now we validate if closet is within 3m from
         alert($scope.markers[closest]._id);
+
+        uiGmapGoogleMapApi.then(function(maps) {
+          var pointA = {
+            lat: $scope.map.center.latitude,
+            lng: $scope.map.center.longitude
+          };
+          var pointB = {
+            lat: $scope.markers[closest].location.latitude,
+            lng: $scope.markers[closest].location.longitude
+          };
+          console.log(pointA, pointB);
+          var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+          alert(distance);
+        });
+
+
       }
 
       function pickUpMarker () {
         // are you near a marker?
         find_closest_marker($scope.map.center);
+
 
         // is it a point type?
           //
