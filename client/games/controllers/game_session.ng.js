@@ -8,7 +8,7 @@ angular
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
 
-
+      Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
       $scope.gameTimer = $scope.gameObj.gameTimer;
       var num = $scope.gameTimer;
@@ -63,6 +63,14 @@ angular
       };
 
       function pickUpMarker () {
+        // are you near a marker?
+
+        // is it a point type?
+          //
+        // did you not drop this marker?
+        // do you not already have this markerID?
+        //then push markerID into coin array
+
         alert("picking up marker");
       }
     });
