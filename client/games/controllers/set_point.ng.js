@@ -133,8 +133,8 @@ angular
 
     $scope.map = {
       center: {
-        latitude: $scope.latCord || 21.315603,
-        longitude: $scope.lngCord || -157.858093
+        latitude: $scope.latCord,
+        longitude: $scope.lngCord
       },
       refresh: $scope.showMap,
       zoom: 20,

@@ -137,14 +137,6 @@ angular
         alert($scope.markers[closest]._id);
 
         uiGmapGoogleMapApi.then(function(maps) {
-          // var pointA = {
-          //   lat: $scope.map.center.latitude,
-          //   lng: $scope.map.center.longitude
-          // };
-          // var pointB = {
-          //   lat: $scope.markers[closest].location.latitude,
-          //   lng: $scope.markers[closest].location.longitude
-          // };
           var pointA = new maps.LatLng($scope.map.center.latitude, $scope.map.center.longitude);
           var pointB = new maps.LatLng($scope.markers[closest].location.latitude, $scope.markers[closest].location.longitude);
           console.log(pointA, pointB);
