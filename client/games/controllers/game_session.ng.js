@@ -26,7 +26,7 @@ angular
         }
 
         if($scope.gameObj.gameTimer <= 0) {
-          // $state.go('game.final');
+          $state.go('game.final');
         }
 
       }, 1000, $scope.plotTimer + 1);
