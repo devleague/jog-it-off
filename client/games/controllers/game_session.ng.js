@@ -160,8 +160,10 @@ angular
               return;
             }
 
+            console.log("indexOf");
+            console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
             // do you not already have this markerID?
-            if (Meteor.user().profile.coins.indexOf()) {
+            if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) === -1) {
             //then push markerID into coin array
               Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
               alert("You got a coin!");
