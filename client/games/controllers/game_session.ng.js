@@ -134,30 +134,50 @@ angular
           }
         }
         //now we validate if closet is within 3m from
-        alert($scope.markers[closest]._id);
+        var distance;
 
         uiGmapGoogleMapApi.then(function(maps) {
           var pointA = new maps.LatLng($scope.map.center.latitude, $scope.map.center.longitude);
           var pointB = new maps.LatLng($scope.markers[closest].location.latitude, $scope.markers[closest].location.longitude);
           console.log(pointA, pointB);
           var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
-          alert(distance);
+          alert("this is the distance" + distance);
+
+          if (distance <= 5){
+
+            console.log('$scope.markers[closest]');
+            console.log($scope.markers[closest]);
+
+            // is it a point type?
+            if ($scope.markers[closest].type !== "point") {
+              alert("This area is not a point marker location.");
+              return;
+            }
+
+            // did you not drop this marker?
+            if ( $scope.markers[closest].userID === Meteor.userId() ) {
+              alert("You cannot pick up your own point locations!");
+              return;
+            }
+
+            // do you not already have this markerID?
+            if (Meteor.user().profile.coins.indexOf()) {
+            //then push markerID into coin array
+              Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
+              alert("You got a coin!");
+            }
+
+          } else {
+            alert("You are not close enough to a point marker.");
+              return;
+          }
+
         });
-
-
       }
 
       function pickUpMarker () {
         // are you near a marker?
         find_closest_marker($scope.map.center);
 
-
-        // is it a point type?
-          //
-        // did you not drop this marker?
-        // do you not already have this markerID?
-        //then push markerID into coin array
-
-        alert("picking up marker");
       }
     });

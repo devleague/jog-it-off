@@ -106,8 +106,8 @@ angular
 
     function setPlayerPosition (position) {
       $scope.showMap = false;
-      $scope.map.center.longitude = position.coords.longitude;
       $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
       $scope.showMap = true;
     }
 
@@ -133,8 +133,10 @@ angular
 
     $scope.map = {
       center: {
-        latitude: $scope.latCord,
-        longitude: $scope.lngCord
+        latitude: $scope.latCord || 21.315603,
+        longitude: $scope.lngCord || -157.858093
+        // latitude: $scope.latCord,
+        // longitude: $scope.lngCord
       },
       refresh: $scope.showMap,
       zoom: 20,
@@ -162,7 +164,8 @@ angular
       }
     };
 
-
+    console.log('center');
+    console.log($scope.map.center);
 
 
 

@@ -8,6 +8,7 @@
 
 <!-- MAP -->
  <div class="angular-google-map-container">
+<span ng-if="map !== undefined">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" ng-if="showMap">
       <ui-gmap-markers models="markers"
                        coords="'location'"
@@ -30,9 +31,12 @@
 
     </ui-gmap-google-map>
     <div class="map-center"></div>
+
     <!-- <h1>{{map.center.longitude}}</h1> -->
     <!-- <h1>{{map.center.latitude}}</h1> -->
+  </span>
   </div>
+
 
 <!-- FOOTER -->
 <div class="footerDiv">
