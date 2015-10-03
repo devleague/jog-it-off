@@ -163,11 +163,14 @@ angular
             console.log("indexOf");
             console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
             // do you not already have this markerID?
-            if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) === -1) {
-            //then push markerID into coin array
-              Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
-              alert("You got a coin!");
+            if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
+              alert("You already have this point marker location!");
+              return;
             }
+
+            //if all good, push markerID into user's coins array
+            Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
+            alert("You got a coin!");
 
           } else {
             alert("You are not close enough to a point marker.");
