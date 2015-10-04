@@ -162,7 +162,7 @@ angular
 
             console.log("indexOf");
             console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
-            // do you not already have this markerID?
+            //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
               alert("You already have this point marker location!");
               return;
