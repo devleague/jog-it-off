@@ -4,6 +4,7 @@ angular
 
       var clientID = Meteor.userId();
       gameID = $stateParams.gameID;
+      $scope.finishButton = finishButton;
       $scope.isHost = JogService.isHost($scope.gameID);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
@@ -148,6 +149,8 @@ angular
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);
 
+            closestMarker = $scope.markers[closest];
+
             // is it a point type?
             if ($scope.markers[closest].type !== "point") {
               alert("This area is not a point marker location.");
@@ -185,4 +188,14 @@ angular
         find_closest_marker($scope.map.center);
 
       }
+
+      function finishButton () {
+        if(closestMarker.type === "homebase") {
+          Meteor.users.update({_id: Meteor.userId()}, {$set: { finish: Date.now()}});
+          alert("Good job!");
+        } else {
+          alert("Not near homebase!");
+        }
+      }
+
     });

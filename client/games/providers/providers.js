@@ -22,7 +22,8 @@
           plotTimer: plotTimer,
           gameTimer: gameTimer,
           players: [client],
-          allReady: false
+          allReady: false,
+          score: []
         };
 
 
@@ -86,12 +87,7 @@
       this.getGames = function () {
       };
 
-      // this.setPoint = function ($scope) {
-      //   var markerData = "markerData";
-      //   var clientID = Meteor.userId();
-      //   GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
-      //   Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
-      // };
+
 
     }]);
 })();

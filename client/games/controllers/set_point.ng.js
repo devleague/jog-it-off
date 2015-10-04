@@ -167,8 +167,16 @@ angular
     console.log($scope.map.center);
 
 
+    var homebase = {
+      _id: +(new Date()),
+      type: "homebase",
+      location: {
+        latitude: $scope.map.center.latitude,
+        longitude: $scope.map.center.longitude
+      }
+    };
 
-
+    GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
 
     // $scope.map.circle.bindTo('center', $scope.markers, 'position');
 
