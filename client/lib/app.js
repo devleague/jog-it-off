@@ -18,6 +18,7 @@ function onReady() {
   angular.bootstrap(document, ['jog-it-off']);
 }
 
+// NEEDED, DO NOT DELETE OR COMMENT OUT!!
 if (Meteor.isCordova)
   angular.element(document).on("deviceready", onReady);
 else

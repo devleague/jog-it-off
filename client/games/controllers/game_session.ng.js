@@ -144,12 +144,13 @@ angular
           var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
           alert("this is the distance" + distance);
 
+          closestMarker = $scope.markers[closest];
+
           if (distance <= 5){
 
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);
 
-            closestMarker = $scope.markers[closest];
 
             // is it a point type?
             if ($scope.markers[closest].type !== "point") {
@@ -190,8 +191,9 @@ angular
       }
 
       function finishButton () {
+        alert(closestMarker);
         if(closestMarker.type === "homebase") {
-          Meteor.users.update({_id: Meteor.userId()}, {$set: { finish: Date.now()}});
+          Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
           alert("Good job!");
         } else {
           alert("Not near homebase!");
