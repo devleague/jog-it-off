@@ -37,6 +37,8 @@ angular
     //MAP------------------
     $scope.showMap = true;
     $scope.markers = [];
+    $scope.circles = [];
+    circle = $scope.circle;
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 
@@ -54,9 +56,31 @@ angular
     // });
 
     function setMarker () {
-
+      var timestamp = +(new Date());
+      var center = {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude};
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
+      $scope.markers.push({_id: timestamp, location: center});
+      $scope.circles.push({
+      id: timestamp,
+      center: center,
+      radius: 3,
+      stroke: {
+        color: '#08B21F',
+        weight: 2,
+        opacity: 1
+      },
+      fill: {
+        color: '#08B21F',
+        opacity: 0.5
+      },
+      geodesic: false, // optional: defaults to false
+      draggable: false, // optional: defaults to false
+      clickable: false, // optional: defaults to true
+      editable: false, // optional: defaults to false
+      visible: true, // optional: defaults to true
+      events:{}
+    });
+
       GameCollection.update({_id: gameID},
         {$push:{markers:
           {
@@ -72,6 +96,8 @@ angular
         }}
       );
 
+
+
       Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
     }
 
@@ -79,15 +105,15 @@ angular
 
     function setPlayerPosition (position) {
       $scope.showMap = false;
-      $scope.map.center.longitude = position.coords.longitude;
       $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
       $scope.showMap = true;
     }
 
     if(navigator.geolocation){
       var options = {
         enableHighAccuracy: true,
-        timeout: 3000,
+        // timeout: 3000,
         maximumAge: 0
       };
       var pos = {
@@ -108,6 +134,8 @@ angular
       center: {
         latitude: $scope.latCord || 21.315603,
         longitude: $scope.lngCord || -157.858093
+        // latitude: $scope.latCord,
+        // longitude: $scope.lngCord
       },
       refresh: $scope.showMap,
       zoom: 20,
@@ -134,5 +162,14 @@ angular
         }
       }
     };
+
+    console.log('center');
+    console.log($scope.map.center);
+
+
+
+
+
+    // $scope.map.circle.bindTo('center', $scope.markers, 'position');
 
   });

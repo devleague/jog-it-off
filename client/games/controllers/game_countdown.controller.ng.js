@@ -6,7 +6,6 @@
       var num = 5;
 
       $interval(function() {
-          console.log($scope.countNum);
           num--;
           $scope.countNum = num;
           if($scope.countNum <= 0) {
