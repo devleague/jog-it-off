@@ -7,13 +7,27 @@
 <div class="space"></div>
 
 <div>
-  <h1>Winner: <!-- {{ finalScore }} --> !</h1>
-  <h1>Loser: <!-- insert loser value when created --> ...</h1>
+  <h1>Winner: {{winner[0]}} with {{ finalScore[0].length + 1 }} points!</h1>
+  <h1>Loser: {{loser[0]}} with {{ finalScore[0].length + 1 }} points  ...</h1>
 </div>
 
-<div>
-  <!-- insert player values when created from game session -->
-</div>
+
+<table style="width: 100%">
+  <thead>
+    <tr style="width: 33%">
+      <th align="center">RANK</th>
+      <th align="center">NAME</th>
+      <th align="center">COINS</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="score in finalScore">
+    <td align="center">{{ finalScore[0].length + 1 }} </td>
+    <td align="center">{{ finalScore[0][0] }}</td>
+    <td align="center">{{ finalScore[0][1] }}</td>
+  </tr>
+  </tbody>
+</table>
 
 <div class="footerDiv">
   <button id="playAgain" name='button' ng-click="returnMain()">Play Again?</button>

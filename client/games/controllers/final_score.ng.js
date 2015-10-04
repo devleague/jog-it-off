@@ -12,11 +12,48 @@ angular
 
       $scope.score = GameCollection.findOne({_id: gameID}, {fields: {score: 1}});
 
+      var score = GameCollection.findOne({ _id: gameID } , {fields: {score: 1}});
 
-      function returnMain () {
-        console.log('return me to main page');
-        $state.go('main');
+      $scope.winner = $scope.score.score[0];
+
+      $scope.loser = $scope.score.score[$scope.score.score.length -1];
+
+      // SORT ----------------------------------------------->
+
+      $scope.finalScore = [];
+
+      function sortScore (a, b) { return b[1]-a[1]; }
+      function sortTime (a, b) { return a[2]-b[2]; }
+      function pushFinal (e) {$scope.finalScore.push(e);}
+
+      score.score.sort(sortScore);
+
+      for(var i=0; i<score.score.length;) {
+        var tempArr = [];
+        tempArr.push(score.score[i]);
+
+        for(var k=1; k<score.score.length; k++) {
+         if (score.score[i][1] === score.score[k][1]) {
+           tempArr.push(score.score[k]);
+           score.score.splice(k, 1);
+           k--;
+         }
+        }
+        score.score.splice(i, 1);
+
+        tempArr.sort(sortTime);
+        tempArr.forEach(pushFinal);
+
       }
+
+      console.log($scope.finalScore);
+
+      // -------------------------------------------------------
+
+            function returnMain () {
+              console.log('return me to main page');
+              $state.go('main');
+            }
 
 });
 

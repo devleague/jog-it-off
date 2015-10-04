@@ -27,11 +27,13 @@ angular
         GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
         }
 
-        if($scope.gameObj.gameTimer <= 0) {
+        if($scope.gameObj.gameTimer < 0) {
           $state.go('game.final', $interval.cancel(intervalPromise));
         }
+        console.log($scope.gameTimer, "wow I'm a clock");
 
       }, 1000, $scope.plotTimer + 1);
+
 
 
 

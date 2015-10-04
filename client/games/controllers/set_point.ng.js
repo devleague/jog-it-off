@@ -28,7 +28,7 @@ angular
       GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
       }
 
-      if($scope.gameObj.plotTimer <= 0) {
+      if($scope.gameObj.plotTimer < 0) {
         $state.go('game.game_countdown', $interval.cancel(intervalPromise));
       }
 

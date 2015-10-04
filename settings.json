@@ -1,5 +1,8 @@
 {
-  "public": {
-
+  "public": { //fill me out!!! >:D MUWAHAHAHAHAHA localhost:80 refused
+    //test mups deploy in project root
+    //permissions issue on server on port 80
+    //or set settings here... check on mongoDB
+    //given sudoers no password
   }
 }
