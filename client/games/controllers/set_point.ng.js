@@ -14,24 +14,14 @@ angular
 
     //TIMER--------------
     $scope.plotTimer = $scope.gameObj.plotTimer;
-    var num = $scope.plotTimer;
-    $scope.hour = 0;
-    $scope.min = 0;
-    $scope.sec = 0;
 
     var intervalPromise = $interval(function() {
-      $scope.hour = parseInt( $scope.gameObj.plotTimer / 3600 );
-      $scope.min = parseInt( ($scope.gameObj.plotTimer - ($scope.hour * 3600)) / 60 );
-      $scope.sec = parseInt( $scope.gameObj.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
-
       if($scope.isHost) {
       GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
       }
-
-      if($scope.gameObj.plotTimer < 0) {
+      if($scope.gameObj.plotTimer <= 0) {
         $state.go('game.game_countdown', $interval.cancel(intervalPromise));
       }
-
     }, 1000, $scope.plotTimer + 1);
 
     //MAP------------------

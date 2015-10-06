@@ -2,8 +2,11 @@
 <!-- <div class="grid-block"> -->
 <div class="timer_panel">
   <zf-panel class="panel-fixed" id="fixed-panel">
-    <h1> {{hour}} : {{min}} : {{sec}} </h1>
+  <b class="timer"> {{ gameObj.plotTimer | secondsToDateTime | date:'HH:mm:ss' }}</b>
   </zf-panel>
+</div>
+
+<div>
 </div>
 
 <!-- MAP -->
