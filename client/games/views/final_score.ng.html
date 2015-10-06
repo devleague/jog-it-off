@@ -7,8 +7,8 @@
 <div class="space"></div>
 
 <div>
-  <h1>Winner: {{winner[0]}} with {{ finalScore[0].length + 1 }} points!</h1>
-  <h1>Loser: {{loser[0]}} with {{ finalScore[0].length + 1 }} points  ...</h1>
+  <h1>Winner: {{winner[0]}} with {{ winner[1] }} points!</h1>
+  <h1>Loser: {{loser[0]}} with {{ loser[1]}} points  ...</h1>
 </div>
 
 
@@ -22,9 +22,9 @@
   </thead>
   <tbody>
   <tr ng-repeat="score in finalScore">
-    <td align="center">{{ finalScore[0].length + 1 }} </td>
-    <td align="center">{{ finalScore[0][0] }}</td>
-    <td align="center">{{ finalScore[0][1] }}</td>
+    <td align="center">{{ score[3] }} </td>
+    <td align="center">{{ score[0] }}</td>
+    <td align="center">{{ score[1] }}</td>
   </tr>
   </tbody>
 </table>

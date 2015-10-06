@@ -20,10 +20,7 @@ angular
       if($scope.gameObj.gameTimer <= 0) {
         $state.go('game.final', $interval.cancel(intervalPromise));
       }
-    }, 1000, $scope.gameTimer + 1);
-
-
-
+    }, 1000);
 
       //MAP---------------------
       $scope.markers = $scope.gameObj.markers;
@@ -183,6 +180,7 @@ angular
       function finishButton () {
         alert(closestMarker);
         if(closestMarker.type === "homebase") {
+          Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
           Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
           alert("Good job!");
         } else {
