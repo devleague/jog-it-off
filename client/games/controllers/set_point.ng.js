@@ -28,7 +28,7 @@ angular
       GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
       }
 
-      if($scope.gameObj.plotTimer < 0) {
+      if($scope.gameObj.plotTimer <= 0) {
         $state.go('game.game_countdown', $interval.cancel(intervalPromise));
       }
 
@@ -167,16 +167,8 @@ angular
     console.log($scope.map.center);
 
 
-    var homebase = {
-      _id: +(new Date()),
-      type: "homebase",
-      location: {
-        latitude: $scope.map.center.latitude,
-        longitude: $scope.map.center.longitude
-      }
-    };
 
-    GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
+
 
     // $scope.map.circle.bindTo('center', $scope.markers, 'position');
 
