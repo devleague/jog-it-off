@@ -6,12 +6,6 @@
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 
-    function setMarker () {
-      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
-      console.log($scope.markers);
-    }
-
-
     function setPlayerPosition (position) {
 
       $scope.showMap = false;
@@ -23,7 +17,7 @@
     if(navigator.geolocation){
       var options = {
         enableHighAccuracy: true,
-        timeout: 3000,
+        // timeout: 0,
         maximumAge: 0
       };
       var pos = {
@@ -34,7 +28,7 @@
       var stop = $interval(function () {
 
         navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-      }, 5000);
+      }, 1000);
 
     } else {
       handleLocationError(false, $scope.map, map.getCenter());
@@ -69,4 +63,8 @@
         }
       }
     };
+    function setMarker () {
+      $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
+      console.log($scope.markers);
+    }
   });

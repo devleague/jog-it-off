@@ -2,38 +2,12 @@ angular
   .module('jog-it-off')
   .controller('setPoint', function ($scope, uiGmapGoogleMapApi, $window, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
 
-    var clientID = Meteor.userId();
-    gameID = $stateParams.gameID;
-    $scope.isSetPoint = true;
-    $scope.isHost = JogService.isHost($scope.gameID);
-    // $scope.setPoint = JogService.setPoint;
-    $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-    console.log($scope.gameObj.pointNum);
-
-    Meteor.users.update({_id: clientID}, {$set: {"profile.pointNum": $scope.gameObj.pointNum}});
-
-    //TIMER--------------
-    $scope.plotTimer = $scope.gameObj.plotTimer;
-    var num = $scope.plotTimer;
-    $scope.hour = 0;
-    $scope.min = 0;
-    $scope.sec = 0;
-
-    $interval(function() {
-      $scope.hour = parseInt( $scope.gameObj.plotTimer / 3600 );
-      $scope.min = parseInt( ($scope.gameObj.plotTimer - ($scope.hour * 3600)) / 60 );
-      $scope.sec = parseInt( $scope.gameObj.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
-
-      if($scope.isHost) {
-      GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
-      }
-
-      if($scope.gameObj.plotTimer <= 0) {
-        $state.go('game.game_countdown');
-      }
-
-    }, 1000, $scope.plotTimer + 1);
-
+    function setPlayerPosition (position) {
+      $scope.showMap = false;
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+      $scope.showMap = true;
+    }
 
     //MAP------------------
     $scope.showMap = true;
@@ -42,19 +16,6 @@ angular
     circle = $scope.circle;
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
-
-    //   //creating geofence
-    // circle = $scope.map.drawCircle({
-    //   lat: lattitude,
-    //   lng: longitude,
-    //   strokeColor: '#fff',
-    //   strokeOpacity: 1,
-    //   strokeWeight: 3,
-    //   fillColor: 'rgba(75,255,0,0.2)',
-    //   fillOpacity: 0.4,
-    //   radius: 3000,
-    //   editable: true,
-    // });
 
     function setMarker () {
       var timestamp = +(new Date());
@@ -102,19 +63,10 @@ angular
       Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
     }
 
-
-
-    function setPlayerPosition (position) {
-      $scope.showMap = false;
-      $scope.map.center.latitude = position.coords.latitude;
-      $scope.map.center.longitude = position.coords.longitude;
-      $scope.showMap = true;
-    }
-
     if(navigator.geolocation){
       var options = {
         enableHighAccuracy: true,
-        // timeout: 3000,
+        // timeout: 0,
         maximumAge: 0
       };
       var pos = {
@@ -125,7 +77,7 @@ angular
       var stop = $interval(function () {
 
         navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-      }, 5000);
+      }, 1000);
 
     } else {
       handleLocationError(false, $scope.map, map.getCenter());
@@ -133,10 +85,10 @@ angular
 
     $scope.map = {
       center: {
-        latitude: $scope.latCord || 21.315603,
-        longitude: $scope.lngCord || -157.858093
-        // latitude: $scope.latCord,
-        // longitude: $scope.lngCord
+        // latitude: $scope.latCord || 21.315603,
+        // longitude: $scope.lngCord || -157.858093
+        latitude: $scope.map.location.latitude,
+        longitude: $scope.map.location.longitude
       },
       refresh: $scope.showMap,
       zoom: 20,
@@ -169,8 +121,40 @@ angular
 
 
 
-
-
     // $scope.map.circle.bindTo('center', $scope.markers, 'position');
+
+
+    var clientID = Meteor.userId();
+    gameID = $stateParams.gameID;
+    $scope.isSetPoint = true;
+    $scope.isHost = JogService.isHost($scope.gameID);
+    // $scope.setPoint = JogService.setPoint;
+    $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
+    console.log($scope.gameObj.pointNum);
+
+    Meteor.users.update({_id: clientID}, {$set: {"profile.pointNum": $scope.gameObj.pointNum}});
+
+    //TIMER--------------
+    $scope.plotTimer = $scope.gameObj.plotTimer;
+    var num = $scope.plotTimer;
+    $scope.hour = 0;
+    $scope.min = 0;
+    $scope.sec = 0;
+
+    $interval(function() {
+      $scope.hour = parseInt( $scope.gameObj.plotTimer / 3600 );
+      $scope.min = parseInt( ($scope.gameObj.plotTimer - ($scope.hour * 3600)) / 60 );
+      $scope.sec = parseInt( $scope.gameObj.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
+
+      if($scope.isHost) {
+      GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
+      }
+
+      if($scope.gameObj.plotTimer <= 0) {
+        $state.go('game.game_countdown');
+      }
+
+    }, 1000, $scope.plotTimer + 1);
+
 
   });
