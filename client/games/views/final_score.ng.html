@@ -7,7 +7,7 @@
 <div class="space"></div>
 
 <div>
-  <h1>Winner: <!-- insert winner value when created --> !</h1>
+  <h1>Winner: <!-- {{ finalScore }} --> !</h1>
   <h1>Loser: <!-- insert loser value when created --> ...</h1>
 </div>
 
@@ -16,5 +16,5 @@
 </div>
 
 <div class="footerDiv">
-  <button id="playAgain" name='button'>Play Again?</button>
+  <button id="playAgain" name='button' ng-click="returnMain()">Play Again?</button>
 </div>

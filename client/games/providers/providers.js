@@ -78,13 +78,6 @@
         }
       };
 
-      // this.startGame = function ($scope) {
-      //   console.log('allReady set to true');
-      //   console.log("$scope.allReady: " + $scope.allReady);
-      //   $scope.allReady = true;
-      //   // state.go('game.plot_countdown');
-      // };
-
       this.roomPlayers = function (gameID){
         var obj = GameCollection.findOne({_id: gameID});
         return obj.players;
@@ -93,12 +86,12 @@
       this.getGames = function () {
       };
 
-      this.setPoint = function ($scope) {
-        var markerData = "markerData";
-        var clientID = Meteor.userId();
-        GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
-        Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
-      };
+      // this.setPoint = function ($scope) {
+      //   var markerData = "markerData";
+      //   var clientID = Meteor.userId();
+      //   GameCollection.update({_id: gameID}, {$push:{markers: markerData}});
+      //   Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+      // };
 
     }]);
 })();

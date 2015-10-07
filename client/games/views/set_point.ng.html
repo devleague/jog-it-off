@@ -1,27 +1,58 @@
-<div class="grid-block">
+<!-- TIMER -->
+<!-- <div class="grid-block"> -->
+<div class="timer_panel">
   <zf-panel class="panel-fixed" id="fixed-panel">
     <h1> {{hour}} : {{min}} : {{sec}} </h1>
   </zf-panel>
 </div>
 
-<div> <!-- map area --> </div>
+<!-- MAP -->
+ <div class="angular-google-map-container">
+<span ng-if="map !== undefined">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" ng-if="showMap">
+      <ui-gmap-markers models="markers"
+                       coords="'location'"
+                       idkey="'_id'"
+                       doRebuildAll="true">
+      </ui-gmap-markers>
 
+      <ui-gmap-circle
+        ng-repeat="circle in circles"
+        center='circle.center'
+        radius='circle.radius'
+        fill='circle.fill'
+        stroke='circle.stroke'
+        clickable='circle.clickable'
+        draggable='circle.draggable'
+        editable='circle.editable'
+        visible='circle.visible'
+        events='circle.events'>
+      </ui-gmap-circle>
+
+    </ui-gmap-google-map>
+    <div class="map-center"></div>
+
+    <!-- <h1>{{map.center.longitude}}</h1> -->
+    <!-- <h1>{{map.center.latitude}}</h1> -->
+  </span>
+  </div>
+
+
+<!-- FOOTER -->
 <div class="footerDiv">
 
   <div class="setPointOverlay" ng-show="isSetPoint">
-    <h1> {{ pointNum }} points remaining </h1>
-    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint">SET POINT</button>
+    <h1> {{ $root.currentUser.profile.pointNum }} points remaining </h1>
+    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum">SET POINT</button>
+
+    <h1 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h1>
   </div>
 
   <div class="confirmPointOverlay" ng-show="!isSetPoint">
     <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
-      <h4>Yo, do you <em>really</em> want to do this?</h4>
-      <a zf-close="" class="alert button">Yeah</a>
-      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">Nah</a>
+      <h4>Are you sure?</h4>
+      <a zf-close="" class="alert button" ng-click="setMarker(); isSetPoint = !isSetPoint">Yes</a>
+      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">No</a>
     </div>
   </div>
-
 </div>
-
-
-

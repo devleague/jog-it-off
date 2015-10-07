@@ -6,6 +6,6 @@
       $scope.gameID = gameID;
       $scope.gameCollection = $meteor.collection(GameCollection);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-      console.log("$scope.gameObj:" + $scope.gameObj);
       $scope.allReady = $scope.gameObj.allReady;
+
   });
