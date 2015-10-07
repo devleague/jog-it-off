@@ -24,6 +24,7 @@ angular
 
       //MAP---------------------
       $scope.markers = $scope.gameObj.markers;
+      console.log('$scope.markers', $scope.markers);
       $scope.showMap = true;
       $scope.circles = circle;
       var navigator = $window.navigator;
@@ -133,7 +134,7 @@ angular
 
           closestMarker = $scope.markers[closest];
 
-          if (distance <= 5){
+          if (distance <= 5) {
 
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);
@@ -151,8 +152,6 @@ angular
               return;
             }
 
-            console.log("indexOf");
-            console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
             //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
               alert("You already have this point marker location!");
@@ -184,7 +183,7 @@ angular
           Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
           alert("Good job!");
         } else {
-          alert("Not near homebase!");
+          alert("You are not near enough to homebase!");
         }
       }
 
