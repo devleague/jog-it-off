@@ -54,7 +54,7 @@ angular
       handleLocationError(false, $scope.map, map.getCenter());
     }
 
-    // $scope.homeExist = false;
+     $scope.homeExist = true;
 
     function setPlayerPosition (position) {
       $scope.showMap = false;
@@ -93,21 +93,21 @@ angular
       $scope.map.center.longitude = position.coords.longitude;
       $scope.showMap = true;
 
-      // $scope.homeExist = true;
 
-      // $scope.$watch("homeExist", function(newVal, oldVal ) {
-      //     var homebase = {
-      //       _id: +(new Date()),
-      //       type: "homebase",
-      //       location: {
-      //         latitude: $scope.map.center.latitude,
-      //         longitude: $scope.map.center.longitude
-      //       }
-      //     };
+      if ($scope.homeExist) {
+          var homebase = {
+            _id: +(new Date()),
+            type: "homebase",
+            location: {
+              latitude: $scope.map.center.latitude,
+              longitude: $scope.map.center.longitude
+            }
+          };
 
-      //   GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
-      // });
+        GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
+      }
 
+      $scope.homeExist = false;
     }
 
 
