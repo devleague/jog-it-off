@@ -11,6 +11,7 @@ angular
     Meteor.users.update({_id: clientID}, {$set: {"profile.pointNum": $scope.gameObj.pointNum}});
 
     //TIMER--------------
+    $scope.startPlotTimer = true;
     $scope.plotTimer = $scope.gameObj.plotTimer;
     var intervalPromise = $interval(function() {
       if($scope.isHost) {
@@ -21,6 +22,7 @@ angular
       }
     }, 1000);
 
+
     //MAP------------------
     $scope.showMap = true;
     $scope.markers = [];
@@ -29,20 +31,88 @@ angular
     $scope.setMarker = setMarker;
     var navigator = $window.navigator;
 
-    //   //creating geofence
-    // circle = $scope.map.drawCircle({
-    //   lat: lattitude,
-    //   lng: longitude,
-    //   strokeColor: '#fff',
-    //   strokeOpacity: 1,
-    //   strokeWeight: 3,
-    //   fillColor: 'rgba(75,255,0,0.2)',
-    //   fillOpacity: 0.4,
-    //   radius: 3000,
-    //   editable: true,
-    // });
+    if(navigator.geolocation){
+      var options = {
+        enableHighAccuracy: true,
+        // timeout: 3000,
+        maximumAge: 0
+      };
+      var pos = {
+        lat: null,
+        lng: null
+      };
 
-    function setMarker () {
+
+
+    console.log('navigator.geolocation', navigator.geolocation);
+
+      var stop = $interval(function () {
+        navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
+      }, 1000);
+
+    } else {
+      handleLocationError(false, $scope.map, map.getCenter());
+    }
+
+    // $scope.homeExist = false;
+
+    function setPlayerPosition (position) {
+      $scope.showMap = false;
+
+      $scope.map = {
+        center: {
+          latitude: null,
+          longitude: null
+        },
+        refresh: $scope.showMap,
+        zoom: 20,
+        events:{
+          click: function (mapModel, eventName, originalEventArgs) { //added new attribute
+            if (!$scope.map){
+              return;
+            }
+
+            if (!$scope.map.location){
+              $scope.map.location = {};
+            }
+
+            $scope.map.location.latitude = latLng.lat();
+            $scope.map.location.longitude = latLng.lng();
+            //scope apply required because this event handler is outside of the angular domain
+            $scope.$apply();
+          }
+        },
+        marker: {
+          options: { draggable: false },
+          events: {}
+        }
+
+      };
+
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+      $scope.showMap = true;
+
+      // $scope.homeExist = true;
+
+      // $scope.$watch("homeExist", function(newVal, oldVal ) {
+      //     var homebase = {
+      //       _id: +(new Date()),
+      //       type: "homebase",
+      //       location: {
+      //         latitude: $scope.map.center.latitude,
+      //         longitude: $scope.map.center.longitude
+      //       }
+      //     };
+
+      //   GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
+      // });
+
+    }
+
+
+    //make a marker--------------------
+     function setMarker () {
       var timestamp = +(new Date());
       var center = {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude};
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
@@ -84,80 +154,13 @@ angular
       );
 
       Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+
+      console.log('$scope.latCord', $scope.latCord);
     }
 
 
-    function setPlayerPosition (position) {
-      $scope.showMap = false;
-      $scope.map.center.latitude = position.coords.latitude;
-      $scope.map.center.longitude = position.coords.longitude;
-      $scope.showMap = true;
-    }
+    //homebase-----------------------
 
-    if(navigator.geolocation){
-      var options = {
-        enableHighAccuracy: true,
-        // timeout: 3000,
-        maximumAge: 0
-      };
-      var pos = {
-        lat: null,
-        lng: null
-      };
 
-      var stop = $interval(function () {
-
-        navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-      }, 5000);
-
-    } else {
-      handleLocationError(false, $scope.map, map.getCenter());
-    }
-
-    $scope.map = {
-      center: {
-        latitude: $scope.latCord || 21.315603,
-        longitude: $scope.lngCord || -157.858093
-        // latitude: $scope.latCord,
-        // longitude: $scope.lngCord
-      },
-      refresh: $scope.showMap,
-      zoom: 20,
-      events:{
-        click: function (mapModel, eventName, originalEventArgs) { //added new attribute
-          if (!$scope.map){
-            return;
-          }
-
-          if (!$scope.map.location){
-            $scope.map.location = {};
-          }
-
-          $scope.map.location.latitude = latLng.lat();
-          $scope.map.location.longitude = latLng.lng();
-          //scope apply required because this event handler is outside of the angular domain
-          $scope.$apply();
-        }
-      },
-      marker: {
-        options: { draggable: false },
-        events: {
-
-        }
-      }
-    };
-
-    var homebaseCenter = $scope.map.center;
-
-    var homebase = {
-      _id: +(new Date()),
-      type: "homebase",
-      location: {
-        latitude: homebaseCenter.latitude,
-        longitude: homebaseCenter.longitude
-      }
-    };
-
-    GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
 
   });
