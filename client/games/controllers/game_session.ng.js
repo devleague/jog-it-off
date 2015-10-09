@@ -13,32 +13,18 @@ angular
 
       //TIMER-----------------
       $scope.gameTimer = $scope.gameObj.gameTimer;
-      var num = $scope.gameTimer;
-      $scope.hour = 0;
-      $scope.min = 0;
-      $scope.sec = 0;
-
-      var intervalPromise = $interval(function() {
-        $scope.hour = parseInt( $scope.gameObj.gameTimer / 3600 );
-        $scope.min = parseInt( ($scope.gameObj.gameTimer - ($scope.hour * 3600)) / 60 );
-        $scope.sec = parseInt( $scope.gameObj.gameTimer - ($scope.hour * 3600) - ($scope.min * 60) );
-
-        if($scope.isHost) {
-        GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
-        }
-
-        if($scope.gameObj.gameTimer < 0) {
-          $state.go('game.final', $interval.cancel(intervalPromise));
-        }
-        console.log($scope.gameTimer, "wow I'm a clock");
-
-      }, 1000, $scope.plotTimer + 1);
-
-
-
+       var intervalPromise = $interval(function() {
+      if($scope.isHost) {
+      GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
+      }
+      if($scope.gameObj.gameTimer <= 0) {
+        $state.go('game.final', $interval.cancel(intervalPromise));
+      }
+    }, 1000);
 
       //MAP---------------------
       $scope.markers = $scope.gameObj.markers;
+      console.log('$scope.markers', $scope.markers);
       $scope.showMap = true;
       $scope.circles = circle;
       var navigator = $window.navigator;
@@ -148,7 +134,7 @@ angular
 
           closestMarker = $scope.markers[closest];
 
-          if (distance <= 5){
+          if (distance <= 5) {
 
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);
@@ -166,8 +152,6 @@ angular
               return;
             }
 
-            console.log("indexOf");
-            console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
             //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
               alert("You already have this point marker location!");
@@ -195,10 +179,11 @@ angular
       function finishButton () {
         alert(closestMarker);
         if(closestMarker.type === "homebase") {
+          Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
           Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
           alert("Good job!");
         } else {
-          alert("Not near homebase!");
+          alert("You are not near enough to homebase!");
         }
       }
 

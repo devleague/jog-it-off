@@ -23,6 +23,7 @@
           gameTimer: gameTimer,
           players: [client],
           allReady: false,
+          hasStarted: false,
           score: []
         };
 

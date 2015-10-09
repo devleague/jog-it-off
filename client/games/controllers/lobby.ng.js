@@ -19,7 +19,7 @@
       );
 
       $scope.startGame = function () {
-        GameCollection.update({_id: gameID}, {$set: {allReady: true}});
+        GameCollection.update({_id: gameID}, {$set: {allReady: true, hasStarted: true}});
       };
 
       $scope.$watch('gameObj.allReady', function() {

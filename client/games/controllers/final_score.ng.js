@@ -24,7 +24,11 @@ angular
 
       function sortScore (a, b) { return b[1]-a[1]; }
       function sortTime (a, b) { return a[2]-b[2]; }
-      function pushFinal (e) {$scope.finalScore.push(e);}
+      function pushFinal (e) {
+        e[3] = $scope.finalScore.length + 1;
+        $scope.finalScore.push(e);
+
+      }
 
       score.score.sort(sortScore);
 

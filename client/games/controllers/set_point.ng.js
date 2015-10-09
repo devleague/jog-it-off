@@ -6,33 +6,20 @@ angular
     gameID = $stateParams.gameID;
     $scope.isSetPoint = true;
     $scope.isHost = JogService.isHost($scope.gameID);
-    // $scope.setPoint = JogService.setPoint;
     $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
-    console.log($scope.gameObj.pointNum);
 
     Meteor.users.update({_id: clientID}, {$set: {"profile.pointNum": $scope.gameObj.pointNum}});
 
     //TIMER--------------
     $scope.plotTimer = $scope.gameObj.plotTimer;
-    var num = $scope.plotTimer;
-    $scope.hour = 0;
-    $scope.min = 0;
-    $scope.sec = 0;
-
     var intervalPromise = $interval(function() {
-      $scope.hour = parseInt( $scope.gameObj.plotTimer / 3600 );
-      $scope.min = parseInt( ($scope.gameObj.plotTimer - ($scope.hour * 3600)) / 60 );
-      $scope.sec = parseInt( $scope.gameObj.plotTimer - ($scope.hour * 3600) - ($scope.min * 60) );
-
       if($scope.isHost) {
       GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
       }
-
       if($scope.gameObj.plotTimer <= 0) {
         $state.go('game.game_countdown', $interval.cancel(intervalPromise));
       }
-
-    }, 1000, $scope.plotTimer + 1);
+    }, 1000);
 
     //MAP------------------
     $scope.showMap = true;
@@ -96,11 +83,8 @@ angular
         }}
       );
 
-
-
       Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
     }
-
 
 
     function setPlayerPosition (position) {
@@ -163,13 +147,14 @@ angular
       }
     };
 
-    console.log('center');
-    console.log($scope.map.center);
+    var homebaseCenter = $scope.map.center;
 
-
-
-
-
-    // $scope.map.circle.bindTo('center', $scope.markers, 'position');
-
+    var homebase = {
+      _id: +(new Date()),
+      type: "homebase",
+      location: {
+        latitude: homebaseCenter.latitude,
+        longitude: homebaseCenter.longitude
+      }
+    };
   });
