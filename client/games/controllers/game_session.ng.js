@@ -84,7 +84,7 @@ angular
         var stop = $interval(function () {
 
           navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-        }, 5000);
+        }, 500);
 
       } else {
         handleLocationError(false, $scope.map, map.getCenter());
@@ -126,7 +126,7 @@ angular
 
           closestMarker = $scope.markers[closest];
 
-          if (distance <= 5) {
+          if (distance <= 1) {
 
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);

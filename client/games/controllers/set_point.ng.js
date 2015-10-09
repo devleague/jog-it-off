@@ -45,7 +45,7 @@ angular
 
       var stop = $interval(function () {
         navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-      }, 1000);
+      }, 500);
 
     } else {
       handleLocationError(false, $scope.map, map.getCenter());
