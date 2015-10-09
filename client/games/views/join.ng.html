@@ -1,7 +1,6 @@
 <div class="joinGame">
   <h1>= JOIN A GAME =</h1>
 </div>
-<div class="barShadow2"></div>
 
 <div class="space2"></div>
 
@@ -10,14 +9,14 @@
       <div ng-click="joinGame()" ui-sref="game.lobby({gameID: game._id})" class="gameDiv">
 
         <h2 class="roomTitle">= {{ game.room }} =</h2>
-        <div class="barShadow"></div>
+
           <div class="colorInside">
             <h4>Host: {{ game.host }}</h4>
             <h4># of Plot Points per Player: {{ game.pointNum }}</h4>
             <h4>Plot Time: {{ game.plotTime }} Minutes</h4>
             <h4> Game Time: {{ game.gameTime }} Minutes</h4>
             <p class="timestamp">{{ game.timestamp }}</p>
-            <div class="barShadowRoom"></div>
+
         </div>
       </div>
     </div>

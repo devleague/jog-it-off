@@ -1,22 +1,15 @@
 .joinGame {
   width: 100%;
-  position: fixed;
-  background-color: #E84A3E;
+  background-color: #FFAE00;
   height: 75px;
   padding-top: 25px;
+  box-shadow: $box-shadow-orange;
+  position: fixed;
+  top: 0;
 }
 
-.barShadow {
-  width: 100%;
-  background-color: #B42308;
-  height: 5px;
-}
-
-.barShadow2 {
-  width: 100%;
-  background-color: #B42308;
-  height: 87px;
-  margin: 0px;
+.joinContent {
+  margin-top: 100px;
 }
 
 .roomTitle {
@@ -24,18 +17,12 @@
   background-color: #E84A3E;
   height: 75px;
   padding-top: 25px;
-  margin: 0px;
+  box-shadow: $box-shadow-red;
 }
 
 
 .colorInside {
   width: 100%;
   background-color: #00E0FF;
-}
-
-.barShadowRoom {
-  width: 100%;
-  background-color: #01bed8;
-  height: 5px;
-  margin-bottom: 10px;
+  box-shadow: $box-shadow-blue;
 }
