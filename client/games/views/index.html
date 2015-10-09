@@ -1,32 +1,33 @@
 <head>
   <meta name=viewport content="width=device-width, initial-scale=1">
-  <title>Jog It Off</title>
+  <title>Jog it off</title>
   <base href="/">
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
-
+  <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 
 </head>
 
-<body>
+<body ng-class="{wink: wink}">
  <div ui-view></div>
+
 </body>
 
 
 <template name="login">
     {{#if loggedIn}}
-
     {{> loginButtons}}
 
     {{else}}
+  <div class="formDiv">
     <form class="form-inline">
         <p>Enter your name to get started!</p>
         {{! We use the pattern below because it matches \w in in autocomplete for user names}}
-        <input class="form-control" type="text" name="username" required
+        <input class="form" type="text" name="username" required
                pattern="^[a-zA-Z][a-zA-Z0-9_]{2,14}$"
-               placeholder="Username..."
+               placeholder="What's your name?"
                title="3-15 numbers or characters.">
-        <button type="submit" class="button">Start!</button>
-
+        <button id="start"></button>
     </form>
+  </div>
     {{/if}}
 </template>

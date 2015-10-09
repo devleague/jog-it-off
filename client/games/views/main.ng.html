@@ -1,10 +1,12 @@
-  <div>
-    <h1>Jog it off</h1>
-  </div>
+<div>
+  <h1>= JOG IT OFF =</h1>
+</div>
 
-  <div id="mainDiv">
-    <blaze-template name="login"></blaze-template>
-    <a class="button" ng-show="$root.currentUser" ui-sref="create" href="#" >CREATE A GAME</a>
-    <a class="button" ng-show="$root.currentUser" ui-sref="join" href="#" >JOIN A GAME</a>
-  </div>
+<div id="logo"></div>
+
+<div id="mainDiv">
+  <blaze-template name="login"></blaze-template>
+  <button id="create" ng-show="$root.currentUser" ui-sref="create" href="#" ></button>
+  <button id="join" ng-show="$root.currentUser" ui-sref="join" href="#" ></button>
+</div>
 

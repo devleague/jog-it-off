@@ -1,7 +1,41 @@
-h1 {
-  color: $headerText;
+.joinGame {
+  width: 100%;
+  position: fixed;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 25px;
 }
 
-.gameDiv {
-  background-color: $gameRooms;
+.barShadow {
+  width: 100%;
+  background-color: #B42308;
+  height: 5px;
+}
+
+.barShadow2 {
+  width: 100%;
+  background-color: #B42308;
+  height: 87px;
+  margin: 0px;
+}
+
+.roomTitle {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 25px;
+  margin: 0px;
+}
+
+
+.colorInside {
+  width: 100%;
+  background-color: #00E0FF;
+}
+
+.barShadowRoom {
+  width: 100%;
+  background-color: #01bed8;
+  height: 5px;
+  margin-bottom: 10px;
 }

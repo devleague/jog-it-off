@@ -1,5 +1,100 @@
+html {
+  background-color: $body-bg;
+}
+
 h1 {
-  color: $jog;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5vw;
+}
+
+h2 {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5vw;
+}
+
+h4 {
+  margin: 0;
+  padding-top: 5px;
+}
+
+input.form {
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: auto;
+}
+
+p {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.05rem;
+}
+
+form {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+// buttons ------------------------------------------
+
+#start{
+  margin: auto ;
+  background-image: url('/images/start_button.png');
+  width: 84px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+}
+
+#create {
+  margin: auto ;
+  background-image: url('/images/button_create.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  margin-bottom: 2px;
+  background-color: $noBackgroundColor;
+}
+
+#join {
+  margin: auto ;
+  background-image: url('/images/button_join.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+
+}
+
+#login-buttons .login-buttons-with-only-one-button .login-button {
+  margin: auto ;
+  background-image: $buttonSignOut;
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+  margin-bottom: $marginBottom;
+  border-style: none;
+  margin-left: 96px;
+}
+
+#login-buttons {
+  padding: 0px !important;
+  border-style: none;
+}
+
+#login-buttons .login-display-name {
+  font-family: $text;
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  border-style: none;
+  display: block;
 }
 
 .login-button, .login-text-and-button, .login-buttons-with-only-one-button, #login-buttons, blaze-template {
@@ -7,38 +102,16 @@ h1 {
    width: 100%;
 }
 
-#login-buttons .login-buttons-with-only-one-button .login-button {
-  display: block;
-  width: 100%;
-  background-color: #008CBA;
-  border: none;
+// end buttons ---------------------------------------
+
+#logo {
+  background-image: url('/images/rabbit2.png');
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-#login-buttons {
-  padding: $padding;
-  padding-bottom: 0;
 
-
+.login-display-name {
+  text-align: center;
 }
-
-// #mainDiv {
-//   text-align: center;
-// }
-
-// .form-control input {
-//   font-size: 20px;
-//   text-align: center;
-// }
-
-// #mainDiv input {
-//   font-size: 20px;
-//   text-align: center;
-// }
-// #mainDiv button {
-//   font-size: 20px;
-//   border-radius: 5px;
-//   border: none;
-//   display: block;
-//   margin: 5px auto;
-//   width: 200px;
-// }
