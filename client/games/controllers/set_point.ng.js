@@ -43,9 +43,6 @@ angular
       };
 
 
-
-    console.log('navigator.geolocation', navigator.geolocation);
-
       var stop = $interval(function () {
         navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
       }, 1000);
@@ -71,11 +68,9 @@ angular
             if (!$scope.map){
               return;
             }
-
             if (!$scope.map.location){
               $scope.map.location = {};
             }
-
             $scope.map.location.latitude = latLng.lat();
             $scope.map.location.longitude = latLng.lng();
             //scope apply required because this event handler is outside of the angular domain
@@ -93,8 +88,8 @@ angular
       $scope.map.center.longitude = position.coords.longitude;
       $scope.showMap = true;
 
-
       if ($scope.homeExist) {
+        if ($scope.isHost) {
           var homebase = {
             _id: +(new Date()),
             type: "homebase",
@@ -103,8 +98,8 @@ angular
               longitude: $scope.map.center.longitude
             }
           };
-
-        GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
+          GameCollection.update({_id: gameID}, {$push:{markers: homebase}});
+        }
       }
 
       $scope.homeExist = false;
@@ -113,6 +108,7 @@ angular
 
     //make a marker--------------------
      function setMarker () {
+      navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
       var timestamp = +(new Date());
       var center = {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude};
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
@@ -120,7 +116,7 @@ angular
       $scope.circles.push({
       id: timestamp,
       center: center,
-      radius: 3,
+      radius: 1,
       stroke: {
         color: '#08B21F',
         weight: 2,
@@ -138,29 +134,17 @@ angular
       events:{}
     });
 
-      GameCollection.update({_id: gameID},
-        {$push:{markers:
-          {
+    GameCollection.update({_id: gameID},
+      {$push:{markers:
+        {
           _id: +(new Date()),
           type: "point",
           userID: clientID,
           location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude},
-          // fences: [circle],
-          // outside: function (marker, fence) {
-          //   alert('This marker has been moved outside of its fence');
-          // }
-          }
-        }}
-      );
+        }
+      }}
+    );
 
-      Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
-
-      console.log('$scope.latCord', $scope.latCord);
+    Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
     }
-
-
-    //homebase-----------------------
-
-
-
   });

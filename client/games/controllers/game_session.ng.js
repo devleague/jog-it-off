@@ -29,50 +29,14 @@ angular
       $scope.circles = circle;
       var navigator = $window.navigator;
 
-      //   //creating geofence
-      // circle = $scope.map.drawCircle({
-      //   lat: lattitude,
-      //   lng: longitude,
-      //   strokeColor: '#fff',
-      //   strokeOpacity: 1,
-      //   strokeWeight: 3,
-      //   fillColor: 'rgba(75,255,0,0.2)',
-      //   fillOpacity: 0.4,
-      //   radius: 3000,
-      //   editable: true,
-      // });
+
 
       function setPlayerPosition (position) {
-        $scope.showMap = false;
-        $scope.map.center.longitude = position.coords.longitude;
-        $scope.map.center.latitude = position.coords.latitude;
-        $scope.showMap = true;
-      }
 
-      if(navigator.geolocation){
-        var options = {
-          enableHighAccuracy: true,
-          // timeout: 3000,
-          maximumAge: 0
-        };
-        var pos = {
-          lat: null,
-          lng: null
-        };
-
-        var stop = $interval(function () {
-
-          navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
-        }, 5000);
-
-      } else {
-        handleLocationError(false, $scope.map, map.getCenter());
-      }
-
-      $scope.map = {
+        $scope.map = {
         center: {
-          latitude: $scope.latCord || 21.315603,
-          longitude: $scope.lngCord || -157.858093
+          latitude: null,
+          longitude: null
         },
         refresh: $scope.showMap,
         zoom: 20,
@@ -94,11 +58,39 @@ angular
         },
         marker: {
           options: { draggable: false },
-          events: {
-
-          }
+          events: {}
         }
+
       };
+
+        $scope.showMap = false;
+        $scope.map.center.longitude = position.coords.longitude;
+        $scope.map.center.latitude = position.coords.latitude;
+        $scope.showMap = true;
+      }
+
+
+      if(navigator.geolocation){
+        var options = {
+          enableHighAccuracy: true,
+          // timeout: 3000,
+          maximumAge: 0
+        };
+        var pos = {
+          lat: null,
+          lng: null
+        };
+
+        var stop = $interval(function () {
+
+          navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
+        }, 5000);
+
+      } else {
+        handleLocationError(false, $scope.map, map.getCenter());
+      }
+
+
 
       function rad(x) {return x*Math.PI/180;}
       function find_closest_marker(event){
@@ -171,6 +163,7 @@ angular
       }
 
       function pickUpMarker () {
+        navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
         // are you near a marker?
         find_closest_marker($scope.map.center);
 
