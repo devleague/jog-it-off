@@ -171,6 +171,7 @@ angular
       }
 
       function pickUpMarker () {
+        navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
         // are you near a marker?
         find_closest_marker($scope.map.center);
 

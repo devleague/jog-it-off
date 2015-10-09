@@ -113,6 +113,7 @@ angular
 
     //make a marker--------------------
      function setMarker () {
+      navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
       var timestamp = +(new Date());
       var center = {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude};
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
