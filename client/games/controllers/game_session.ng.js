@@ -14,54 +14,47 @@ angular
       //TIMER-----------------
       $scope.gameTimer = $scope.gameObj.gameTimer;
        var intervalPromise = $interval(function() {
-      if($scope.isHost) {
-      GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
-      }
-      if($scope.gameObj.gameTimer <= 0) {
-        $state.go('game.final', $interval.cancel(intervalPromise));
-      }
-    }, 1000);
+        if($scope.isHost) {
+          GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
+        }
+        if($scope.gameObj.gameTimer <= 0) {
+          $state.go('game.final', $interval.cancel(intervalPromise));
+        }
+      }, 1000);
 
       //MAP---------------------
       $scope.markers = $scope.gameObj.markers;
-      console.log('$scope.markers', $scope.markers);
       $scope.showMap = true;
       $scope.circles = circle;
       var navigator = $window.navigator;
 
-
-
       function setPlayerPosition (position) {
-
         $scope.map = {
-        center: {
-          latitude: null,
-          longitude: null
-        },
-        refresh: $scope.showMap,
-        zoom: 20,
-        events:{
-          click: function (mapModel, eventName, originalEventArgs) { //added new attribute
-            if (!$scope.map){
-              return;
+          center: {
+            latitude: null,
+            longitude: null
+          },
+          refresh: $scope.showMap,
+          zoom: 20,
+          events: {
+            click: function (mapModel, eventName, originalEventArgs) { //added new attribute
+              if (!$scope.map){
+                return;
+              }
+              if (!$scope.map.location){
+                $scope.map.location = {};
+              }
+              $scope.map.location.latitude = latLng.lat();
+              $scope.map.location.longitude = latLng.lng();
+              //scope apply required because this event handler is outside of the angular domain
+              $scope.$apply();
             }
-
-            if (!$scope.map.location){
-              $scope.map.location = {};
-            }
-
-            $scope.map.location.latitude = latLng.lat();
-            $scope.map.location.longitude = latLng.lng();
-            //scope apply required because this event handler is outside of the angular domain
-            $scope.$apply();
+          },
+          marker: {
+            options: { draggable: false },
+            events: {}
           }
-        },
-        marker: {
-          options: { draggable: false },
-          events: {}
-        }
-
-      };
+        };
 
         $scope.showMap = false;
         $scope.map.center.longitude = position.coords.longitude;
@@ -82,38 +75,67 @@ angular
         };
 
         var stop = $interval(function () {
-
           navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
         }, 500);
-
       } else {
         handleLocationError(false, $scope.map, map.getCenter());
       }
 
-
-
+      var closestMarker;
       function rad(x) {return x*Math.PI/180;}
-      function find_closest_marker(event){
-        //assuming that event represents current position
-        var lat = event.latitude;
-        var lng = event.longitude;
-        var R = 6371; //radius of earth meteric
+      // function find_closest_marker(event){
+      //   //assuming that event represents current position
+      //   var lat = event.latitude;
+      //   var lng = event.longitude;
+      //   var R = 6371; //radius of earth meteric
+      //   var distances = [];
+      //   var closest = -1;
+      //   for ( var i = 0; i < $scope.markers.length; i++) {
+      //     var mlat = $scope.markers[i].location.lat;
+      //     var mlng = $scope.markers[i].location.lng;
+      //     var dLat  = rad(mlat - lat);
+      //     var dLong = rad(mlng - lng);
+      //     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      //     Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+      //     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      //     var d = R * c;
+      //     console.log(c, d);
+      //     distances[i] = d;
+      //     if ( closest == -1 || d < distances[closest] ) {
+      //       closest = i;
+      //     }
+      //   }
+      function find_closest_marker( lat1, lon1 ) {
+        var pi = Math.PI;
+        var R = 6371; //equatorial radius
         var distances = [];
         var closest = -1;
-        for ( var i = 0; i < $scope.markers.length; i++) {
-          var mlat = $scope.markers[i].location.lat;
-          var mlng = $scope.markers[i].location.lng;
-          var dLat  = rad(mlat - lat);
-          var dLong = rad(mlng - lng);
+
+        for( i=0;i< $scope.markers.length; i++ ) {
+          var lat2 = $scope.markers[i].location.latitude;
+          var lon2 = $scope.markers[i].location.longitude;
+
+          var chLat = lat2-lat1;
+          var chLon = lon2-lon1;
+
+          var dLat = chLat*(pi/180);
+          var dLon = chLon*(pi/180);
+
+          var rLat1 = lat1*(pi/180);
+          var rLat2 = lat2*(pi/180);
+
           var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+                      Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(rLat1) * Math.cos(rLat2);
           var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
           var d = R * c;
+
           distances[i] = d;
           if ( closest == -1 || d < distances[closest] ) {
-            closest = i;
+              closest = i;
           }
         }
+
+        console.log(distances);
         //now we validate if closet is within 3m from
         var distance;
 
@@ -167,12 +189,15 @@ angular
       function pickUpMarker () {
         navigator.geolocation.getCurrentPosition(setPlayerPosition,null,options);
         // are you near a marker?
-        find_closest_marker($scope.map.center);
+        // find_closest_marker($scope.map.center);
+        console.log($scope.map.center.latitude, $scope.map.center.longitude);
+
+        find_closest_marker($scope.map.center.latitude, $scope.map.center.longitude);
 
       }
 
       function finishButton () {
-        alert(closestMarker);
+
         if(closestMarker.type === "homebase") {
           Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
           Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
