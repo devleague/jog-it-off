@@ -197,14 +197,21 @@ angular
       }
 
       function finishButton () {
+        uiGmapGoogleMapApi.then(function(maps) {
+          var pointA = new maps.LatLng($scope.map.center.latitude, $scope.map.center.longitude);
+          var pointB = new maps.LatLng($scope.markers[0].location.latitude, $scope.markers[0].location.longitude);
+          console.log(pointA, pointB);
+          var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+          alert("this is the distance" + distance);
 
-        if(closestMarker.type === "homebase") {
-          Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
-          Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
-          alert("Good job!");
-        } else {
-          alert("You are not near enough to homebase!");
-        }
+          if(distance < 5) {
+            Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
+            Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
+            alert("Good job!");
+          } else {
+            alert("You are not near enough to homebase!");
+          }
+        });
       }
 
     });
