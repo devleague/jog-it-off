@@ -93,6 +93,7 @@ angular
           var homebase = {
             _id: +(new Date()),
             type: "homebase",
+            name: "homebase",
             location: {
               latitude: $scope.map.center.latitude,
               longitude: $scope.map.center.longitude
@@ -134,12 +135,16 @@ angular
       events:{}
     });
 
+    var pointDif = $scope.gameObj.pointNum - Meteor.user().profile.pointNum + 1;
+    console.log(pointDif);
+
     GameCollection.update({_id: gameID},
       {$push:{markers:
         {
           _id: +(new Date()),
           type: "point",
           userID: clientID,
+          name: Meteor.user().username + "_" + pointDif,
           location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude},
         }
       }}

@@ -126,7 +126,9 @@ angular
 
           closestMarker = $scope.markers[closest];
 
-          if (distance <= 1) {
+          alert("closest : " + $scope.markers[closest].name);
+
+          if (distance <= 3) {
 
             console.log('$scope.markers[closest]');
             console.log($scope.markers[closest]);
