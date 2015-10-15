@@ -8,6 +8,7 @@ angular
       $scope.isHost = JogService.isHost($scope.gameID);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
+      $scope.isFinished = false;
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
@@ -208,6 +209,7 @@ angular
             Meteor.users.update({_id: Meteor.userId()}, {$push: {"profile.coins": "homebase"}});
             Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
             alert("Good job!");
+            $scope.isFinished = true;
           } else {
             alert("You are not near enough to homebase!");
           }
