@@ -1,15 +1,16 @@
-<div class="grid-block">
-  <zf-panel class="panel-fixed" id="fixed-panel">
-  <h3>CREATE A GAME!</h3>
-  </zf-panel>
+<div class="createGame">
+  <h2>= CREATE A GAME =</h2>
 </div>
 
 <div class="space"></div>
 
 <form id="createForm" ng-submit="addGameObject(roomName, pointNum, plotTime, gameTime)">
-  <input type="text" ng-model="roomName" name="roomName" placeholder="Room Name" required>
-  <input type="number" ng-model="pointNum" name="pointNum" placeholder="# of Points per Player" min="1" max="5" required>
-  <input type="number" ng-model="plotTime" name="plotTime" placeholder="Plot Time (minutes)" min="0.1" step="0.1" required>
-  <input type="number" ng-model="gameTime" name="gameTime" placeholder="Game Time (minutes)" min="0.1" step="0.1" required>
-  <button id="submitGame" name='button'>SUBMIT</button>
+  <input type="text" ng-model="roomName" name="roomName" placeholder="Room Name">
+  <input type="number" ng-model="pointNum" name="pointNum" placeholder="# of Points per Player" min="1" max="5">
+  <input type="number" ng-model="plotTime" name="plotTime" placeholder="Plot Time (minutes)" min="1" step="1">
+  <input type="number" ng-model="gameTime" name="gameTime" placeholder="Game Time (minutes)" min="1" step="1">
+  <button id="submitGame" name='button'></button>
 </form>
+
+<div class="space_create"></div>
+

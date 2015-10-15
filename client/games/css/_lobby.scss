@@ -1,5 +1,9 @@
-.lobbyContent {
-  text-align: center;
+.lobbyTitle {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 25px;
+  box-shadow: $box-shadow-red;
 }
 
 #startButton {
@@ -11,6 +15,16 @@
   right: 0;
   left: 0;
   position: absolute;
-  background-color: gray;
+  background-color: #E84A3E;
   text-align: center;
+  padding: 15px;
+}
+
+#start{
+  margin: auto ;
+  background-image: url('/images/start_button.png');
+  width: 84px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
 }

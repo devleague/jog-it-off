@@ -1,7 +1,5 @@
-<div class="timer_panel">
-  <zf-panel class="panel-fixed" id="fixed-panel">
-    <h1 class="headerText">{{gameObj.room}}</h1>
-  </zf-panel>
+<div class="lobbyTitle">
+  <h2>= {{gameObj.room}} =</h2>
 </div>
 
 <div class="space"></div>
@@ -9,11 +7,13 @@
 <div class="lobbyContent">
 
   <div class="playersDiv" ng-repeat="player in gameObj.players">
-    <h2> {{player.username}} </h2>
+    <h3> {{player.username}} </h3>
   </div>
 </div>
 
+<!-- {{ gameObj }} -->
+
 <div class="footerDiv">
-  <button id="startButton" ng-if="isHost" ng-click="startGame()" >START</button>
+  <button id="start" ng-if="isHost" ng-click="startGame()" ></button>
   <h2 ng-if="!isHost">Waiting on Host...</h2>
 </div>

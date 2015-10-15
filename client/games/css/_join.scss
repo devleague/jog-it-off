@@ -1,7 +1,28 @@
-h1 {
-  color: $headerText;
+.joinGame {
+  width: 100%;
+  background-color: #FFAE00;
+  height: 75px;
+  padding-top: 22px;
+  box-shadow: $box-shadow-orange;
+  position: fixed;
+  top: 0;
 }
 
-.gameDiv {
-  background-color: $gameRooms;
+.joinContent {
+  margin-top: 100px;
+}
+
+.roomTitle {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 25px;
+  box-shadow: $box-shadow-red;
+}
+
+
+.colorInside {
+  width: 100%;
+  background-color: #00E0FF;
+  box-shadow: $box-shadow-blue;
 }

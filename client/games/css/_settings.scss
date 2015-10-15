@@ -1,0 +1,20 @@
+$body-bg: #009EB3;
+$text: 'Press Start 2P', cursive;
+$buttonSignOut: url('/images/button_signOut.png');
+$noBackgroundColor: transparent;
+$marginBottom: 2px;
+$startButton: url('/images/button_start.png');
+
+$box-shadow-red: 0px 5px 0px 0px rgba(180,34,8,1);
+$box-shadow-blue: 0px 5px 0px 0px rgba(1,191,216,1);
+$box-shadow-orange: 0px 5px 0px 0px rgba(173,118,0,1);
+
+$text-shadow-black: 3px 2px 0px rgba(132, 132, 132, 1);
+$text-shadow-red: 3px 2px 0px rgba(135, 10, 10, 1);
+$text-shadow-orange: 3px 2px 0px rgba(122, 90, 14, 1);
+$text-shadow-blue: 3px 2px 0px rgba(2, 51, 84, 1);
+
+@font-face {
+  font-family: "pxlvectica";
+  src: url("/images/pxlvectica.ttf");
+}
