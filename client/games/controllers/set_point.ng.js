@@ -63,6 +63,8 @@ angular
         },
         refresh: $scope.showMap,
         zoom: 20,
+        scrollwheel: false,
+        draggable: false,
         events:{
           click: function (mapModel, eventName, originalEventArgs) { //added new attribute
             if (!$scope.map){
