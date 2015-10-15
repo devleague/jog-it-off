@@ -17,3 +17,12 @@ table, tr, td {
   border-spacing: 0;
   background-color: transparent;
 }
+
+#playAgain{
+  margin: auto ;
+  background: url('/images/button_playAgain.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+}

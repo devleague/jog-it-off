@@ -1,0 +1,26 @@
+#set_point{
+  margin: auto ;
+  background: url('/images/button_setPoint.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+}
+
+a.alert.button {
+  margin: auto ;
+  background-image: url('/images/button_yes.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+}
+
+a.secondary.button {
+  margin: auto ;
+  background-image: url('/images/button_no.png');
+  width: 168px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: $noBackgroundColor;
+}
