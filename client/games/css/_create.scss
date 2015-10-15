@@ -18,18 +18,10 @@ button, .button {
 
 .createGame {
   width: 100%;
-  position: fixed;
   background-color: #E84A3E;
   height: 75px;
   padding-top: 25px;
-}
-
-.space {
-  margin-bottom: 25px;
-}
-
-.space2 {
-  margin-bottom: 25px;
+  box-shadow: $box-shadow-red;
 }
 
 .wink {

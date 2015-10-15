@@ -20,13 +20,13 @@
     {{else}}
   <div class="formDiv">
     <form class="form-inline">
-        <p>Enter your name to get started!</p>
+        <h3>Enter your name to get started!</h3>
         {{! We use the pattern below because it matches \w in in autocomplete for user names}}
         <input class="form" type="text" name="username" required
                pattern="^[a-zA-Z][a-zA-Z0-9_]{2,14}$"
                placeholder="What's your name?"
                title="3-15 numbers or characters.">
-        <button id="start"></button>
+        <button id="startButton"></button>
     </form>
   </div>
     {{/if}}

@@ -1,22 +1,50 @@
 html {
   background-color: $body-bg;
+  padding: 0;
+}
+
+body {
+  margin: 0;
 }
 
 h1 {
   color: white;
   font-family: 'Press Start 2P', cursive;
   font-size: 5vw;
+  text-shadow: $text-shadow-orange;
+  text-align: center;
 }
 
 h2 {
   color: white;
   font-family: 'Press Start 2P', cursive;
   font-size: 5vw;
+  text-shadow: $text-shadow-red;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+h3 {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5vw;
+  text-shadow: $text-shadow-blue;
+  text-align: center;
 }
 
 h4 {
   margin: 0;
   padding-top: 5px;
+  text-align: center;
+}
+
+h5 {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5vw;
+  text-shadow: $text-shadow-blue;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 input.form {
@@ -32,6 +60,7 @@ p {
   color: white;
   font-family: 'Press Start 2P', cursive;
   font-size: 1.05rem;
+  text-align: center;
 }
 
 form {
@@ -41,10 +70,10 @@ form {
 
 // buttons ------------------------------------------
 
-#start{
+#startButton{
   margin: auto ;
-  background-image: url('/images/start_button.png');
-  width: 84px;
+  background: $startButton;
+  width: 168px;
   height: 48px;
   background-repeat: no-repeat;
   background-color: $noBackgroundColor;
@@ -90,11 +119,12 @@ form {
 #login-buttons .login-display-name {
   font-family: $text;
   color: white;
-  font-size: 25px;
+  font-size: 5vw;
   text-transform: uppercase;
   margin-bottom: 5px;
   border-style: none;
   display: block;
+  text-shadow: $text-shadow-blue;
 }
 
 .login-button, .login-text-and-button, .login-buttons-with-only-one-button, #login-buttons, blaze-template {
@@ -103,6 +133,14 @@ form {
 }
 
 // end buttons ---------------------------------------
+
+.title {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 65px;
+  padding-top: 18px;
+  box-shadow: $box-shadow-red;
+}
 
 #logo {
   background-image: url('/images/rabbit2.png');
@@ -114,4 +152,21 @@ form {
 
 .login-display-name {
   text-align: center;
+}
+
+// space divs -----------------------------------------
+
+.space {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.space2 {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.space3 {
+  margin-bottom: 5px;
+  width: 100%;
 }
