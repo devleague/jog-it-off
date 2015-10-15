@@ -1,6 +1,6 @@
 <div class="timer_panel">
   <zf-panel class="panel-fixed" id="fixed-panel">
-    <b class="timer"> {{ gameObj.gameTimer | secondsToDateTime | date:'HH:mm:ss' }}</b>
+    <h6> {{ gameObj.gameTimer | secondsToDateTime | date:'HH:mm:ss' }}</h6>
   </zf-panel>
 </div>
 
@@ -31,13 +31,15 @@
 </div>
 
 <div class="footerDiv">
+
   <div ng-show="!isFinished">
     <h1>GAME SESSION</h1>
-    <button id="get_point" name='button' ng-click="pickUpMarker()">GET POINT</button>
-    <button id="finish" name='button' ng-click="finishButton()">FINISHED!</button>
-    <h2> <!-- need to create a value for collected points --> points collected </h2>
+    <button id="get_point" name='button' ng-click="pickUpMarker()"></button>
+    <button id="finish" name='button' ng-click="finishButton()"></button>
+    <h2> {{coins}} coins collected </h2>
   </div>
   <div ng-show="isFinished">
     <h1> Nice job, Buddy... </h1>
   </div>
+
 </div>

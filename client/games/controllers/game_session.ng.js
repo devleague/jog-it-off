@@ -9,6 +9,7 @@ angular
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
       $scope.isFinished = false;
+      $scope.coins = Meteor.user().profile.coins.length;
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
@@ -180,6 +181,7 @@ angular
             //if all good, push markerID into user's coins array
             Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
             alert("You got a coin!");
+            $scope.coins = Meteor.user().profile.coins.length;
 
           } else {
             alert("You are not close enough to a point marker.");
@@ -196,6 +198,8 @@ angular
         console.log($scope.map.center.latitude, $scope.map.center.longitude);
 
         find_closest_marker($scope.map.center.latitude, $scope.map.center.longitude);
+
+
 
       }
 

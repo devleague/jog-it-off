@@ -2,7 +2,7 @@
 <!-- <div class="grid-block"> -->
 <div class="timer_panel">
   <zf-panel class="panel-fixed" id="fixed-panel">
-  <b class="timer"> {{ gameObj.plotTimer | secondsToDateTime | date:'HH:mm:ss' }}</b>
+  <h6> {{ gameObj.plotTimer | secondsToDateTime | date:'HH:mm:ss' }}</h6>
   </zf-panel>
 </div>
 
@@ -43,7 +43,7 @@
 
   <div class="setPointOverlay" ng-show="isSetPoint">
     <h1> {{ $root.currentUser.profile.pointNum }} points remaining </h1>
-    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum">SET POINT</button>
+    <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum"></button>
 
     <h1 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h1>
   </div>
@@ -51,8 +51,8 @@
   <div class="confirmPointOverlay" ng-show="!isSetPoint">
     <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
       <h4>Are you sure?</h4>
-      <a zf-close="" class="alert button" ng-click="setMarker(); isSetPoint = !isSetPoint">Yes</a>
-      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint">No</a>
+      <a zf-close="" class="alert button" ng-click="setMarker(); isSetPoint = !isSetPoint"></a>
+      <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint"></a>
     </div>
   </div>
 </div>
