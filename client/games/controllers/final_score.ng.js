@@ -8,9 +8,6 @@ angular
       $scope.score = GameCollection.findOne({_id: gameID}, {fields: {score: 1}});
       console.log($scope.score.score);
 
-      $scope.winner = $scope.score.score[0];
-      $scope.loser = $scope.score.score[$scope.score.score.length -1];
-
     // SORT ----------------------------------------------->
       $scope.finalScore = [];
 
@@ -42,6 +39,10 @@ angular
       }
 
       console.log($scope.finalScore);
+
+      $scope.winner = $scope.finalScore[0];
+      $scope.loser = $scope.finalScore[$scope.finalScore.length -1];
+
 
     // PLAY AGAIN -----------------------------------------------------
       function returnMain () {

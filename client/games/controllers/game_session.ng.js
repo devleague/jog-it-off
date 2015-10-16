@@ -11,6 +11,8 @@ angular
       $scope.isFinished = false;
       $scope.coins = 0;
 
+      console.log($scope.circles);
+
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
       //TIMER-----------------
@@ -28,6 +30,7 @@ angular
       $scope.markers = $scope.gameObj.markers;
       $scope.showMap = true;
       $scope.circles = circle;
+      console.log(circle);
       var navigator = $window.navigator;
 
       function setPlayerPosition (position) {
