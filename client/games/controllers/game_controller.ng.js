@@ -7,5 +7,6 @@
       $scope.gameCollection = $meteor.collection(GameCollection);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.allReady = $scope.gameObj.allReady;
+      $rootScope.wink = false;
 
   });

@@ -3,6 +3,7 @@
     .controller('gameCountDown', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
       //controller after plot then game starts!
       $scope.countNum = 5;
+      $rootScope.wink = true;
       var num = 5;
 
       $interval(function() {

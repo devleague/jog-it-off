@@ -3,6 +3,7 @@
     .controller('plotCountDown', function ($scope, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
       //controller after lobby
       $scope.countNum = 5;
+      $rootScope.wink = true;
       var num = 5;
 
       $interval(function() {

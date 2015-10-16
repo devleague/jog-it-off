@@ -6,6 +6,28 @@
   box-shadow: $box-shadow-red;
 }
 
+.winner {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 9vw;
+  text-shadow: $text-shadow-blue;
+  text-align: center;
+}
+
+.loser {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 9vw;
+  text-shadow: $text-shadow-blue;
+  text-align: center;
+}
+
+#dialogModal.tiny.dialog {
+  width: 100%;
+  background-color: #E84A3E;
+  padding: 10px;
+}
+
 tr {
   align: center;
 
@@ -25,4 +47,10 @@ table, tr, td {
   height: 48px;
   background-repeat: no-repeat;
   background-color: $noBackgroundColor;
+}
+
+th {
+  font-family: "pxlvectica";
+  text-align: center;
+  padding-left: 10px;
 }

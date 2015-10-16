@@ -17,6 +17,8 @@ angular
       $scope.winner = $scope.score.score[0];
 
       $scope.loser = $scope.score.score[$scope.score.score.length -1];
+      $rootScope.wink = false;
+      $scope.playAgain = true;
 
       // SORT ----------------------------------------------->
 

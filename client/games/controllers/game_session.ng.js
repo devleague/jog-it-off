@@ -8,6 +8,7 @@ angular
       $scope.isHost = JogService.isHost($scope.gameID);
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
+      $rootScope.wink = false;
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 

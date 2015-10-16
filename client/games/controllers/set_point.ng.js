@@ -7,6 +7,7 @@ angular
     $scope.isSetPoint = true;
     $scope.isHost = JogService.isHost($scope.gameID);
     // $scope.setPoint = JogService.setPoint;
+    $rootScope.wink = false;
     $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
     console.log($scope.gameObj.pointNum);
 
