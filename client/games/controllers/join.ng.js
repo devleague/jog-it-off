@@ -5,6 +5,7 @@
       var gameID = $stateParams.gameID;
        $scope.gameData = $meteor.collection(GameCollection);
       $scope.joinGame = JogService.joinGame;
+      $rootScope.wink = false;
 
       $scope.joinList = $meteor.subscribe('joinList')
         .then(function (joinSubscriptions) {

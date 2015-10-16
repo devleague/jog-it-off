@@ -10,6 +10,7 @@
       $scope.gameData = $meteor.collection(GameCollection);
       $scope.allReady = $scope.gameObj.allReady;
       $scope.roomPlayers = JogService.roomPlayers(gameID);
+      $rootScope.wink = false;
 
       Meteor.users.update(
         {_id: clientID},

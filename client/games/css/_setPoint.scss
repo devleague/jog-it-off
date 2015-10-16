@@ -1,3 +1,11 @@
+.set_timer_panel {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 5px;
+  box-shadow: $box-shadow-red;
+}
+
 #set_point{
   margin: auto ;
   background: url('/images/button_setPoint.png');
@@ -8,7 +16,7 @@
 }
 
 a.alert.button {
-  margin: auto ;
+  margin: auto;
   background-image: url('/images/button_yes.png');
   width: 168px;
   height: 48px;
@@ -17,7 +25,7 @@ a.alert.button {
 }
 
 a.secondary.button {
-  margin: auto ;
+  margin: auto;
   background-image: url('/images/button_no.png');
   width: 168px;
   height: 48px;

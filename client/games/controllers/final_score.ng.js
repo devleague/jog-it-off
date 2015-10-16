@@ -8,7 +8,12 @@ angular
       $scope.score = GameCollection.findOne({_id: gameID}, {fields: {score: 1}});
       console.log($scope.score.score);
 
-    // SORT ----------------------------------------------->
+      var score = GameCollection.findOne({ _id: gameID } , {fields: {score: 1}});
+
+      $rootScope.wink = false;
+      $scope.playAgain = true;
+
+      // SORT ----------------------------------------------->
       $scope.finalScore = [];
 
       function sortScore (a, b) { return b[1]-a[1]; }

@@ -1,12 +1,10 @@
-#get_point{
-  margin: auto;
-  background-image: url('/images/button_submit.png');
-  width: 168px;
-  height: 48px;
-  background-repeat: no-repeat;
-  background-color: $noBackgroundColor;
+.game_timer_panel {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 5px;
+  box-shadow: $box-shadow-red;
 }
-
 
 #get_point{
   margin: auto;

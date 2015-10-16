@@ -11,7 +11,8 @@ angular
       $scope.isFinished = false;
       $scope.coins = 0;
 
-      console.log($scope.circles);
+      $rootScope.wink = false;
+
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
