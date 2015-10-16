@@ -73,6 +73,11 @@ angular.module("jog-it-off").config(['$urlRouterProvider', '$stateProvider', '$l
         templateUrl: 'client/games/views/game_session.ng.html',
         controller: 'gameSession',
       })
+      .state('game.calculate' , {
+        url: '/calculate',
+        templateUrl: 'client/games/views/calculate.ng.html',
+        controller: 'calculate'
+      })
       .state('game.final' , {
         url: '/final_score',
         templateUrl: 'client/games/views/final_score.ng.html',

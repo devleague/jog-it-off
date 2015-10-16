@@ -9,7 +9,7 @@ angular
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
       $scope.isFinished = false;
-      $scope.coins = Meteor.user().profile.coins.length;
+      $scope.coins = 0;
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
@@ -20,7 +20,7 @@ angular
           GameCollection.update({_id: $scope.gameID}, {$inc: {gameTimer: -1} });
         }
         if($scope.gameObj.gameTimer <= 0) {
-          $state.go('game.final', $interval.cancel(intervalPromise));
+          $state.go('game.calculate', $interval.cancel(intervalPromise));
         }
       }, 1000);
 
@@ -87,28 +87,6 @@ angular
 
       var closestMarker;
       function rad(x) {return x*Math.PI/180;}
-      // function find_closest_marker(event){
-      //   //assuming that event represents current position
-      //   var lat = event.latitude;
-      //   var lng = event.longitude;
-      //   var R = 6371; //radius of earth meteric
-      //   var distances = [];
-      //   var closest = -1;
-      //   for ( var i = 0; i < $scope.markers.length; i++) {
-      //     var mlat = $scope.markers[i].location.lat;
-      //     var mlng = $scope.markers[i].location.lng;
-      //     var dLat  = rad(mlat - lat);
-      //     var dLong = rad(mlng - lng);
-      //     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-      //     Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
-      //     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      //     var d = R * c;
-      //     console.log(c, d);
-      //     distances[i] = d;
-      //     if ( closest == -1 || d < distances[closest] ) {
-      //       closest = i;
-      //     }
-      //   }
       function find_closest_marker( lat1, lon1 ) {
         var pi = Math.PI;
         var R = 6371; //equatorial radius

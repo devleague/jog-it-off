@@ -120,7 +120,7 @@ angular
       $scope.circles.push({
       id: timestamp,
       center: center,
-      radius: 1,
+      radius: 3,
       stroke: {
         color: '#08B21F',
         weight: 2,
