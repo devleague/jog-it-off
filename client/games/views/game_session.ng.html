@@ -17,9 +17,12 @@
       ng-repeat="circle in markers"
       center='circle.location'
       radius='3'
-      fill='circle.fill'
+      fill='{
+        color: "#FF58BD",
+        opacity: 0.5
+      }'
       stroke='{
-        color: "#08B21F",
+        color: "#FF58BD",
         weight: 2,
         opacity: 1
       }'

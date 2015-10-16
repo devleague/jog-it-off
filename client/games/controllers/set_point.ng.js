@@ -122,12 +122,12 @@ angular
       center: center,
       radius: 3,
       stroke: {
-        color: '#08B21F',
+        color: '#FF58BD',
         weight: 2,
         opacity: 1
       },
       fill: {
-        color: '#08B21F',
+        color: '#FF58BD',
         opacity: 0.5
       },
       geodesic: false, // optional: defaults to false
