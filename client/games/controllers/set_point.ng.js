@@ -16,6 +16,14 @@ angular
     //TIMER--------------
     $scope.startPlotTimer = true;
     $scope.plotTimer = $scope.gameObj.plotTimer;
+
+    // $scope.setServerTime = function (gameID) {
+    //   if (!gameID) {
+    //     return "GameID not passed";
+    //   }
+    //   Meteor.call('setPlotTime', gameID);
+    // };
+
     var intervalPromise = $interval(function() {
       if($scope.isHost) {
       GameCollection.update({_id: $scope.gameID}, {$inc: {plotTimer: -1} });
