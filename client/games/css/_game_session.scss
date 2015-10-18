@@ -24,10 +24,21 @@
   background-color: $noBackgroundColor;
 }
 
+.finishedDiv {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  background-color: #E84A3E;
+  text-align: center;
+  padding: 15px;
+  height: 300px;
+}
+
 .messageBox {
   width: 100%;
-  background-color: #E84A3E;
-  height: 75px;
+  background-color: orange;
+  height: 300px;
   padding-top: 25px;
   box-shadow: $box-shadow-red;
 }

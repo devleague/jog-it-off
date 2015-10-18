@@ -36,21 +36,23 @@
   <div class="map-center"></div>
 </div>
 
-<div class="messageBox" ng-show="getPoint">
-  <h1>Hello :D</h1>
-</div>
 
-<div class="footerDiv">
-
-  <div ng-show="!isFinished">
+<div class="footerDiv" ng-if="!showMessage" ng-show="!isFinished">
+  <div>
     <h1>GAME SESSION</h1>
     <button id="get_point" name='button' ng-click="pickUpMarker()"></button>
     <button id="finish" name='button' ng-click="finishButton()"></button>
     <h2> {{coins}} coins collected </h2>
   </div>
-  <div ng-show="isFinished">
-    <h1> Nice job, Buddy... </h1>
-  </div>
-
 </div>
+
+<div class="finishedDiv" ng-show="isFinished">
+  <h1> Nice job, Buddy... </h1>
+</div>
+
+  <div class="messageBox" ng-if="showMessage">
+    <h4>{{message}}</h4>
+    <p>Marker: {{markerName}}</p>
+    <p>Distance: {{distance}}</p>
+  </div>
 
