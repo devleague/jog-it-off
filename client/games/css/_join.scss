@@ -18,11 +18,16 @@
   height: 75px;
   padding-top: 25px;
   box-shadow: $box-shadow-red;
+  display: block;
 }
 
 
 .colorInside {
   width: 100%;
-  background-color: #00E0FF;
-  box-shadow: $box-shadow-blue;
+  background-color: #209FF2;
+  box-shadow: $box-shadow-darkBlue;
+  margin-bottom: 30px;
+  padding: 5px;
+  display: block;
+  padding-top: 20px;
 }

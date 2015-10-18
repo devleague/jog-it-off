@@ -1,5 +1,6 @@
 <div class="game_timer_panel">
-    <h6> {{ gameObj.gameTimer | secondsToDateTime | date:'HH:mm:ss' }}</h6>
+    <h2> {{ gameObj.gameTimer | secondsToDateTime | date:'HH:mm:ss' }}</h2>
+
 </div>
 
 <!-- MAP -->
@@ -35,7 +36,12 @@
   <div class="map-center"></div>
 </div>
 
+<div class="messageBox" ng-show="getPoint">
+  <h1>Hello :D</h1>
+</div>
+
 <div class="footerDiv">
+<<<<<<< HEAD
 
   <div ng-show="!isFinished">
     <h1>GAME SESSION</h1>
@@ -47,4 +53,11 @@
     <h1> Nice job, Buddy... </h1>
   </div>
 
+=======
+  <h2>GAME SESSION</h2>
+  <button id="get_point" name='button' ng-click="pickUpMarker()"></button>
+  <button id="finish" name='button' ng-click="finishButton()"></button>
+  <h2>coins collected </h2>
+>>>>>>> designLayout
 </div>
+
