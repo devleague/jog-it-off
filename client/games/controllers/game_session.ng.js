@@ -146,20 +146,20 @@ angular
 
             // is it a point type?
             if ($scope.markers[closest].type !== "point") {
-              // alert("This area is not a point marker location.");
+               alert("This area is not a point marker location.");
 
               return;
             }
 
             // did you not drop this marker?
             if ( $scope.markers[closest].userID === Meteor.userId() ) {
-              // alert("You cannot pick up your own point locations!");
+               alert("You cannot pick up your own point locations!");
               return;
             }
 
             //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
-              // alert("You already have this point marker location!");
+               alert("You already have this point marker location!");
               return;
             }
 
@@ -170,7 +170,7 @@ angular
             $scope.coins = Meteor.user().profile.coins.length;
 
           } else {
-            // alert("You are not close enough to a point marker.");
+             alert("You are not close enough to a point marker.");
               return;
           }
 
