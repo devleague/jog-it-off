@@ -1,5 +1,5 @@
 <div class="finalResults">
-  <h1>= SCORES =</h1>
+  <h2>= SCORES =</h2>
 </div>
 
 <div class="space"></div>
@@ -32,12 +32,12 @@
 <div class="footerDiv">
   <div class="confirmPlayAgain" ng-show="!playAgain">
       <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
-        <h4>Are you sure?</h4>
+        <h2>Are you sure?</h2>
         <a zf-close="" class="alert button" ng-click="returnMain(); playAgain = !playAgain"></a>
         <a zf-close="" class="secondary button" ng-click="playAgain = !playAgain"></a>
       </div>
     </div>
-  <div class="footerDiv" ng-show="playAgain">
+  <div ng-show="playAgain">
       <button id="playAgain" name='button' ng-click="playAgain = !playAgain"></button>
   </div>
 </div>

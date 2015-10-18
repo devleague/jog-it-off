@@ -9,6 +9,8 @@ angular
       $scope.gameObj = $meteor.object(GameCollection, $stateParams.gameID, true);
       $scope.pickUpMarker = pickUpMarker;
       $rootScope.wink = false;
+      $scope.getPoint = false;
+      $scope.message = "";
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
 
@@ -145,7 +147,7 @@ angular
           var pointB = new maps.LatLng($scope.markers[closest].location.latitude, $scope.markers[closest].location.longitude);
           console.log(pointA, pointB);
           var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
-          alert("this is the distance" + distance);
+          // alert("this is the distance" + distance);
 
           closestMarker = $scope.markers[closest];
 
@@ -157,13 +159,14 @@ angular
 
             // is it a point type?
             if ($scope.markers[closest].type !== "point") {
-              alert("This area is not a point marker location.");
+              // alert("This area is not a point marker location.");
+
               return;
             }
 
             // did you not drop this marker?
             if ( $scope.markers[closest].userID === Meteor.userId() ) {
-              alert("You cannot pick up your own point locations!");
+              // alert("You cannot pick up your own point locations!");
               return;
             }
 
@@ -171,16 +174,16 @@ angular
             console.log(Meteor.user().profile.coins.indexOf($scope.markers[closest]._id));
             //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
-              alert("You already have this point marker location!");
+              // alert("You already have this point marker location!");
               return;
             }
 
             //if all good, push markerID into user's coins array
             Meteor.users.update({_id: clientID}, {$push:{"profile.coins": $scope.markers[closest]._id}});
-            alert("You got a coin!");
+            // alert("You got a coin!");
 
           } else {
-            alert("You are not close enough to a point marker.");
+            // alert("You are not close enough to a point marker.");
               return;
           }
 
@@ -189,7 +192,10 @@ angular
 
       function pickUpMarker () {
         // are you near a marker?
+        console.log('boop');
+        $scope.getPoint = true;
         find_closest_marker($scope.map.center);
+
 
       }
 
@@ -197,9 +203,9 @@ angular
         alert(closestMarker);
         if(closestMarker.type === "homebase") {
           Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.finish": Date.now()}});
-          alert("Good job!");
+          // alert("Good job!");
         } else {
-          alert("Not near homebase!");
+          // alert("Not near homebase!");
         }
       }
 

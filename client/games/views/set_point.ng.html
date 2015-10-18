@@ -1,6 +1,6 @@
 <!-- TIMER -->
 <div class="set_timer_panel">
-    <h1> {{hour}} : {{min}} : {{sec}} </h1>
+    <h2> {{hour}} : {{min}} : {{sec}} </h2>
 </div>
 
 <!-- MAP -->
@@ -36,15 +36,15 @@
 <div class="footerDiv">
 
   <div class="setPointOverlay" ng-show="isSetPoint">
-    <h1> {{ $root.currentUser.profile.pointNum }} points remaining </h1>
+    <h2> {{ $root.currentUser.profile.pointNum }} points remaining </h2>
     <button id="set_point" name='button' ng-click="isSetPoint = !isSetPoint" ng-show="$root.currentUser.profile.pointNum"></button>
 
-    <h1 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h1>
+    <h2 ng-hide="$root.currentUser.profile.pointNum"> All Points have been set. </h2>
   </div>
 
   <div class="confirmPointOverlay" ng-show="!isSetPoint">
     <div zf-modal="" id="dialogModal" overlay="false" overlay-close="false" class="tiny dialog">
-      <h4>Are you sure?</h4>
+      <h2>Are you sure?</h2>
       <a zf-close="" class="alert button" ng-click="setMarker(); isSetPoint = !isSetPoint"></a>
       <a zf-close="" class="secondary button" ng-click="isSetPoint = !isSetPoint"></a>
     </div>

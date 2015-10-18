@@ -23,3 +23,11 @@
   background-repeat: no-repeat;
   background-color: $noBackgroundColor;
 }
+
+.messageBox {
+  width: 100%;
+  background-color: #E84A3E;
+  height: 75px;
+  padding-top: 25px;
+  box-shadow: $box-shadow-red;
+}
