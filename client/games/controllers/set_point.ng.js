@@ -3,6 +3,8 @@ angular
   .controller('setPoint', function ($scope, uiGmapGoogleMapApi, $window, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
 
     var clientID = Meteor.userId();
+    var audio = new Audio('/audio/go.m4a');
+    audio.play();
     gameID = $stateParams.gameID;
     $scope.isSetPoint = true;
     $scope.isHost = JogService.isHost($scope.gameID);
@@ -122,12 +124,12 @@ angular
       center: center,
       radius: 1,
       stroke: {
-        color: '#08B21F',
+        color: '#FF58BD',
         weight: 2,
         opacity: 1
       },
       fill: {
-        color: '#08B21F',
+        color: '#FF58BD',
         opacity: 0.5
       },
       geodesic: false, // optional: defaults to false
@@ -154,5 +156,7 @@ angular
     );
 
     Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+    var audio = new Audio('/audio/set_good_point.m4a');
+    audio.play();
     }
   });

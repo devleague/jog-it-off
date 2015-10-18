@@ -9,6 +9,26 @@
     function setMarker () {
       $scope.markers.push({_id: +(new Date()), location: {latitude: $scope.map.center.latitude, longitude: $scope.map.center.longitude}});
       console.log($scope.markers);
+      $scope.circles.push({
+      id: timestamp,
+      center: center,
+      radius: 3,
+      stroke: {
+        color: '#08B21F',
+        weight: 2,
+        opacity: 1
+      },
+      fill: {
+        color: '#08B21F',
+        opacity: 0.5
+      },
+      geodesic: false, // optional: defaults to false
+      draggable: false, // optional: defaults to false
+      clickable: false, // optional: defaults to true
+      editable: false, // optional: defaults to false
+      visible: true, // optional: defaults to true
+      events:{}
+    });
     }
 
 

@@ -4,12 +4,15 @@
 
       var clientID = Meteor.userId();
       var gameID = $stateParams.gameID;
+      var audio = new Audio('/audio/yay_you_joined.m4a');
       $scope.isHost = JogService.isHost(gameID);
       $scope.addGameObject = JogService.addGameObject;
       $scope.games = JogService.getGames();
       $scope.gameData = $meteor.collection(GameCollection);
       $scope.allReady = $scope.gameObj.allReady;
       $scope.roomPlayers = JogService.roomPlayers(gameID);
+
+      audio.play();
 
       Meteor.users.update(
         {_id: clientID},

@@ -4,6 +4,8 @@
       //controller after plot then game starts!
       $scope.countNum = 5;
       var num = 5;
+      var audio = new Audio('/audio/get_ready.m4a');
+      audio.play();
 
       $interval(function() {
           num--;
