@@ -48,17 +48,6 @@ angular
       $scope.winner = $scope.finalScore[0];
       $scope.loser = $scope.finalScore[$scope.finalScore.length -1];
 
-    //REMOVE gameObject -----------------------------------------------
-
-    var removeTime = 0;
-
-    $interval(function(){
-      removeTime++;
-      if (removeTime === 3) {
-       GameCollection.remove({_id: gameID});
-      }
-     }, 1000);
-
 
     // PLAY AGAIN -----------------------------------------------------
       function returnMain () {

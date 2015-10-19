@@ -12,7 +12,7 @@
 
       //remove games that have already ended
       GameCollection
-        .find({gameTimer: {$lt:0}})
+        .find({gameTimer: {$lt:1}})
         .forEach(function(x) {
           GameCollection.remove({_id: x._id});
         });
