@@ -126,7 +126,7 @@ angular
           }
         }
 
-
+        console.log(typeof distance);
         $scope.markerName = $scope.markers[closest].name;
         $scope.distance = distance;
         //now we validate if closet is within 3m from

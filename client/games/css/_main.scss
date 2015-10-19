@@ -140,7 +140,7 @@ form {
   background-color: $noBackgroundColor;
   margin-bottom: $marginBottom;
   border-style: none;
-  margin-left: 96px;
+  // margin-left: 96px;
 }
 
 #login-buttons {
@@ -162,6 +162,7 @@ form {
 .login-button, .login-text-and-button, .login-buttons-with-only-one-button, #login-buttons, blaze-template {
    display: block;
    width: 100%;
+   text-align: center;
 }
 
 // end buttons ---------------------------------------
