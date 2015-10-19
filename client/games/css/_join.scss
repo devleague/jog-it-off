@@ -1,7 +1,7 @@
 .joinGame {
   width: 100%;
   background-color: #FFAE00;
-  height: 75px;
+  min-height: 75px;
   padding-top: 22px;
   box-shadow: $box-shadow-orange;
   position: fixed;
@@ -15,7 +15,7 @@
 .roomTitle {
   width: 100%;
   background-color: #E84A3E;
-  height: 75px;
+  min-height: 75px;
   padding-top: 25px;
   box-shadow: $box-shadow-red;
   display: block;
