@@ -170,7 +170,7 @@ form {
 .title {
   width: 100%;
   background-color: #E84A3E;
-  height: 65px;
+  min-height: 65px;
   padding-top: 18px;
   box-shadow: $box-shadow-red;
 }
@@ -180,6 +180,8 @@ form {
   height: 300px;
   background-repeat: no-repeat;
   background-position: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 
