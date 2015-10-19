@@ -7,6 +7,8 @@
       $scope.joinGame = JogService.joinGame;
       $rootScope.wink = false;
 
+      GameCollection.remove({gameTimer: -1});
+
       $scope.joinList = $meteor.subscribe('joinList')
         .then(function (joinSubscriptions) {
           return GameCollection.find({},{
