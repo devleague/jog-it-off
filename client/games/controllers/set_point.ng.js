@@ -3,6 +3,8 @@ angular
   .controller('setPoint', function ($scope, uiGmapGoogleMapApi, $window, $interval, $state, $meteor, $rootScope, JogService, $stateParams) {
 
     var clientID = Meteor.userId();
+    var audio = new Audio('/audio/go.m4a');
+    audio.play();
     gameID = $stateParams.gameID;
     $scope.isSetPoint = true;
     $scope.isHost = JogService.isHost($scope.gameID);
@@ -164,5 +166,7 @@ angular
     );
 
     Meteor.users.update({_id: clientID}, {$inc:{"profile.pointNum":-1}});
+    var audio = new Audio('/audio/set_good_point.m4a');
+    audio.play();
     }
   });

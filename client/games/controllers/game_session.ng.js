@@ -3,6 +3,8 @@ angular
     .controller('gameSession', function ($scope, uiGmapGoogleMapApi, $interval, $state, $meteor, $rootScope, JogService, $window, $stateParams) {
 
       var clientID = Meteor.userId();
+      var audio = new Audio('/audio/go.m4a');
+      audio.play();
       gameID = $stateParams.gameID;
       $scope.finishButton = finishButton;
       $scope.isHost = JogService.isHost($scope.gameID);
@@ -17,6 +19,8 @@ angular
       $scope.distance = "";
       $scope.message = "";
       $scope.showMessage = false;
+
+
 
 
       Meteor.users.update({_id: clientID}, {$set: {"profile.coins": []}});
@@ -135,9 +139,13 @@ angular
         uiGmapGoogleMapApi.then(function(maps) {
           var pointA = new maps.LatLng($scope.map.center.latitude, $scope.map.center.longitude);
           var pointB = new maps.LatLng($scope.markers[closest].location.latitude, $scope.markers[closest].location.longitude);
+          var audio = new Audio('/audio/prepare.mp3');
           console.log(pointA, pointB);
           var distance = maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
           // alert("this is the distance" + distance);
+
+
+
 
           closestMarker = $scope.markers[closest];
 
@@ -147,23 +155,38 @@ angular
 
             // is it a point type?
             if ($scope.markers[closest].type !== "point") {
+
                // alert("This area is not a point marker location.");
               $scope.message = "This area is not a point marker location.";
               messageBoxConstructor(2);
+
+              var yeah_no = new Audio('/audio/yeah_no.m4a');
+              yeah_no.play();
+
               return;
             }
 
             // did you not drop this marker?
             if ( $scope.markers[closest].userID === Meteor.userId() ) {
+
               $scope.message = "You cannot pick up your own point locations!";
               messageBoxConstructor(2);
+
+              var cant = new Audio('/audio/cant_do_that.m4a');
+              cant.play();
+
               return;
             }
 
             //do you not already have this markerID?
             if (Meteor.user().profile.coins.indexOf($scope.markers[closest]._id) !== -1) {
+
                $scope.message = "You already have this point marker location!";
                messageBoxConstructor(2);
+
+              var cannot = new Audio('/audio/cant_do_that.m4a');
+              cannot.play();
+
               return;
             }
 
@@ -174,11 +197,19 @@ angular
             messageBoxConstructor(2);
             $scope.coins = Meteor.user().profile.coins.length;
 
+            var yay = new Audio('/audio/yay.m4a');
+            yay.play();
+
           } else {
+
              // alert("You are not close enough to a point marker.")
              $scope.message = "You are not close enough to a point marker";
              messageBoxConstructor(2);
-              return;
+
+            var close = new Audio('/audio/m_closer.m4a');
+            close.play();
+
+            return;
           }
 
         });
@@ -226,6 +257,8 @@ angular
             $scope.isFinished = true;
           } else {
             alert("You are not near enough to homebase!");
+            var closer = new Audio('/audio/m_closer.m4a');
+            closer.play();
           }
         });
       }

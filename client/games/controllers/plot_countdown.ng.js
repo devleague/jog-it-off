@@ -5,6 +5,8 @@
       $scope.countNum = 5;
       $rootScope.wink = true;
       var num = 5;
+      var audio = new Audio('/audio/get_ready.m4a');
+      audio.play();
 
       $interval(function() {
           num--;
