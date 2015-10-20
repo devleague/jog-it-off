@@ -3,7 +3,9 @@
     .controller('joinController', function ($scope, $state, $meteor, $rootScope, JogService, $stateParams) {
 
       var gameID = $stateParams.gameID;
-       $scope.gameData = $meteor.collection(GameCollection);
+       $scope.gameData = $meteor.collection(function() {
+        return GameCollection.find({}, {sort: {timeNum: -1}});
+      });
       $scope.joinGame = JogService.joinGame;
       $rootScope.wink = false;
 
