@@ -55,10 +55,11 @@
 
 #main-slider-next {
     background-color:#007095;
-    margin: 20px auto;
+    margin: 0 auto 20px auto;
     width: 150px;
     min-height: 45px;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     // left:660px;
     // top:150px;
 }
