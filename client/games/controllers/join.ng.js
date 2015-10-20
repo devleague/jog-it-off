@@ -10,13 +10,6 @@
       var now = new Date().getTime();
       var day = 86400000;
 
-      //remove all
-      GameCollection
-        .find({})
-        .forEach(function(x) {
-          GameCollection.remove({_id: x._id});
-        });
-
       //remove games that have already ended
       GameCollection
         .find({gameTimer: {$lt:1}})
