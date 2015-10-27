@@ -35,6 +35,7 @@ ejson@1.0.7
 fastclick@1.0.7
 fourseven:scss@1.2.3
 geojson-utils@1.0.4
+gfk:notifications@1.1.4
 html-tools@1.0.5
 htmljs@1.0.5
 http@1.1.1
